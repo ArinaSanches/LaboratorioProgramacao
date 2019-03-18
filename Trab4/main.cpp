@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+#include<tuple> 
 
 void trocarElementos(int *elem1, int *elem2){
     int aux = *elem1;
@@ -15,41 +16,34 @@ void ImprimirVetor(int* vector, int tamanho){
     cout << "}" << endl;
 }
 
-void partLomuto(int *inicio, int *fim, int *pivo, int *&pontM, int *&pontI){
+tuple<int*, int*> partLomuto(int *inicio, int *fim, int *pivo){
 
     trocarElementos(inicio, pivo);
 
     int *m = inicio;
     int *i = inicio;
     int *j = inicio + 1;
-
+    int aux;
     while(j != (fim + 1)){
 
         if(*j == *inicio){
             i = i + 1;
            trocarElementos(i, j);
-        }
-        if(*j < *inicio){
-            i = i + 1;
+        }else if(*j < *inicio){
             m = m + 1;
+            aux = *m;
+            *m = *j;
 
-            int aux = *m;
-            int aux2 = *i;
-            if(j > i && i > m) {
-                *m = *j;
-                *i = aux;
-                *j = aux2;
-            }else { // evitar problema m == i ou i == j
-                *m = *j;
-                *j = aux;
-            }
+            i = i + 1;
+            *j = *i;
+            *i = aux;
         }
+
         j = j + 1;
     }
     trocarElementos(m, inicio);
 
-    pontI = m;
-    pontM = i;
+    return make_tuple(m, i);
 
 }
 
@@ -60,19 +54,19 @@ void Quicksort(int *inicio, int *fim, int *pivo){
         exit;
     }
 
-    int *pontM;
-    int *pontI;
+    tuple <int*, int*> pivos = partLomuto(inicio, fim, pivo);
+    
 
-    partLomuto(inicio, fim, pivo, pontI, pontM);
+    if(get<0>(pivos) > inicio){
 
-    if(pontI > inicio){
         int *inicioEsq = inicio;
-        int *fimEsq = pontI -1;
+        int *fimEsq = get<0>(pivos) -1;
         Quicksort(inicioEsq, fimEsq, fimEsq);
     }
 
-    if(pontM < fim){
-        int *inicioDir = pontM + 1;
+    if(get<1>(pivos) < fim){
+
+        int *inicioDir = get<1>(pivos) + 1;
         int *fimDir = fim;
         Quicksort(inicioDir, fimDir, fimDir);
     }
@@ -85,7 +79,7 @@ int main() {
 
     //int vetor[] = {1, 2, 1, 3, 3, 2, 1, 3, 2, 4};
 
-    int vetor[] = {1, 2, 2, 2, 1, 3, 3, 3, 2, 4};
+    int vetor[] = {10, 2, 6, 8, 6 , 6, 3, 4, 6, 5};
 
 
 
@@ -100,9 +94,6 @@ int main() {
     ImprimirVetor(inicio, 10);
 
     cout << "Pivo: " << *pivo << endl;
-
-    int* p;
-    int*v;
 
     Quicksort(inicio, fim, pivo);
 

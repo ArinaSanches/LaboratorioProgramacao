@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-#include<tuple> 
+#include<tuple>
 
 void trocarElementos(int *elem1, int *elem2){
     int aux = *elem1;
@@ -28,7 +28,7 @@ tuple<int*, int*> partLomuto(int *inicio, int *fim, int *pivo){
 
         if(*j == *inicio){
             i = i + 1;
-           trocarElementos(i, j);
+            trocarElementos(i, j);
         }else if(*j < *inicio){
             m = m + 1;
             aux = *m;
@@ -55,7 +55,7 @@ void Quicksort(int *inicio, int *fim, int *pivo){
     }
 
     tuple <int*, int*> pivos = partLomuto(inicio, fim, pivo);
-    
+
 
     if(get<0>(pivos) > inicio){
 
@@ -101,6 +101,3 @@ int main() {
     ImprimirVetor(init, 10);
 
 }
-
-
-

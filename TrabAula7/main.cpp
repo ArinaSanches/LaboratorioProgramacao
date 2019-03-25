@@ -36,11 +36,11 @@ int* partLomuto(int *inicio, int *fim, int *pivo){
 
 void selecaoHoare(int *inicio, int *fim, int *i){
 
-    int *pivo = fim;
+    int *pivo = inicio + (fim - inicio)/2 ;
     int *p = partLomuto(inicio, fim, pivo);
 
     if(p == i){
-        cout << "deu bom " << *i << "  " << i << endl;
+        exit;
     }else if(i < p){
         selecaoHoare(inicio, p - 1, i);
     }else{
@@ -49,54 +49,54 @@ void selecaoHoare(int *inicio, int *fim, int *i){
 }
 
 
+
+
 void Quicksort(int *inicio, int *fim, int *pivo){
 
     if(inicio == fim){
         exit;
     }
 
-    pivo = partLomuto(inicio, fim, pivo);
-
+    selecaoHoare(inicio, fim, pivo);
+    //descobrir como calcular o meio do vetor! e mudar o fimEsq para o meio do vetor
     if(pivo > inicio){
         int *inicioEsq = inicio;
         int *fimEsq = pivo -1;
-        Quicksort(inicioEsq, fimEsq, fimEsq);
+        int *pivoEsq = inicioEsq + (fimEsq - inicioEsq)/2;
+        Quicksort(inicioEsq, fimEsq, pivoEsq);
     }
 
     if(pivo < fim){
         int *inicioDir = pivo + 1;
         int *fimDir = fim;
-        Quicksort(inicioDir, fimDir, fimDir);
+        int *pivoDir = inicioDir + (fimDir - inicioDir)/2;
+        Quicksort(inicioDir, fimDir, pivoDir);
     }
 }
 
 
 int main() {
 
-    //int vetor[] = {1, 2, 1, 3, 3, 2, 1, 3, 2, 4};
+    int vetor[] = {1, 20, 1, 3, 3, 2, 1, 30, 2, 4};
 
-    int vetor[] = { 2, 9, 6, 3, 5, 4, 8, 1, 7};;
+    //int vetor[] = { 2, 9, 6, 3, 5, 4, 8, 1, 7};;
 
 
 
     int * inicio = vetor;
-    int * fim = vetor + 8;
-    int * pivo = vetor + 8;
+    int * fim = vetor + 9;
+    int * pivo = vetor + 4;
 
     int *init = inicio;
 
     cout << "Vetor Inicial: " << endl;
 
-    ImprimirVetor(inicio, 9);
+    ImprimirVetor(inicio, 10);
 
-    cout << "Pivo: " << *pivo << "  " << pivo << endl;
-
-    selecaoHoare(inicio, fim, pivo);
+    Quicksort(inicio, fim, pivo);
 
     cout << "Vetor depois do Quicksort: " << endl;
-    ImprimirVetor(init, 9);
+    ImprimirVetor(init, 10);
+
 
 }
-
-
-

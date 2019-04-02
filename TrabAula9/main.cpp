@@ -50,6 +50,37 @@ void selecaoHoare(int *inicio, int *fim, int *i){
     }
 }
 
+tuple<int*, int*> partLomutoTriplo(int *inicio, int *fim, int *pivo){
+
+    trocarElementos(inicio, pivo);
+
+    int *m = inicio;
+    int *i = inicio;
+    int *j = inicio + 1;
+    int aux;
+    while(j != (fim + 1)){
+
+        if(*j == *inicio){
+            i = i + 1;
+            trocarElementos(i, j);
+        }else if(*j < *inicio){
+            m = m + 1;
+            aux = *m;
+            *m = *j;
+
+            i = i + 1;
+            *j = *i;
+            *i = aux;
+        }
+
+        j = j + 1;
+    }
+    trocarElementos(m, inicio);
+
+    return make_tuple(m, i);
+
+}
+
 int* Bfprt(int *inicio, int *fim){
 
     int tamanho = (fim - inicio) + 1;
@@ -83,23 +114,81 @@ int* Bfprt(int *inicio, int *fim){
     Bfprt(inicio, posUltMed);
 }
 
+void TesteBfrt(int *inicio, int *fim, int*pivo){
+    
+
+    int *p = Bfprt(inicio, fim);
+    cout << *p << endl;
+
+    tuple <int*, int*> pivos = partLomutoTriplo(inicio, fim, p);
+    cout << "apos part triplo" << endl;
+    ImprimirVetor(inicio, fim- inicio + 1);
+
+    if (pivo >= get<0>(pivos) && get<1>(pivos) >= pivo){
+        exit;
+    }else if( pivo < get<0>(pivos)){
+        int *fimEsq = get<0>(pivos) -1;
+        TesteBfrt(inicio, fimEsq, pivo);
+    }else if(pivo > get<1>(pivos)){
+        int *inicioDir = get<1>(pivos) + 1;
+        TesteBfrt(inicioDir, fim, pivo);
+    }
+
+
+}
+
+void Quicksort(int *inicio, int *fim, int *pivo){
+
+    if(inicio == fim){
+        exit;
+    }
+
+    pivo = partLomuto(inicio, fim, pivo);
+
+    if(pivo > inicio){
+        int *inicioEsq = inicio;
+        int *fimEsq = pivo -1;
+        Quicksort(inicioEsq, fimEsq, fimEsq);
+    }
+
+    if(pivo < fim){
+        int *inicioDir = pivo + 1;
+        int *fimDir = fim;
+        Quicksort(inicioDir, fimDir, fimDir);
+    }
+}
+
 
 int main() {
-    //    int vetor[] = {1, 2, 5, 2, 4, 20, 1, 3, 6, 5, 5, 4, 1, 2}; problema se pivo for o mais a esqueda
-    int vetor[] = {1, 2, 5, 2, 4, 20, 1, 3, 6, 5, 5};
+    int vetor[] = {1, 2, 5, 2, 4, 20, 1, 3, 6, 5, 5, 4, 1, 2, 1}; 
+    int vetor2[] = {1, 2, 5, 2, 4, 20, 1, 3, 6, 5, 5, 4, 1, 2, 1}; 
+
+    //int vetor[] = {1, 2, 5, 2, 4, 20, 1, 3, 6, 5, 5};
 
     int * inicio = vetor;
-    int * fim = vetor + 10;
+    int * fim = vetor + 14;
+
+    int * inicio2 = vetor2;
+    int * fim2 = vetor2 + 14;
 
     int *init = inicio;
 
     cout << "Vetor Inicial: " << endl;
 
-    ImprimirVetor(inicio, 11);
+    ImprimirVetor(inicio, 15);
 
-    int *i = Bfprt(inicio, fim);
+    int *pivo = inicio + (fim - inicio)/2;
+    int *pivo2 = inicio2+ (fim2 - inicio2)/2;
 
-    cout << *i << endl;
+
+    TesteBfrt(inicio, fim, pivo);
+    Quicksort(inicio2, fim2, pivo2);
+
+    cout << "pivo: " << *pivo << endl;
+
+    ImprimirVetor(inicio, 15);
+    ImprimirVetor(inicio2, 15);
+
 
 
 }

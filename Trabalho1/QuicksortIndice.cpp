@@ -12,6 +12,7 @@ void QuicksortIndice::ImprimirVetor(int vetor[], int tamanho){
         cout << vetor[i] << " ";
     }
     cout << "}" << endl;
+    cout << endl << endl;
 }
 
 void trocarElementos(int vetor[],int i, int j){

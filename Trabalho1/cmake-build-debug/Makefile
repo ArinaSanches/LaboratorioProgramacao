@@ -122,6 +122,33 @@ Trabalho1/fast:
 	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/build
 .PHONY : Trabalho1/fast
 
+FuncoesBasicas.obj: FuncoesBasicas.cpp.obj
+
+.PHONY : FuncoesBasicas.obj
+
+# target to build an object file
+FuncoesBasicas.cpp.obj:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/FuncoesBasicas.cpp.obj
+.PHONY : FuncoesBasicas.cpp.obj
+
+FuncoesBasicas.i: FuncoesBasicas.cpp.i
+
+.PHONY : FuncoesBasicas.i
+
+# target to preprocess a source file
+FuncoesBasicas.cpp.i:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/FuncoesBasicas.cpp.i
+.PHONY : FuncoesBasicas.cpp.i
+
+FuncoesBasicas.s: FuncoesBasicas.cpp.s
+
+.PHONY : FuncoesBasicas.s
+
+# target to generate assembly for a file
+FuncoesBasicas.cpp.s:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/FuncoesBasicas.cpp.s
+.PHONY : FuncoesBasicas.cpp.s
+
 QuicksortBFPRT.obj: QuicksortBFPRT.cpp.obj
 
 .PHONY : QuicksortBFPRT.obj
@@ -266,6 +293,9 @@ help:
 	@echo ... Trabalho1
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... FuncoesBasicas.obj
+	@echo ... FuncoesBasicas.i
+	@echo ... FuncoesBasicas.s
 	@echo ... QuicksortBFPRT.obj
 	@echo ... QuicksortBFPRT.i
 	@echo ... QuicksortBFPRT.s

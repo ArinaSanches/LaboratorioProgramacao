@@ -1,45 +1,13 @@
 //
 // Created by Arina on 07/04/2019.
 //
-/*
+
 #include <iostream>
 using namespace std;
 #include "QuicksortPonteiro.h"
+#include "FuncoesBasicas.h"
 
-void QuicksortPonteiro::ImprimirVetor(int* vector, int tamanho){
-    cout << "{ ";
-    for (int i = 0; i < tamanho ; ++i) {
-        cout << vector[i] << " ";
-    }
-    cout << "}" << endl;
-}
-
-void trocarElementos(int *elem1, int *elem2){
-    int aux = *elem1;
-    *elem1 = *elem2;
-    *elem2 = aux;
-}
-
-
-int* partLomuto(int *inicio, int *fim, int *pivo){
-
-    trocarElementos(inicio, pivo);
-
-    int *i = inicio;
-    int *j = i + 1;
-
-    while(j != (fim + 1)){
-        if(*j < *inicio){
-            i = i +1;
-            trocarElementos(i, j);
-        }
-        j = j + 1;
-    }
-    trocarElementos(i, inicio);
-    return i;
-}
-
-
+FuncoesBasicas funcoes2;
 
 void QuicksortPonteiro::Quicksort(int *inicio, int *fim, int *pivo){
 
@@ -47,7 +15,7 @@ void QuicksortPonteiro::Quicksort(int *inicio, int *fim, int *pivo){
         exit;
     }
 
-    pivo = partLomuto(inicio, fim, pivo);
+    pivo = funcoes2.partLomuto(inicio, fim, pivo);
 
     if(pivo > inicio){
         int *inicioEsq = inicio;
@@ -61,4 +29,3 @@ void QuicksortPonteiro::Quicksort(int *inicio, int *fim, int *pivo){
         Quicksort(inicioDir, fimDir, fimDir);
     }
 }
-*/

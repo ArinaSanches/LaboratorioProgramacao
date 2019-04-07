@@ -1,11 +1,10 @@
 #include <iostream>
 #include "QuicksortIndice.h"
-//#include "QuicksortPonteiro.h"
+#include "QuicksortPonteiro.h"
 #include "QuicksortBFPRT.h"
 #include "QuicksortPivoAleatorio.h"
 #include <time.h>
-
-
+#include "FuncoesBasicas.h"
 using namespace std;
 
 
@@ -18,25 +17,13 @@ void gerarVetorAleatorio(int vetor[], int tamanho, int intervalo) {
     }
 }
 
-void ImprimirVetor(int vetor[], int tamanho){
-    cout << "{ ";
-    for (int i = 0; i < tamanho; ++i) {
-        cout << vetor[i] << " ";
-    }
-    cout << "}" << endl;
-}
-
-void copiarVetor(int vetor1[], int vetor2[], int tamanho){
-    for (int i = 0; i < tamanho; i++){
-        vetor2[i] = vetor1[i];
-    }
-}
-
 
 int main() {
     //int opcVetor = 1;
     //cout << "Digite 1 se deseja gerar um vetor aleatorio e 0 caso deseje usar o gerador de instancias do professor" << endl;
     //cin >> opcVetor;
+
+    FuncoesBasicas funcoes;
 
     int tamanho;
     cout << "Digite o tamanho do vetor" << endl;
@@ -50,44 +37,46 @@ int main() {
 
     // QUICKSORT INDICE
     cout << "Vetor Inicial: "<<  endl;
-    ImprimirVetor(vetor, tamanho);
+    funcoes.ImprimirVetor(vetor, tamanho);
 
     int vetorIndice[tamanho];
-    copiarVetor(vetor, vetorIndice, tamanho);
+    funcoes.copiarVetor(vetor, vetorIndice, tamanho);
 
     QuicksortIndice quickIndice;
     quickIndice.Quicksort(vetorIndice, 0, (tamanho-1));
 
-    cout << "Vetor apos ordenacao com quicksort usando indicesS: "<<  endl;
+    cout << "Vetor apos ordenacao com quicksort usando indicess: "<<  endl;
     quickIndice.ImprimirVetor(vetorIndice, tamanho);
-/*
+
     //QUICKSORT PONTEIROS
     int vetorPont[tamanho];
-    copiarVetor(vetor, vetorPont, tamanho);
+    funcoes.copiarVetor(vetor, vetorPont, tamanho);
     QuicksortPonteiro quicksortPonteiro;
     quicksortPonteiro.Quicksort(vetorPont, vetorPont + (tamanho -1), vetorPont + (tamanho -1) );
 
     cout << "Vetor apos ordenacao com quicksort usando Ponteiros: "<<  endl;
-    quickIndice.ImprimirVetor(vetorPont, tamanho);
+    funcoes.ImprimirVetor(vetorPont, tamanho);
 
     //Quicksort BFPRT
     int vetorBFPRT[tamanho];
-    copiarVetor(vetor, vetorBFPRT, tamanho);
+    funcoes.copiarVetor(vetor, vetorBFPRT, tamanho);
     QuicksortBFPRT quicksortBFPRT;
     quicksortBFPRT.Quicksort(vetorBFPRT, vetorBFPRT + (tamanho -1));
 
     cout << "Vetor apos ordenacao com quicksort usando algotimo BFPRT: "<<  endl;
-    quicksortBFPRT.ImprimirVetor(vetorBFPRT, tamanho);*/
+    funcoes.ImprimirVetor(vetorBFPRT, tamanho);
 
     //Quicksort Pivo Aleatorio
     int vetorPivoAleatorio[tamanho];
-    copiarVetor(vetor, vetorPivoAleatorio, tamanho);
+    funcoes.copiarVetor(vetor, vetorPivoAleatorio, tamanho);
     QuicksortPivoAleatorio quicksortPivoAleatorio;
     quicksortPivoAleatorio.Quicksort(vetorPivoAleatorio, vetorPivoAleatorio + (tamanho -1));
 
-    cout << "Vetor apos ordenacao com quicksort usando algotimo BFPRT: "<<  endl;
-    quicksortPivoAleatorio.ImprimirVetor(vetorPivoAleatorio, tamanho);
+    cout << "Vetor apos ordenacao com quicksort usando pivo aleatorio: "<<  endl;
+    funcoes.ImprimirVetor(vetorPivoAleatorio, tamanho);
 
+    cout << "Vetor Inicial: "<<  endl;
+    funcoes.ImprimirVetor(vetor, tamanho);
 
 
 

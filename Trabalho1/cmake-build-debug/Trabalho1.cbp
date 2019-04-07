@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/FuncoesBasicas.cpp">
+			<Option target="Trabalho1"/>
+		</Unit>
+		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/FuncoesBasicas.h">
+			<Option target="Trabalho1"/>
+		</Unit>
 		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortBFPRT.cpp">
 			<Option target="Trabalho1"/>
 		</Unit>

@@ -176,6 +176,33 @@ QuicksortIndice.cpp.s:
 	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortIndice.cpp.s
 .PHONY : QuicksortIndice.cpp.s
 
+QuicksortPivoAleatorio.obj: QuicksortPivoAleatorio.cpp.obj
+
+.PHONY : QuicksortPivoAleatorio.obj
+
+# target to build an object file
+QuicksortPivoAleatorio.cpp.obj:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortPivoAleatorio.cpp.obj
+.PHONY : QuicksortPivoAleatorio.cpp.obj
+
+QuicksortPivoAleatorio.i: QuicksortPivoAleatorio.cpp.i
+
+.PHONY : QuicksortPivoAleatorio.i
+
+# target to preprocess a source file
+QuicksortPivoAleatorio.cpp.i:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortPivoAleatorio.cpp.i
+.PHONY : QuicksortPivoAleatorio.cpp.i
+
+QuicksortPivoAleatorio.s: QuicksortPivoAleatorio.cpp.s
+
+.PHONY : QuicksortPivoAleatorio.s
+
+# target to generate assembly for a file
+QuicksortPivoAleatorio.cpp.s:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortPivoAleatorio.cpp.s
+.PHONY : QuicksortPivoAleatorio.cpp.s
+
 QuicksortPonteiro.obj: QuicksortPonteiro.cpp.obj
 
 .PHONY : QuicksortPonteiro.obj
@@ -245,6 +272,9 @@ help:
 	@echo ... QuicksortIndice.obj
 	@echo ... QuicksortIndice.i
 	@echo ... QuicksortIndice.s
+	@echo ... QuicksortPivoAleatorio.obj
+	@echo ... QuicksortPivoAleatorio.i
+	@echo ... QuicksortPivoAleatorio.s
 	@echo ... QuicksortPonteiro.obj
 	@echo ... QuicksortPonteiro.i
 	@echo ... QuicksortPonteiro.s

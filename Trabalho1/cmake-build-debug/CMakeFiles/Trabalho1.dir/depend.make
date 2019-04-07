@@ -7,10 +7,14 @@ CMakeFiles/Trabalho1.dir/QuicksortBFPRT.cpp.obj: ../QuicksortBFPRT.h
 CMakeFiles/Trabalho1.dir/QuicksortIndice.cpp.obj: ../QuicksortIndice.cpp
 CMakeFiles/Trabalho1.dir/QuicksortIndice.cpp.obj: ../QuicksortIndice.h
 
+CMakeFiles/Trabalho1.dir/QuicksortPivoAleatorio.cpp.obj: ../QuicksortPivoAleatorio.cpp
+CMakeFiles/Trabalho1.dir/QuicksortPivoAleatorio.cpp.obj: ../QuicksortPivoAleatorio.h
+
 CMakeFiles/Trabalho1.dir/QuicksortPonteiro.cpp.obj: ../QuicksortPonteiro.cpp
 CMakeFiles/Trabalho1.dir/QuicksortPonteiro.cpp.obj: ../QuicksortPonteiro.h
 
 CMakeFiles/Trabalho1.dir/main.cpp.obj: ../QuicksortBFPRT.h
 CMakeFiles/Trabalho1.dir/main.cpp.obj: ../QuicksortIndice.h
+CMakeFiles/Trabalho1.dir/main.cpp.obj: ../QuicksortPivoAleatorio.h
 CMakeFiles/Trabalho1.dir/main.cpp.obj: ../main.cpp
 

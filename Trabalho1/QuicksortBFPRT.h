@@ -2,6 +2,7 @@
 // Created by Arina on 07/04/2019.
 //
 
+/*
 #ifndef TRABALHO1_QUICKSORTBFPRT_H
 #define TRABALHO1_QUICKSORTBFPRT_H
 
@@ -13,3 +14,5 @@ public:
 };
 
 #endif //TRABALHO1_QUICKSORTBFPRT_H
+
+*/

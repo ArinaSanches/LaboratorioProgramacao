@@ -1,7 +1,7 @@
 //
 // Created by Arina on 07/04/2019.
 //
-
+/*
 #include "QuicksortBFPRT.h"
 #include <iostream>
 #include <stdlib.h>
@@ -171,4 +171,4 @@ void QuicksortBFPRT::Quicksort(int *inicio, int *fim){
     }
 }
 
-
+*/

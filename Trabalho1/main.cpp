@@ -2,6 +2,7 @@
 #include "QuicksortIndice.h"
 //#include "QuicksortPonteiro.h"
 #include "QuicksortBFPRT.h"
+#include "QuicksortPivoAleatorio.h"
 #include <time.h>
 
 
@@ -67,7 +68,7 @@ int main() {
     quicksortPonteiro.Quicksort(vetorPont, vetorPont + (tamanho -1), vetorPont + (tamanho -1) );
 
     cout << "Vetor apos ordenacao com quicksort usando Ponteiros: "<<  endl;
-    quickIndice.ImprimirVetor(vetorPont, tamanho);*/
+    quickIndice.ImprimirVetor(vetorPont, tamanho);
 
     //Quicksort BFPRT
     int vetorBFPRT[tamanho];
@@ -76,7 +77,17 @@ int main() {
     quicksortBFPRT.Quicksort(vetorBFPRT, vetorBFPRT + (tamanho -1));
 
     cout << "Vetor apos ordenacao com quicksort usando algotimo BFPRT: "<<  endl;
-    quicksortBFPRT.ImprimirVetor(vetorBFPRT, tamanho);
+    quicksortBFPRT.ImprimirVetor(vetorBFPRT, tamanho);*/
+
+    //Quicksort Pivo Aleatorio
+    int vetorPivoAleatorio[tamanho];
+    copiarVetor(vetor, vetorPivoAleatorio, tamanho);
+    QuicksortPivoAleatorio quicksortPivoAleatorio;
+    quicksortPivoAleatorio.Quicksort(vetorPivoAleatorio, vetorPivoAleatorio + (tamanho -1));
+
+    cout << "Vetor apos ordenacao com quicksort usando algotimo BFPRT: "<<  endl;
+    quicksortPivoAleatorio.ImprimirVetor(vetorPivoAleatorio, tamanho);
+
 
 
 

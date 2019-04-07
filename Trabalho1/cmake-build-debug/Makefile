@@ -122,6 +122,60 @@ Trabalho1/fast:
 	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/build
 .PHONY : Trabalho1/fast
 
+QuicksortIndice.obj: QuicksortIndice.cpp.obj
+
+.PHONY : QuicksortIndice.obj
+
+# target to build an object file
+QuicksortIndice.cpp.obj:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortIndice.cpp.obj
+.PHONY : QuicksortIndice.cpp.obj
+
+QuicksortIndice.i: QuicksortIndice.cpp.i
+
+.PHONY : QuicksortIndice.i
+
+# target to preprocess a source file
+QuicksortIndice.cpp.i:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortIndice.cpp.i
+.PHONY : QuicksortIndice.cpp.i
+
+QuicksortIndice.s: QuicksortIndice.cpp.s
+
+.PHONY : QuicksortIndice.s
+
+# target to generate assembly for a file
+QuicksortIndice.cpp.s:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortIndice.cpp.s
+.PHONY : QuicksortIndice.cpp.s
+
+QuicksortPonteiro.obj: QuicksortPonteiro.cpp.obj
+
+.PHONY : QuicksortPonteiro.obj
+
+# target to build an object file
+QuicksortPonteiro.cpp.obj:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortPonteiro.cpp.obj
+.PHONY : QuicksortPonteiro.cpp.obj
+
+QuicksortPonteiro.i: QuicksortPonteiro.cpp.i
+
+.PHONY : QuicksortPonteiro.i
+
+# target to preprocess a source file
+QuicksortPonteiro.cpp.i:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortPonteiro.cpp.i
+.PHONY : QuicksortPonteiro.cpp.i
+
+QuicksortPonteiro.s: QuicksortPonteiro.cpp.s
+
+.PHONY : QuicksortPonteiro.s
+
+# target to generate assembly for a file
+QuicksortPonteiro.cpp.s:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortPonteiro.cpp.s
+.PHONY : QuicksortPonteiro.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +212,12 @@ help:
 	@echo ... Trabalho1
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... QuicksortIndice.obj
+	@echo ... QuicksortIndice.i
+	@echo ... QuicksortIndice.s
+	@echo ... QuicksortPonteiro.obj
+	@echo ... QuicksortPonteiro.i
+	@echo ... QuicksortPonteiro.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

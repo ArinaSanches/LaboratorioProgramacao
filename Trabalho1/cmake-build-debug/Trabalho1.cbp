@@ -82,6 +82,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.cpp">
+			<Option target="Trabalho1"/>
+		</Unit>
+		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.h">
+			<Option target="Trabalho1"/>
+		</Unit>
+		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortPonteiro.cpp">
+			<Option target="Trabalho1"/>
+		</Unit>
+		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortPonteiro.h">
+			<Option target="Trabalho1"/>
+		</Unit>
 		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/main.cpp">
 			<Option target="Trabalho1"/>
 		</Unit>

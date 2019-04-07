@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortBFPRT.cpp">
+			<Option target="Trabalho1"/>
+		</Unit>
+		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortBFPRT.h">
+			<Option target="Trabalho1"/>
+		</Unit>
 		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.cpp">
 			<Option target="Trabalho1"/>
 		</Unit>

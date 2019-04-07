@@ -1,12 +1,16 @@
 #include <iostream>
 #include "QuicksortIndice.h"
-#include "QuicksortPonteiro.h"
+//#include "QuicksortPonteiro.h"
+#include "QuicksortBFPRT.h"
+#include <time.h>
+
+
 using namespace std;
 
 
 void gerarVetorAleatorio(int vetor[], int tamanho, int intervalo) {
 
-    //srand (time(NULL));
+    srand (time(NULL));
 
     for (int i = 0; i < tamanho; i++) {
         vetor[i] = rand() % (intervalo + 1);
@@ -55,7 +59,7 @@ int main() {
 
     cout << "Vetor apos ordenacao com quicksort usando indicesS: "<<  endl;
     quickIndice.ImprimirVetor(vetorIndice, tamanho);
-
+/*
     //QUICKSORT PONTEIROS
     int vetorPont[tamanho];
     copiarVetor(vetor, vetorPont, tamanho);
@@ -63,7 +67,16 @@ int main() {
     quicksortPonteiro.Quicksort(vetorPont, vetorPont + (tamanho -1), vetorPont + (tamanho -1) );
 
     cout << "Vetor apos ordenacao com quicksort usando Ponteiros: "<<  endl;
-    quickIndice.ImprimirVetor(vetorPont, tamanho);
+    quickIndice.ImprimirVetor(vetorPont, tamanho);*/
+
+    //Quicksort BFPRT
+    int vetorBFPRT[tamanho];
+    copiarVetor(vetor, vetorBFPRT, tamanho);
+    QuicksortBFPRT quicksortBFPRT;
+    quicksortBFPRT.Quicksort(vetorBFPRT, vetorBFPRT + (tamanho -1));
+
+    cout << "Vetor apos ordenacao com quicksort usando algotimo BFPRT: "<<  endl;
+    quicksortBFPRT.ImprimirVetor(vetorBFPRT, tamanho);
 
 
 

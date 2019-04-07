@@ -1,7 +1,7 @@
 //
 // Created by Arina on 07/04/2019.
 //
-
+/*
 #include <iostream>
 using namespace std;
 #include "QuicksortPonteiro.h"
@@ -61,3 +61,4 @@ void QuicksortPonteiro::Quicksort(int *inicio, int *fim, int *pivo){
         Quicksort(inicioDir, fimDir, fimDir);
     }
 }
+*/

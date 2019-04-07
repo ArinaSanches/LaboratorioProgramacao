@@ -6,15 +6,17 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.h
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortBFPRT.h
 
-C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortPonteiro.h
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.h
 
 C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/main.cpp
 iostream
 -
 QuicksortIndice.h
 C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.h
-QuicksortPonteiro.h
-C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortPonteiro.h
+QuicksortBFPRT.h
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortBFPRT.h
+time.h
+-
 

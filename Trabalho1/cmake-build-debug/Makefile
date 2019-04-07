@@ -122,6 +122,33 @@ Trabalho1/fast:
 	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/build
 .PHONY : Trabalho1/fast
 
+QuicksortBFPRT.obj: QuicksortBFPRT.cpp.obj
+
+.PHONY : QuicksortBFPRT.obj
+
+# target to build an object file
+QuicksortBFPRT.cpp.obj:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortBFPRT.cpp.obj
+.PHONY : QuicksortBFPRT.cpp.obj
+
+QuicksortBFPRT.i: QuicksortBFPRT.cpp.i
+
+.PHONY : QuicksortBFPRT.i
+
+# target to preprocess a source file
+QuicksortBFPRT.cpp.i:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortBFPRT.cpp.i
+.PHONY : QuicksortBFPRT.cpp.i
+
+QuicksortBFPRT.s: QuicksortBFPRT.cpp.s
+
+.PHONY : QuicksortBFPRT.s
+
+# target to generate assembly for a file
+QuicksortBFPRT.cpp.s:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortBFPRT.cpp.s
+.PHONY : QuicksortBFPRT.cpp.s
+
 QuicksortIndice.obj: QuicksortIndice.cpp.obj
 
 .PHONY : QuicksortIndice.obj
@@ -212,6 +239,9 @@ help:
 	@echo ... Trabalho1
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... QuicksortBFPRT.obj
+	@echo ... QuicksortBFPRT.i
+	@echo ... QuicksortBFPRT.s
 	@echo ... QuicksortIndice.obj
 	@echo ... QuicksortIndice.i
 	@echo ... QuicksortIndice.s

@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortBFPRT.cpp" "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/QuicksortBFPRT.cpp.obj"
   "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.cpp" "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/QuicksortIndice.cpp.obj"
   "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortPonteiro.cpp" "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/QuicksortPonteiro.cpp.obj"
   "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/main.cpp" "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/main.cpp.obj"

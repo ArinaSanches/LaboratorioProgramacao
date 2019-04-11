@@ -17,6 +17,7 @@ public:
     void selecaoHoare(int *inicio, int *fim, int *i);
     tuple<int*, int*> partLomutoTriplo(int *inicio, int *fim, int *pivo);
     void copiarVetor(int vetor1[], int vetor2[], int tamanho);
+    int* escolherPivo(int *inicio, int*fim);
 };
 
 #endif //TRABALHO1_FUNCOESBASICAS_H

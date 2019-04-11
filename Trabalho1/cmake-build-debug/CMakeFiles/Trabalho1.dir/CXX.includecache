@@ -6,11 +6,43 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.cpp
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/FuncoesBasicas.h
+tuple
+-
+
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortBFPRT.h
+
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.h
+
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortLogN.h
+
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortPivoAleatorio.h
+
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortPonteiro.h
+
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/instancias_ruins_Quicksort.h
+new
+-
+utility
+-
+
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/main.cpp
 iostream
 -
 QuicksortIndice.h
 C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.h
-
-C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.h
+QuicksortPonteiro.h
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortPonteiro.h
+QuicksortBFPRT.h
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortBFPRT.h
+QuicksortPivoAleatorio.h
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortPivoAleatorio.h
+time.h
+-
+FuncoesBasicas.h
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/FuncoesBasicas.h
+QuicksortLogN.h
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortLogN.h
+instancias_ruins_Quicksort.h
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/instancias_ruins_Quicksort.h
 

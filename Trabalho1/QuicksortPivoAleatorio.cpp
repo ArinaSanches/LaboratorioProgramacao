@@ -34,5 +34,7 @@ void QuicksortPivoAleatorio::Quicksort(int *inicio, int *fim){
         int *fimDir = fim;
         Quicksort(inicioDir, fimDir);
     }
+
+
 }
 

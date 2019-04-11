@@ -88,3 +88,6 @@ void FuncoesBasicas:: copiarVetor(int vetor1[], int vetor2[], int tamanho){
         vetor2[i] = vetor1[i];
     }
 }
+int* FuncoesBasicas::escolherPivo(int *inicio, int *fim) {
+    return inicio + (fim-inicio)/2;
+}

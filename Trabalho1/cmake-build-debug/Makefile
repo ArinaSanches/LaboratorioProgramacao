@@ -203,6 +203,33 @@ QuicksortIndice.cpp.s:
 	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortIndice.cpp.s
 .PHONY : QuicksortIndice.cpp.s
 
+QuicksortLogN.obj: QuicksortLogN.cpp.obj
+
+.PHONY : QuicksortLogN.obj
+
+# target to build an object file
+QuicksortLogN.cpp.obj:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortLogN.cpp.obj
+.PHONY : QuicksortLogN.cpp.obj
+
+QuicksortLogN.i: QuicksortLogN.cpp.i
+
+.PHONY : QuicksortLogN.i
+
+# target to preprocess a source file
+QuicksortLogN.cpp.i:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortLogN.cpp.i
+.PHONY : QuicksortLogN.cpp.i
+
+QuicksortLogN.s: QuicksortLogN.cpp.s
+
+.PHONY : QuicksortLogN.s
+
+# target to generate assembly for a file
+QuicksortLogN.cpp.s:
+	$(MAKE) -f CMakeFiles\Trabalho1.dir\build.make CMakeFiles/Trabalho1.dir/QuicksortLogN.cpp.s
+.PHONY : QuicksortLogN.cpp.s
+
 QuicksortPivoAleatorio.obj: QuicksortPivoAleatorio.cpp.obj
 
 .PHONY : QuicksortPivoAleatorio.obj
@@ -302,6 +329,9 @@ help:
 	@echo ... QuicksortIndice.obj
 	@echo ... QuicksortIndice.i
 	@echo ... QuicksortIndice.s
+	@echo ... QuicksortLogN.obj
+	@echo ... QuicksortLogN.i
+	@echo ... QuicksortLogN.s
 	@echo ... QuicksortPivoAleatorio.obj
 	@echo ... QuicksortPivoAleatorio.i
 	@echo ... QuicksortPivoAleatorio.s

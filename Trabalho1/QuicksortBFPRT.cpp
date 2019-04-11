@@ -18,14 +18,13 @@ using namespace std;
 FuncoesBasicas funcoes;
 
 
-int* Bfprt(int *inicio, int *fim){
+void Bfprt(int *inicio, int *fim, int*pivoInicial){
 
     int tamanho = (fim - inicio) + 1;
 
     if (tamanho < 6){
-        int *pivo = inicio + (fim-inicio)/2;
-        funcoes.selecaoHoare(inicio, fim, pivo);
-        return pivo;
+        funcoes.selecaoHoare(inicio, fim, pivoInicial);
+        return;
     }
 
     int *i = inicio, *j = inicio + 4, *posMedInicio = inicio;
@@ -48,28 +47,23 @@ int* Bfprt(int *inicio, int *fim){
         posMedInicio++;
     }
 
-    Bfprt(inicio, (posMedInicio-1));
-}
+    int *pivo = inicio + ((posMedInicio-1)-inicio)/2;
+    Bfprt(inicio, (posMedInicio-1), pivo);
 
-void AlgoritmoBfrt(int *inicio, int *fim, int *&pivo){
+    tuple <int*, int*> pivos = funcoes.partLomutoTriplo(inicio, fim, pivo);
 
-    int *p = Bfprt(inicio, fim);
-
-    tuple <int*, int*> pivos = funcoes.partLomutoTriplo(inicio, fim, p);
-
-    if (pivo >= get<0>(pivos) || get<1>(pivos) >= pivo){
-        pivo = get<0>(pivos);
-        exit;
-    }else if( pivo < get<0>(pivos)){
+    if (pivoInicial >= get<0>(pivos) && get<1>(pivos) >= pivoInicial){
+        pivoInicial = get<0>(pivos);
+        return;
+    }else if( pivoInicial < get<0>(pivos)){
         int *fimEsq = get<0>(pivos) -1;
-        AlgoritmoBfrt(inicio, fimEsq, pivo);
-    }else if(pivo > get<1>(pivos)){
+        Bfprt(inicio, fimEsq, pivoInicial);
+    }else if(pivoInicial > get<1>(pivos)){
         int *inicioDir = get<1>(pivos) + 1;
-        AlgoritmoBfrt(inicioDir, fim, pivo);
+        Bfprt(inicioDir, fim, pivoInicial);
     }
-
-
 }
+
 
 void QuicksortBFPRT::Quicksort(int *inicio, int *fim){
 
@@ -77,9 +71,9 @@ void QuicksortBFPRT::Quicksort(int *inicio, int *fim){
         exit;
     }
 
-    int *pivo = inicio + (fim - inicio)/2;
+    int *pivo = funcoes.escolherPivo(inicio, fim);
 
-    AlgoritmoBfrt(inicio, fim, pivo);
+    Bfprt(inicio, fim, pivo);
 
     if(pivo > inicio){
         int *inicioEsq = inicio;

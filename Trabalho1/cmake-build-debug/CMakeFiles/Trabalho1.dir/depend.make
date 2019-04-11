@@ -11,6 +11,10 @@ CMakeFiles/Trabalho1.dir/QuicksortBFPRT.cpp.obj: ../QuicksortBFPRT.h
 CMakeFiles/Trabalho1.dir/QuicksortIndice.cpp.obj: ../QuicksortIndice.cpp
 CMakeFiles/Trabalho1.dir/QuicksortIndice.cpp.obj: ../QuicksortIndice.h
 
+CMakeFiles/Trabalho1.dir/QuicksortLogN.cpp.obj: ../FuncoesBasicas.h
+CMakeFiles/Trabalho1.dir/QuicksortLogN.cpp.obj: ../QuicksortLogN.cpp
+CMakeFiles/Trabalho1.dir/QuicksortLogN.cpp.obj: ../QuicksortLogN.h
+
 CMakeFiles/Trabalho1.dir/QuicksortPivoAleatorio.cpp.obj: ../FuncoesBasicas.h
 CMakeFiles/Trabalho1.dir/QuicksortPivoAleatorio.cpp.obj: ../QuicksortPivoAleatorio.cpp
 CMakeFiles/Trabalho1.dir/QuicksortPivoAleatorio.cpp.obj: ../QuicksortPivoAleatorio.h
@@ -22,7 +26,9 @@ CMakeFiles/Trabalho1.dir/QuicksortPonteiro.cpp.obj: ../QuicksortPonteiro.h
 CMakeFiles/Trabalho1.dir/main.cpp.obj: ../FuncoesBasicas.h
 CMakeFiles/Trabalho1.dir/main.cpp.obj: ../QuicksortBFPRT.h
 CMakeFiles/Trabalho1.dir/main.cpp.obj: ../QuicksortIndice.h
+CMakeFiles/Trabalho1.dir/main.cpp.obj: ../QuicksortLogN.h
 CMakeFiles/Trabalho1.dir/main.cpp.obj: ../QuicksortPivoAleatorio.h
 CMakeFiles/Trabalho1.dir/main.cpp.obj: ../QuicksortPonteiro.h
+CMakeFiles/Trabalho1.dir/main.cpp.obj: ../instancias_ruins_Quicksort.h
 CMakeFiles/Trabalho1.dir/main.cpp.obj: ../main.cpp
 

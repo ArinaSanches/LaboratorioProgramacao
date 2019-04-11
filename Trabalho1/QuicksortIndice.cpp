@@ -21,9 +21,9 @@ void trocarElementos(int vetor[],int i, int j){
     vetor[j] = aux;
 }
 
-int partLomuto(int vetor[], int inicio, int fim){
+int partLomuto(int vetor[], int inicio, int fim, int pivo){
 
-    trocarElementos(vetor, inicio, fim);
+    trocarElementos(vetor, inicio, pivo);
 
     int i = inicio;
     int j =  inicio + 1;
@@ -39,13 +39,18 @@ int partLomuto(int vetor[], int inicio, int fim){
     return i;
 }
 
+int escolherPivo (int primeiro, int ultimo){
+    return (primeiro + ultimo)/2;
+}
+
 void QuicksortIndice::Quicksort(int vetor[], int inicio, int fim){
 
     if(inicio == (fim)){
         return;
     }
 
-    int pivo = partLomuto(vetor, inicio, (fim));
+    int pivo = escolherPivo(inicio, fim);
+    pivo = partLomuto(vetor, inicio, fim, pivo);
 
     int fimEsq;
     int inicioDir;

@@ -8,7 +8,7 @@
 class QuicksortPonteiro{
 
 public:
-    void Quicksort(int *inicio, int *fim, int *pivo);
+    void Quicksort(int *inicio, int *fim);
 };
 
 #endif //TRABALHO1_QUICKSORTPONTEIRO_H

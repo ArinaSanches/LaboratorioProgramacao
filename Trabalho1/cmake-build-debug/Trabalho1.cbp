@@ -100,6 +100,12 @@
 		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortIndice.h">
 			<Option target="Trabalho1"/>
 		</Unit>
+		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortLogN.cpp">
+			<Option target="Trabalho1"/>
+		</Unit>
+		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortLogN.h">
+			<Option target="Trabalho1"/>
+		</Unit>
 		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortPivoAleatorio.cpp">
 			<Option target="Trabalho1"/>
 		</Unit>
@@ -110,6 +116,9 @@
 			<Option target="Trabalho1"/>
 		</Unit>
 		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/QuicksortPonteiro.h">
+			<Option target="Trabalho1"/>
+		</Unit>
+		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/instancias_ruins_Quicksort.h">
 			<Option target="Trabalho1"/>
 		</Unit>
 		<Unit filename="C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho1/main.cpp">

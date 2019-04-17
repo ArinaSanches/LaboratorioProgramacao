@@ -7,13 +7,14 @@
 #include "FuncoesBasicas.h"
 #include "QuicksortLogN.h"
 #include "instancias_ruins_Quicksort.h"
-
-using namespace std;
+#include <ctime>
+#include <chrono>
+using namespace std::chrono;
 
 
 void gerarVetorAleatorio(int vetor[], int tamanho, int intervalo) {
 
-    srand (time(NULL));
+    //srand (time(NULL));
 
     for (int i = 0; i < tamanho; i++) {
         vetor[i] = rand() % (intervalo + 1);
@@ -44,6 +45,7 @@ int main() {
     FuncoesBasicas funcoes;
 
     int rodar = 1;
+    clock_t t;
 
     while (rodar != 0) {
 
@@ -71,8 +73,10 @@ int main() {
 
             } else if (opcVetor == 1) {
 
-                bool sucesso = escrever_instancia(vetor, tamanho);
-                cout << sucesso << endl;
+                bool sucesso = true;
+                while(sucesso) {
+                    sucesso = escrever_instancia(vetor, tamanho);
+                }
                 op = 1;
 
             } else {
@@ -91,8 +95,12 @@ int main() {
         int vetorIndice[tamanho];
         funcoes.copiarVetor(vetor, vetorIndice, tamanho);
         QuicksortIndice quickIndice;
+        auto inicio = std::chrono::system_clock::now();
         quickIndice.Quicksort(vetorIndice, 0, (tamanho - 1));
+        auto fim = std::chrono::system_clock::now();
+        std::chrono::duration<double>duracao = fim - inicio;
         cout << "Quicksort usando indices:" << endl;
+        cout << "Tempo de execcao: " << duracao.count() << endl;
         testarOrdenacao(vetorIndice, tamanho);
 
         cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
@@ -101,8 +109,12 @@ int main() {
         int vetorPont[tamanho];
         funcoes.copiarVetor(vetor, vetorPont, tamanho);
         QuicksortPonteiro quicksortPonteiro;
+        inicio = std::chrono::system_clock::now();
         quicksortPonteiro.Quicksort(vetorPont, vetorPont + (tamanho - 1));
+        fim = std::chrono::system_clock::now();
+        duracao = fim - inicio;
         cout << "Quicksort usando ponteiros: " << endl;
+        cout << "Tempo de execcao: " << duracao.count() << endl;
         testarOrdenacao(vetorPont, tamanho);
 
         cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
@@ -111,8 +123,12 @@ int main() {
         int vetorlog[tamanho];
         funcoes.copiarVetor(vetor, vetorlog, tamanho);
         QuicksortLogN quicksortLogN;
+        inicio = std::chrono::system_clock::now();
         quicksortLogN.Quicksort(vetorlog, vetorlog + (tamanho - 1));
+        fim = std::chrono::system_clock::now();
+        duracao = fim - inicio;
         cout << "Quicksort Log N: " << endl;
+        cout << "Tempo de execcao: " << duracao.count() << endl;
         testarOrdenacao(vetorlog, tamanho);
 
         cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
@@ -121,8 +137,12 @@ int main() {
         int vetorBFPRT[tamanho];
         funcoes.copiarVetor(vetor, vetorBFPRT, tamanho);
         QuicksortBFPRT quicksortBFPRT;
+        inicio = std::chrono::system_clock::now();
         quicksortBFPRT.Quicksort(vetorBFPRT, vetorBFPRT + (tamanho - 1));
+        fim = std::chrono::system_clock::now();
+        duracao = fim - inicio;
         cout << "Quickort BFPRT: " << endl;
+        cout << "Tempo de execcao: " << duracao.count() << endl;
         testarOrdenacao(vetorBFPRT, tamanho);
 
         cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
@@ -131,8 +151,12 @@ int main() {
         int vetorPivoAleatorio[tamanho];
         funcoes.copiarVetor(vetor, vetorPivoAleatorio, tamanho);
         QuicksortPivoAleatorio quicksortPivoAleatorio;
+        inicio = std::chrono::system_clock::now();
         quicksortPivoAleatorio.Quicksort(vetorPivoAleatorio, vetorPivoAleatorio + (tamanho - 1));
+        fim = std::chrono::system_clock::now();
+        duracao = fim - inicio;
         cout << "Quicksort pivo aleatorio: " << endl;
+        cout << "Tempo de execcao: " << duracao.count() << endl;
         testarOrdenacao(vetorPivoAleatorio, tamanho);
 
         cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;

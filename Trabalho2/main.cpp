@@ -1,5 +1,6 @@
 #include <iostream>
 #include <time.h>
+#include "instancias_Reais_Trabalho_2.hpp"
 
 using namespace std;
 
@@ -101,7 +102,7 @@ void algoritmoKMP(const char *texto, const char *padrao, int *saida){
     free(pi);
 }
 
-const char * gerarStringAleatorioa(int tamanho, int l){
+const char* gerarStringAleatorioa(int tamanho, int l){
     srand (time(NULL));
     char * texto = new char[tamanho];
     for(int i=0; i<tamanho; i++)
@@ -110,38 +111,84 @@ const char * gerarStringAleatorioa(int tamanho, int l){
     return texto;
 }
 
+const char* gerarVetorAs(int tamanho){
+    char * texto = new char[tamanho];
+    for(int i=0; i<tamanho; i++)
+        texto[i] = 'A';
+    texto[tamanho] = '\0';
+    return texto;
+}
+
+const char* gerarPadraoPiorCaso1(int tamanho){
+    char * texto = new char[tamanho];
+    for(int i=0; i<tamanho - 1; i++)
+        texto[i] = 'A';
+    texto[tamanho -1] = 'B';
+    texto[tamanho] = '\0';
+    return texto;
+}
 
 int main() {
 
-    //const char *texto =  "ABDABCDABCBABCC";
-    //const char *padrao = "ABC";
+    int rodar = 1;
+    clock_t t;
 
-    int n = 20;
-    int l = 3;
-    int m = 3;
-    const char *texto = gerarStringAleatorioa(n, l);
-    const char *padrao = gerarStringAleatorioa(m, l);
+    while (rodar != 0) {
 
-    /*const char *padrao = "AAA";
-    const char *texto = "AAAAAAAAAAAAAAAAAAAA";*/
+        cout << "EscolDigite: " << endl;
+        cout <<
 
-    int *saida = new int[sizeof(texto)]();
-    int *saida2 = new int[sizeof(texto)]();
 
-    cout << "kmp" << endl;
-    algoritmoKMP(texto, padrao, saida);
-    cout << texto << endl;
-    cout << padrao << endl;
-    ImprimirVetor(saida);
+        cout << "Digite 1 caso queira ordenar outro vetor e 0 caso contrario" << endl;
+        cin >> rodar;
 
-    cout << "forca bruta" << endl;
+        cout << endl << endl << endl;
 
-    buscarForcaBruta(texto, padrao, saida2);
-    cout << texto << endl;
-    cout << padrao << endl;
-    ImprimirVetor(saida2);
+    }
+
+
 
 
     return 0;
 }
 
+
+//const char *texto =  "ABDABCDABCBABCC";
+//const char *padrao = "ABC";
+
+int n = 20;
+int l = 3;
+int m = 3;
+
+/*const char *texto = gerarStringAleatorioa(n, l);
+const char *padrao = gerarStringAleatorioa(m, l);*/
+
+/*const char *padrao = "AAA";
+const char *texto = "AAAAAAAAAAAAAAAAAAAA";*/
+
+//Pior caso 1
+/*const char *texto = gerarVetorAs(n);
+const char *padrao = gerarPadraoPiorCaso1(m);*/
+
+//Pior caso 2
+/*const char *texto = gerarVetorAs(n);
+const char *padrao = gerarVetorAs(m);*/
+/*
+const char *texto = Texto_Livros;
+const char *padrao = "Negroes";
+
+int *saida = new int[sizeof(texto)]();
+int *saida2 = new int[sizeof(texto)]();
+
+cout << "kmp" << endl;
+algoritmoKMP(texto, padrao, saida);
+//cout << texto << endl;
+cout << padrao << endl;
+ImprimirVetor(saida);
+
+cout << "forca bruta" << endl;
+
+buscarForcaBruta(texto, padrao, saida2);
+//cout << texto << endl;
+cout << padrao << endl;
+ImprimirVetor(saida2);*/

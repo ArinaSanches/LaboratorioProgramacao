@@ -1,6 +1,8 @@
 #include <iostream>
 #include <time.h>
 #include "instancias_Reais_Trabalho_2.hpp"
+#include <chrono>
+
 
 using namespace std;
 
@@ -132,17 +134,125 @@ int main() {
 
     int rodar = 1;
     clock_t t;
+    const char *texto;
+    const char *padrao;
+    int n = 1;
+    int m = 2;
+    int l = 0;
 
     while (rodar != 0) {
 
-        cout << "EscolDigite: " << endl;
-        cout <<
+        int opc_instancia;
+
+        cout << "Escolha o tipo de instancia que deseja utilizar" << endl << "Digite: " << endl;
+        cout << "1 - Para usar instancias aleatorias" << endl << "2 - Para usar o Pior caso 1" << endl
+             << "3 - Para usar o Pior caso 2" << endl << "4 -Para usar Textos Reais";
+
+        cin >> opc_instancia;
+
+        int op = 0;
+
+        while (op != 1) {
+
+            if(opc_instancia > 4 || opc_instancia < 1) {
+                cout << endl << endl;
+                cout << "Opcao invalida" << endl;
+                cout << "Escolha o tipo de instancia que deseja utilizar" << endl << "Digite: " << endl;
+                cout << "1 - Para usar instancias aleatorias" << endl << "2 - Para usar o Pior caso 1" << endl
+                     << "3 - Para usar o Pior caso 2" << endl << "4 -Para usar Textos Reais";
+                cin >> opc_instancia;
+            }else if(opc_instancia == 4) {
+
+                int posPadrao = -1;
+
+                while(posPadrao < 0 || posPadrao > 35129) {
+                    cout << "Digite um numero entre 0 e 35129 que sera o numero do padrao";
+                    cin >> posPadrao;
+                    if (posPadrao < 0 || posPadrao > 35129)
+                        cout << "Opcao invalida! O numero tem que estar entre 0 e 35129!" << endl << endl;
+                }
+
+                texto = Texto_Livros;
+                padrao = Padroes_Palavras[posPadrao];
+                op = 1;
+
+            }else{
+                while(m > n) {
+                    cout << endl << "Digite o tamanho do texto" << endl;
+                    cin >> n;
+                    cout << "Digite o tamanho do padrao" << endl;
+                    cin >> m;
+                    if(m > n)
+                        cout << "O tamanho do padrao deve ser menor ou igual ao tamanho do texto" << endl << endl;
+                }
+
+                while( l <= 0 || l > 26) {
+                    cout << endl << "Digite o intervalo de 1 a 26 para gerar os caracteres aleatorios" << endl;
+                    cin >> l;
+                    if(m > n)
+                        cout << "O tamanho do padrao deve ser menor ou igual ao tamanho do texto" << endl << endl;
+                }
+
+                if(opc_instancia == 1){
+                    texto = gerarStringAleatorioa(n, l);
+                    padrao = gerarStringAleatorioa(m, l);
+                }else if(opc_instancia == 2){
+                    texto = gerarVetorAs(n);
+                    padrao = gerarPadraoPiorCaso1(m);
+                }else{
+                    texto = gerarVetorAs(n);
+                    padrao = gerarVetorAs(m);
+                }
+                op = 1;
+            }
+
+        }
+
+
+        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+        cout << "Algoritmo forca bruta" << endl;
+
+        int *saidaForcaBruta = new int[sizeof(texto)]();
+
+        auto inicio = std::chrono::system_clock::now();
+
+        buscarForcaBruta(texto, padrao, saidaForcaBruta);
+
+        auto fim = std::chrono::system_clock::now();
+        std::chrono::duration<double>duracao = fim - inicio;
+
+        cout << "Tempo de execcao: " << duracao.count() << endl;
+
+        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
+
+        cout << "Algoritmo kmp" << endl;
+
+        int *saidaKmp = new int[sizeof(texto)]();
+
+        inicio = std::chrono::system_clock::now();
+
+        buscarForcaBruta(texto, padrao, saidaKmp);
+
+        fim = std::chrono::system_clock::now();
+        duracao = fim - inicio;
+
+        cout << "Tempo de execcao: " << duracao.count() << endl;
+
+        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
+
+
 
 
         cout << "Digite 1 caso queira ordenar outro vetor e 0 caso contrario" << endl;
         cin >> rodar;
 
         cout << endl << endl << endl;
+
+        if(rodar == 1){
+            n = 1;
+            m = 2;
+            l = 0;
+        }
 
     }
 
@@ -155,10 +265,6 @@ int main() {
 
 //const char *texto =  "ABDABCDABCBABCC";
 //const char *padrao = "ABC";
-
-int n = 20;
-int l = 3;
-int m = 3;
 
 /*const char *texto = gerarStringAleatorioa(n, l);
 const char *padrao = gerarStringAleatorioa(m, l);*/

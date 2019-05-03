@@ -14,7 +14,7 @@ void ImprimirVetor(int* vector){
         vector ++;
     }
     cout << "}" << endl;
-    cout << endl << endl;
+
 }
 
 void buscarForcaBruta(const char *texto, const char * padrao, int *saida){
@@ -130,6 +130,40 @@ const char* gerarPadraoPiorCaso1(int tamanho){
     return texto;
 }
 
+void compararResultados(int *saidaForcaBruta, int *saidaKmp){
+
+    int flag = 0;
+    int *i = saidaForcaBruta;
+    int *j = saidaKmp;
+    while (*i != -1){
+
+        if(*i != *j){
+            cout << "Os algoritmos obtiveram resultados diferentes!" << endl << endl;
+            cout << "Saida algoritmo forca bruta:  ";
+            ImprimirVetor(saidaForcaBruta);
+            cout << "Saida Algoritmo kmp        :  ";
+            ImprimirVetor(saidaKmp);
+            return;
+        }
+        i ++;
+        j ++;
+    }
+
+    if(*j != -1){
+        cout << "Os algoritmos obtiveram resultados diferentes!" << endl << endl;
+        cout << "Saida algoritmo forca bruta:  ";
+        ImprimirVetor(saidaForcaBruta);
+        cout << "Saida Algoritmo kmp        :  ";
+        ImprimirVetor(saidaKmp);
+        return;
+    }
+    cout << "Os algoritmos obtiveram o mesmo resultados!" << endl << endl;
+    cout << "Saida algoritmo forca bruta:  ";
+    ImprimirVetor(saidaForcaBruta);
+    cout << "Saida Algoritmo kmp        :  ";
+    ImprimirVetor(saidaKmp);
+}
+
 int main() {
 
     int rodar = 1;
@@ -209,7 +243,7 @@ int main() {
         }
 
 
-        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
         cout << "Algoritmo forca bruta" << endl;
 
         int *saidaForcaBruta = new int[sizeof(texto)]();
@@ -231,7 +265,7 @@ int main() {
 
         inicio = std::chrono::system_clock::now();
 
-        buscarForcaBruta(texto, padrao, saidaKmp);
+        algoritmoKMP(texto, padrao, saidaKmp);
 
         fim = std::chrono::system_clock::now();
         duracao = fim - inicio;
@@ -240,7 +274,11 @@ int main() {
 
         cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
 
+        cout << "COmparacao saida dos algoritmos" << endl << endl;
 
+        compararResultados(saidaForcaBruta, saidaKmp);
+
+        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
 
 
         cout << "Digite 1 caso queira ordenar outro vetor e 0 caso contrario" << endl;
@@ -256,45 +294,7 @@ int main() {
 
     }
 
-
-
-
     return 0;
 }
 
 
-//const char *texto =  "ABDABCDABCBABCC";
-//const char *padrao = "ABC";
-
-/*const char *texto = gerarStringAleatorioa(n, l);
-const char *padrao = gerarStringAleatorioa(m, l);*/
-
-/*const char *padrao = "AAA";
-const char *texto = "AAAAAAAAAAAAAAAAAAAA";*/
-
-//Pior caso 1
-/*const char *texto = gerarVetorAs(n);
-const char *padrao = gerarPadraoPiorCaso1(m);*/
-
-//Pior caso 2
-/*const char *texto = gerarVetorAs(n);
-const char *padrao = gerarVetorAs(m);*/
-/*
-const char *texto = Texto_Livros;
-const char *padrao = "Negroes";
-
-int *saida = new int[sizeof(texto)]();
-int *saida2 = new int[sizeof(texto)]();
-
-cout << "kmp" << endl;
-algoritmoKMP(texto, padrao, saida);
-//cout << texto << endl;
-cout << padrao << endl;
-ImprimirVetor(saida);
-
-cout << "forca bruta" << endl;
-
-buscarForcaBruta(texto, padrao, saida2);
-//cout << texto << endl;
-cout << padrao << endl;
-ImprimirVetor(saida2);*/

@@ -31,7 +31,6 @@
       <change beforePath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/Trabalho1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/Trabalho1.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho2.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho2.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho2.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho2.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Trabalho2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Trabalho2.exe" afterDir="false" />
@@ -55,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1">
-              <caret line="268" column="52" lean-forward="true" selection-start-line="268" selection-start-column="52" selection-end-line="268" selection-end-column="52" />
+            <state relative-caret-position="86">
+              <caret line="262" column="44" selection-start-line="262" selection-start-column="44" selection-end-line="262" selection-end-column="44" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#143#304#0" />
@@ -176,12 +175,12 @@
       <workItem from="1557014339343" duration="5780000" />
       <workItem from="1557025816995" duration="412000" />
       <workItem from="1557077119479" duration="732000" />
-      <workItem from="1557077874308" duration="325000" />
+      <workItem from="1557077874308" duration="964000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41607000" />
+    <option name="totallyTimeSpent" value="42246000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -262,8 +261,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="268" column="52" lean-forward="true" selection-start-line="268" selection-start-column="52" selection-end-line="268" selection-end-column="52" />
+        <state relative-caret-position="86">
+          <caret line="262" column="44" selection-start-line="262" selection-start-column="44" selection-end-line="262" selection-end-column="44" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#143#304#0" />

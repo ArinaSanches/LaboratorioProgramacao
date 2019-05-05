@@ -260,7 +260,7 @@ int main() {
 
         cout << "Algoritmo forca bruta" << endl;
 
-        int *saidaForcaBruta = new int[1000];
+        int *saidaForcaBruta = new int[n + 1];
 
         auto inicio = std::chrono::system_clock::now();
 
@@ -275,7 +275,7 @@ int main() {
 
         cout << "Algoritmo kmp" << endl;
 
-        int *saidaKmp = new int[countarTamanhoString(texto) + 1]();
+        int *saidaKmp = new int[n + 1];
 
         inicio = std::chrono::system_clock::now();
 

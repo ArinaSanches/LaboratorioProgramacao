@@ -32,8 +32,7 @@
       <change beforePath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/Trabalho1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/Trabalho1.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho2.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho2.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho2.dir/main.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho2.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho2.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho2.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho2.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Trabalho2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Trabalho2.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
@@ -56,18 +55,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2108">
-              <caret line="271" column="28" selection-start-line="271" selection-start-column="28" selection-end-line="271" selection-end-column="28" />
+            <state relative-caret-position="1">
+              <caret line="268" column="52" lean-forward="true" selection-start-line="268" selection-start-column="52" selection-end-line="268" selection-end-column="52" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#143#304#0" />
-                <element signature="e#306#1034#0" />
-                <element signature="e#1036#1670#0" />
-                <element signature="e#1672#2279#0" />
-                <element signature="e#2281#2635#0" />
-                <element signature="e#2637#2811#0" />
-                <element signature="e#2813#3029#0" />
-                <element signature="e#3033#4080#0" />
+                <element signature="e#306#1006#0" />
+                <element signature="e#1008#1642#0" />
               </folding>
             </state>
           </provider>
@@ -117,9 +111,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+    <option name="x" value="950" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -179,12 +173,15 @@
       <workItem from="1556666203503" duration="3076000" />
       <workItem from="1556832764309" duration="18433000" />
       <workItem from="1556875132992" duration="2236000" />
-      <workItem from="1557014339343" duration="5238000" />
+      <workItem from="1557014339343" duration="5780000" />
+      <workItem from="1557025816995" duration="412000" />
+      <workItem from="1557077119479" duration="732000" />
+      <workItem from="1557077874308" duration="325000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39596000" />
+    <option name="totallyTimeSpent" value="41607000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -198,7 +195,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0738255" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07583892" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -265,18 +262,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2108">
-          <caret line="271" column="28" selection-start-line="271" selection-start-column="28" selection-end-line="271" selection-end-column="28" />
+        <state relative-caret-position="1">
+          <caret line="268" column="52" lean-forward="true" selection-start-line="268" selection-start-column="52" selection-end-line="268" selection-end-column="52" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#143#304#0" />
-            <element signature="e#306#1034#0" />
-            <element signature="e#1036#1670#0" />
-            <element signature="e#1672#2279#0" />
-            <element signature="e#2281#2635#0" />
-            <element signature="e#2637#2811#0" />
-            <element signature="e#2813#3029#0" />
-            <element signature="e#3033#4080#0" />
+            <element signature="e#306#1006#0" />
+            <element signature="e#1008#1642#0" />
           </folding>
         </state>
       </provider>

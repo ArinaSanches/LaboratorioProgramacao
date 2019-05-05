@@ -73,9 +73,18 @@ void calcularPi(const char * padrao, int * pi){
     }
 }
 
+int countarTamanhoString(const char* pString){
+    int count = 0;
+    while(*pString != '\0'){
+        count++;
+        pString++;
+    }
+    return count;
+}
+
 void algoritmoKMP(const char *texto, const char *padrao, int *saida){
 
-    int *pi = new int[sizeof(padrao)]();
+    int *pi = new int[countarTamanhoString(padrao)]();
     calcularPi(padrao, pi);
     int i = 0, j = 0;
 
@@ -106,7 +115,6 @@ void algoritmoKMP(const char *texto, const char *padrao, int *saida){
 const char* gerarStringAleatorioa(int tamanho, int l){
 
     srand (time(NULL));
-
     char * texto = new char[tamanho + 1];
     int i;
     for( i=0; i<tamanho; i++) {
@@ -135,8 +143,6 @@ const char* gerarPadraoPiorCaso1(int tamanho){
     const char* res = (const char *)texto;
     return res;
 }
-
-
 
 void compararResultados(int *saidaForcaBruta, int *saidaKmp){
 
@@ -269,7 +275,7 @@ int main() {
 
         cout << "Algoritmo kmp" << endl;
 
-        int *saidaKmp = new int[1000];
+        int *saidaKmp = new int[countarTamanhoString(texto) + 1]();
 
         inicio = std::chrono::system_clock::now();
 
@@ -287,10 +293,6 @@ int main() {
         compararResultados(saidaForcaBruta, saidaKmp);
 
         cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
-
-        cout << texto << endl << endl;
-
-        cout << padrao << endl << endl;
 
         cout << "Digite 1 caso queira ordenar outro vetor e 0 caso contrario" << endl;
         cin >> rodar;

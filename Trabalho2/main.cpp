@@ -2,7 +2,7 @@
 #include <time.h>
 #include "instancias_Reais_Trabalho_2.hpp"
 #include <chrono>
-
+#include <string.h>
 
 using namespace std;
 
@@ -101,34 +101,42 @@ void algoritmoKMP(const char *texto, const char *padrao, int *saida){
     }
 
     *saida = -1;
-    free(pi);
 }
 
 const char* gerarStringAleatorioa(int tamanho, int l){
+
     srand (time(NULL));
-    char * texto = new char[tamanho];
-    for(int i=0; i<tamanho; i++)
-        texto[i] = 'A' + (char)(rand()%l);
-    texto[tamanho] = '\0';
-    return texto;
+
+    char * texto = new char[tamanho + 1];
+    int i;
+    for( i=0; i<tamanho; i++) {
+        texto[i] = 'a' +(char) (rand() % l);
+    }
+    texto[tamanho] = 0;
+    const char* res = (const char *)texto;
+    return res;
 }
 
 const char* gerarVetorAs(int tamanho){
-    char * texto = new char[tamanho];
+    char * texto = new char[tamanho + 1];
     for(int i=0; i<tamanho; i++)
-        texto[i] = 'A';
-    texto[tamanho] = '\0';
-    return texto;
+        texto[i] = 'a';
+    texto[tamanho] = 0;
+    const char* res = (const char *)texto;
+    return res;
 }
 
 const char* gerarPadraoPiorCaso1(int tamanho){
-    char * texto = new char[tamanho];
+    char * texto = new char[tamanho + 1];
     for(int i=0; i<tamanho - 1; i++)
-        texto[i] = 'A';
-    texto[tamanho -1] = 'B';
-    texto[tamanho] = '\0';
-    return texto;
+        texto[i] = 'a';
+    texto[tamanho - 1] = 'b';
+    texto[tamanho] = 0;
+    const char* res = (const char *)texto;
+    return res;
 }
+
+
 
 void compararResultados(int *saidaForcaBruta, int *saidaKmp){
 
@@ -167,12 +175,9 @@ void compararResultados(int *saidaForcaBruta, int *saidaKmp){
 int main() {
 
     int rodar = 1;
-    clock_t t;
-    const char *texto;
-    const char *padrao;
-    int n = 1;
-    int m = 2;
-    int l = 0;
+    const char*texto;
+    const char*padrao;
+    int n = 1, m = 2, l = 0;
 
     while (rodar != 0) {
 
@@ -206,8 +211,8 @@ int main() {
                         cout << "Opcao invalida! O numero tem que estar entre 0 e 35129!" << endl << endl;
                 }
 
-                texto = Texto_Livros;
-                padrao = Padroes_Palavras[posPadrao];
+                //texto = Texto_Livros;
+                //padrao = Padroes_Palavras[posPadrao];
                 op = 1;
 
             }else{
@@ -220,14 +225,14 @@ int main() {
                         cout << "O tamanho do padrao deve ser menor ou igual ao tamanho do texto" << endl << endl;
                 }
 
-                while( l <= 0 || l > 26) {
-                    cout << endl << "Digite o intervalo de 1 a 26 para gerar os caracteres aleatorios" << endl;
-                    cin >> l;
-                    if(m > n)
-                        cout << "O tamanho do padrao deve ser menor ou igual ao tamanho do texto" << endl << endl;
-                }
-
                 if(opc_instancia == 1){
+
+                    while( l <= 0 || l > 26) {
+                        cout << endl << "Digite o intervalo de 1 a 26 para gerar os caracteres aleatorios" << endl;
+                        cin >> l;
+                        if(m > n)
+                            cout << "O tamanho do padrao deve ser menor ou igual ao tamanho do texto" << endl << endl;
+                    }
                     texto = gerarStringAleatorioa(n, l);
                     padrao = gerarStringAleatorioa(m, l);
                 }else if(opc_instancia == 2){
@@ -242,11 +247,14 @@ int main() {
 
         }
 
+        //texto = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        //padrao = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
         cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
+
         cout << "Algoritmo forca bruta" << endl;
 
-        int *saidaForcaBruta = new int[sizeof(texto)]();
+        int *saidaForcaBruta = new int[1000];
 
         auto inicio = std::chrono::system_clock::now();
 
@@ -261,7 +269,7 @@ int main() {
 
         cout << "Algoritmo kmp" << endl;
 
-        int *saidaKmp = new int[sizeof(texto)]();
+        int *saidaKmp = new int[1000];
 
         inicio = std::chrono::system_clock::now();
 
@@ -280,6 +288,9 @@ int main() {
 
         cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
 
+        cout << texto << endl << endl;
+
+        cout << padrao << endl << endl;
 
         cout << "Digite 1 caso queira ordenar outro vetor e 0 caso contrario" << endl;
         cin >> rodar;
@@ -291,10 +302,13 @@ int main() {
             m = 2;
             l = 0;
         }
-
     }
+
 
     return 0;
 }
 
+/*
+ *
 
+ */

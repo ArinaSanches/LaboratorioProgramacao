@@ -212,14 +212,15 @@ int main() {
                 cout << "Opcao invalida" << endl;
                 cout << "Escolha o tipo de instancia que deseja utilizar" << endl << "Digite: " << endl;
                 cout << "1 - Para usar instancias aleatorias" << endl << "2 - Para usar o Pior caso 1" << endl
-                     << "3 - Para usar o Pior caso 2" << endl << "4 - Para usar Textos Reais";
+                     << "3 - Para usar o Pior caso 2" << endl << "4 - Para usar Textos Reais"<< endl;
                 cin >> opc_instancia;
+                cout << endl;
             }else if(opc_instancia == 4) {
 
                 posPadrao = -1;
 
                 while(posPadrao < 0 || posPadrao > 35129) {
-                    cout << "Digite um numero entre 0 e 35129 que sera o numero do padrao" << endl;
+                    cout << endl <<"Digite um numero entre 0 e 35129 que sera o numero do padrao" << endl;
                     cin >> posPadrao;
                     if (posPadrao < 0 || posPadrao > 35129)
                         cout << "Opcao invalida! O numero tem que estar entre 0 e 35129!" << endl << endl;
@@ -266,7 +267,7 @@ int main() {
         cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
 
 
-        cout << "ALGORTITMO FORCA BRUTA" << endl;
+        cout << "ALGORITMO FORCA BRUTA" << endl;
 
         int *saidaForcaBruta; 
         auto inicio = std::chrono::high_resolution_clock::now();
@@ -284,7 +285,7 @@ int main() {
 
         cout << endl << endl;
 
-        cout << "ALGORTIMO KMP" << endl;
+        cout << "ALGORITMO KMP" << endl;
 
 
         int *saidaKmp;

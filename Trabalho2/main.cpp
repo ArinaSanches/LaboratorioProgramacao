@@ -47,14 +47,10 @@ void buscarForcaBruta(const char *texto, const char * padrao, int *saida){
             pos_texto ++;
             i_texto = pos_texto;
             pos_padrao = padrao;
-            // percentagem = ((tamanho - (texto + (tamanho - 1) - pos_texto))*100)/(double)tamanho;
-            // if(fmod(percentagem, 10.0) == 0.0){
-            //     cout << percentagem <<"%"<< "-";
-            // }
+            
         }
     }
-    //cout << endl;
-
+    
     if(*pos_padrao == '\0'){
         *saida = (i_texto - texto) - (pos_padrao - padrao);
         saida ++;
@@ -117,13 +113,8 @@ void algoritmoKMP(const char *texto, const char *padrao, int *saida){
                 j++;
             }
         }
-        // percentagem = (tamanho - (tamanho - i))*100 / (double)tamanho;
-        //     if(fmod(percentagem, 10.0) == 0.0){
-        //         cout << percentagem <<"%"<<" - ";
-        // }
+        
     }
-
-    //cout << endl;
 
     *saida = -1;
 }
@@ -180,18 +171,14 @@ void compararResultados(int *saidaForcaBruta, int *saidaKmp){
     }
 
     if(*j != -1){
-        cout << "Os algoritmos obtiveram resultados diferentes!" << endl << endl;
+        cout << "Os algoritmos obtiveram resultados diferentes!!" << endl << endl;
         cout << "Saida algoritmo forca bruta:  ";
         ImprimirVetor(saidaForcaBruta);
         cout << "Saida Algoritmo kmp        :  ";
         ImprimirVetor(saidaKmp);
         return;
     }
-    cout << "Os algoritmos obtiveram o mesmo resultados!" << endl << endl;
-    /*cout << "Saida algoritmo forca bruta:  ";
-    ImprimirVetor(saidaForcaBruta);
-    cout << "Saida Algoritmo kmp        :  ";
-    ImprimirVetor(saidaKmp);*/
+    cout << "Os algoritmos obtiveram o mesmo resultados!!" << endl << endl;
 }
 
 int main() {
@@ -200,14 +187,19 @@ int main() {
     const char*texto;
     const char*padrao;
     int n = 1, m = 2, l = 0;
+    int posPadrao;
+
 
     while (rodar != 0) {
 
         int opc_instancia;
 
+        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
+
+
         cout << "Escolha o tipo de instancia que deseja utilizar" << endl << "Digite: " << endl;
         cout << "1 - Para usar instancias aleatorias" << endl << "2 - Para usar o Pior caso 1" << endl
-             << "3 - Para usar o Pior caso 2" << endl << "4 -Para usar Textos Reais" << endl;
+             << "3 - Para usar o Pior caso 2" << endl << "4 - Para usar Textos Reais" << endl;
 
         cin >> opc_instancia;
 
@@ -220,11 +212,11 @@ int main() {
                 cout << "Opcao invalida" << endl;
                 cout << "Escolha o tipo de instancia que deseja utilizar" << endl << "Digite: " << endl;
                 cout << "1 - Para usar instancias aleatorias" << endl << "2 - Para usar o Pior caso 1" << endl
-                     << "3 - Para usar o Pior caso 2" << endl << "4 -Para usar Textos Reais";
+                     << "3 - Para usar o Pior caso 2" << endl << "4 - Para usar Textos Reais";
                 cin >> opc_instancia;
             }else if(opc_instancia == 4) {
 
-                int posPadrao = -1;
+                posPadrao = -1;
 
                 while(posPadrao < 0 || posPadrao > 35129) {
                     cout << "Digite um numero entre 0 e 35129 que sera o numero do padrao" << endl;
@@ -269,52 +261,61 @@ int main() {
 
         }
 
-        //texto = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-        //padrao = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        cout << endl << endl;
 
-        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
+        cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
 
-        cout << "Algoritmo forca bruta" << endl;
-        cout << "Progresso do algoritmo: " << endl;
 
-        int *saidaForcaBruta = new int[n + 1];
+        cout << "ALGORTITMO FORCA BRUTA" << endl;
 
+        int *saidaForcaBruta; 
         auto inicio = std::chrono::high_resolution_clock::now();
-
-        buscarForcaBruta(texto, padrao, saidaForcaBruta);
-
+        if(opc_instancia!= 4){
+            saidaForcaBruta = new int[n + 1];
+            buscarForcaBruta(texto, padrao, saidaForcaBruta);
+        }else{
+            saidaForcaBruta = new int[contarCaracteres(Texto_Livros) + 1];
+            buscarForcaBruta(Texto_Livros, Padroes_Palavras[posPadrao], saidaForcaBruta);
+        }
         auto fim = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double>duracao = std::chrono::duration_cast<std::chrono::microseconds>(fim - inicio);
 
         cout << "Tempo de execcao: " << duracao.count() << " microsegundos." << endl;
 
-        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
+        cout << endl << endl;
 
-        cout << "Algoritmo kmp" << endl;
-        cout << "Progresso do algoritmo: " << endl;
+        cout << "ALGORTIMO KMP" << endl;
 
 
-        int *saidaKmp = new int[n + 1];
-
+        int *saidaKmp;
         inicio = std::chrono::high_resolution_clock::now();
-
-        algoritmoKMP(texto, padrao, saidaKmp);
+        if(opc_instancia!=4){
+            saidaKmp = new int[n + 1];
+            algoritmoKMP(texto, padrao, saidaKmp);
+        }else{
+            saidaKmp = new int[contarCaracteres(Texto_Livros) + 1];
+            algoritmoKMP(Texto_Livros, Padroes_Palavras[posPadrao], saidaKmp); 
+        }
 
         fim = std::chrono::high_resolution_clock::now();
         duracao = std::chrono::duration_cast<std::chrono::microseconds>(fim - inicio);
 
         cout << "Tempo de execcao: " << duracao.count() << " microsegundos." << endl;
 
-        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
+        cout << endl << endl;
 
-        cout << "COmparacao saida dos algoritmos" << endl << endl;
+        cout << "Comparacao saida dos algoritmos:" << endl << endl;
 
         compararResultados(saidaForcaBruta, saidaKmp);
 
-        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
+
+        cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl <<  endl << endl;
+
 
         cout << "Digite 1 caso queira ordenar outro vetor e 0 caso contrario" << endl;
         cin >> rodar;
+
+        cout << endl << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
 
         cout << endl << endl << endl;
 
@@ -325,11 +326,9 @@ int main() {
         }
     }
 
-
     return 0;
 }
 
-/*
- *
+ 
 
- */
+ 

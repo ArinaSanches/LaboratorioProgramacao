@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Huffman/Heap.h
+stdio.h
+-
+map
+-
+
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Huffman/main.cpp
+iostream
+-
+map
+-
+fstream
+-
+string
+-
+Heap.h
+C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Huffman/Heap.h
+

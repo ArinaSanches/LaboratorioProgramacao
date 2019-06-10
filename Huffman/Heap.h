@@ -45,7 +45,9 @@ public:
 
     void Swap(noHeap**, int pIndex, int largest);
 
-    noHeap* buildHuffmanTree();
+    noHeap* novoNo(char letra, int freq);
+
+    //noHeap* buildHuffmanTree();
 
 };
 

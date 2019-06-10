@@ -10,9 +10,9 @@ typedef map<char, int> dict;
 dict contarOcorrencias(dict dicionario, string line){
 
     for(int i = 0; line[i] != '\0';i++){
-        if(dicionario.find(line[i]) == dicionario.end() && line[i] != ' ' ){
+        if(dicionario.find(line[i]) == dicionario.end()){
             dicionario[line[i]] = 1;
-        }else if (line[i] != ' '){
+        }else{
             dicionario[line[i]]++;
         }
     }
@@ -62,6 +62,25 @@ void exibirCodigos(noHeap* root, int saida[], int top){
 
 }
 
+noHeap* buildHuffmanTree(Heap heap){
+    noHeap *left, *right, *top;
+
+    while(heap.heapSize != 1 ){
+
+        left = heap.extractMinimum();
+        right = heap.extractMinimum();
+
+        top = heap.novoNo('$', left->freq + right->freq);
+
+        top->esq = left;
+        top->dir = right;
+
+        heap.insert(top);
+    }
+
+    return heap.extractMinimum();
+};
+
 int main() {
 
     dict ocorrencias = lerArquivo("example.txt");
@@ -72,7 +91,7 @@ int main() {
     heap.construir(ocorrencias, ocorrencias.size());
 
 
-    noHeap *res = heap.buildHuffmanTree();
+    noHeap *res = buildHuffmanTree(heap);
 
     int *saida = new int[100], top = 0;
 

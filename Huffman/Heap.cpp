@@ -11,7 +11,7 @@
 typedef map<char, int> dict;
 
 
-noHeap* novoNo(char letra, int freq){
+noHeap* Heap::novoNo(char letra, int freq){
 
     struct noHeap* no = (struct noHeap*)malloc(sizeof(struct noHeap));
 
@@ -130,24 +130,7 @@ noHeap* Heap::extractMinimum(){
     return max;
 }
 
-noHeap* Heap::buildHuffmanTree(){
-    noHeap *left, *right, *top;
 
-    while(heapSize != 1 ){
-
-        left = this->extractMinimum();
-        right = this->extractMinimum();
-
-        top = novoNo(' ', left->freq + right->freq);
-
-        top->esq = left;
-        top->dir = right;
-
-        insert(top);
-    }
-
-    return extractMinimum();
-};
 
 
 

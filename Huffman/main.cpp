@@ -2,6 +2,8 @@
 #include <map>
 using namespace std;
 typedef map<char, int> dict;
+typedef map<char, string> encodingMap;
+
 #include <fstream>
 #include <string>
 #include "Heap.h"
@@ -62,6 +64,33 @@ void exibirCodigos(noHeap* root, int saida[], int top){
 
 }
 
+encodingMap gerarCodigos(encodingMap codigos, noHeap* root, string saida[], int top){
+
+    if(root->esq){
+        saida[top]="0";
+        gerarCodigos(codigos, root->esq, saida, top+1);
+    }
+
+    if(root->dir){
+        saida[top] = "1";
+        gerarCodigos(codigos, root->dir, saida, top+1);
+    }
+
+    if(!(root->esq)&&!(root->dir)){
+        string codigo = " ";
+        for(int i = 0; i < top; i++){
+            codigo.append(saida[i]);
+        }
+        codigos[root->letra] = codigo;
+    }
+
+    for(auto it = codigos.cbegin(); it != codigos.cend(); ++it){
+        cout << it->first << it->second << endl;
+    }
+
+    return codigos;
+}
+
 noHeap* buildHuffmanTree(Heap heap){
     noHeap *left, *right, *top;
 
@@ -93,9 +122,19 @@ int main() {
 
     noHeap *res = buildHuffmanTree(heap);
 
-    int *saida = new int[100], top = 0;
+    
+    string *saida = new string[100];
+    int top = 0;
 
-    exibirCodigos(res, saida, top);
+    encodingMap codigos;
+
+    codigos = gerarCodigos(codigos,res, saida, top);
+
+    for(auto it = codigos.cbegin(); it != codigos.cend(); ++it){
+        cout << it->first << it->second;
+    }
+    cout << codigos['a'];
+
     return 0;
 }
 

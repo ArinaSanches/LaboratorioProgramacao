@@ -12,6 +12,8 @@ using namespace std;
 #include <map>
 
 typedef map<char, int> dict;
+typedef map<char, string> encodingMap;
+
 
 
 struct noHeap{

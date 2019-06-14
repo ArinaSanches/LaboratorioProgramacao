@@ -64,32 +64,58 @@ void exibirCodigos(noHeap* root, int saida[], int top){
 
 }
 
-encodingMap gerarCodigos(encodingMap codigos, noHeap* root, string saida[], int top){
+encodingMap gerarCodigos(encodingMap codigos, noHeap* root, string codigo){
 
-    if(root->esq){
-        saida[top]="0";
-        gerarCodigos(codigos, root->esq, saida, top+1);
-    }
-
-    if(root->dir){
-        saida[top] = "1";
-        gerarCodigos(codigos, root->dir, saida, top+1);
-    }
-
-    if(!(root->esq)&&!(root->dir)){
-        string codigo = " ";
-        for(int i = 0; i < top; i++){
-            codigo.append(saida[i]);
-        }
+    if(!(root->esq)&&!(root->dir)) {
         codigos[root->letra] = codigo;
-    }
+    }else {
 
-    for(auto it = codigos.cbegin(); it != codigos.cend(); ++it){
-        cout << it->first << it->second << endl;
+        codigos = gerarCodigos(codigos, root->esq, codigo + '0');
+
+        codigos = gerarCodigos(codigos, root->dir, codigo + '1');
     }
 
     return codigos;
 }
+
+
+string escreverArvore(noHeap* raiz, string arvore /*, string codigo*/){
+    if(!(raiz->esq)&&!(raiz->dir)){
+       arvore = arvore + "$";
+       arvore = arvore + raiz->letra;
+       //arvore = arvore + codigo;
+    }else{
+        arvore = arvore + "#";
+        arvore = escreverArvore(raiz->esq, arvore /*, codigo + "0"*/);
+        arvore = escreverArvore(raiz->dir, arvore/*, codigo + "1"*/);
+    }
+    return arvore;
+}
+
+
+noHeap* lerArvore(string arvore, int &pos, Heap heap, noHeap* no){
+    if(arvore[pos] == '$'){
+        pos ++;
+        char letra = arvore[pos];
+        pos ++;
+        /*string codigo = "";
+        while(arvore[pos] != '#' && arvore[pos] != '$' ){
+            codigo = codigo + arvore[pos];
+            pos ++;
+        }*/
+        no = heap.novoNo(letra, 0);
+        no->esq = nullptr;
+        no->dir = nullptr;
+        return no;
+    }
+
+    no = heap.novoNo('$', 0);
+    pos ++;
+    no->esq = lerArvore(arvore, pos, heap, no);
+    no->dir = lerArvore(arvore, pos, heap, no);
+    return no;
+}
+
 
 noHeap* buildHuffmanTree(Heap heap){
     noHeap *left, *right, *top;
@@ -119,21 +145,31 @@ int main() {
 
     heap.construir(ocorrencias, ocorrencias.size());
 
-
     noHeap *res = buildHuffmanTree(heap);
 
-    
-    string *saida = new string[100];
+    int *saida3 = new int[100];
+    exibirCodigos(res, saida3, 0);
+
+    string saida = "";
     int top = 0;
 
     encodingMap codigos;
 
-    codigos = gerarCodigos(codigos,res, saida, top);
+    codigos = gerarCodigos(codigos,res, saida);
 
     for(auto it = codigos.cbegin(); it != codigos.cend(); ++it){
-        cout << it->first << it->second;
+        cout << it->first << it->second << endl;
     }
-    cout << codigos['a'];
+
+    string a = escreverArvore(res, "");
+    cout << a << endl;
+
+    noHeap *arv;
+    int pos = 0;
+    arv = lerArvore(a, pos, heap, arv);
+
+    int *saida2 = new int[100];
+    exibirCodigos(arv, saida2, 0);
 
     return 0;
 }

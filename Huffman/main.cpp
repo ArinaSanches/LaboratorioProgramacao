@@ -181,9 +181,26 @@ int main() {
     comprimir("example.txt", "saida.txt");
 
     ifstream myfile("saida.txt", std::ios::binary);
+
+    int tamanho = 0;
+
+    myfile.read((char *)&tamanho, sizeof(int));
+
+    cout << tamanho << endl;
+
+
+    char byteLido;
+
+    if (myfile.is_open()) {
+        while (myfile >> noskipws >> byteLido ) {
+            cout << byteLido << endl;
+
+        }
+        myfile.close();
+    }else {
+        cout << "Unable to open file";
+    }
     
-
-
 
   /*  string saida = "";
     int top = 0;

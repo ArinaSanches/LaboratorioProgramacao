@@ -33,7 +33,6 @@ dict lerArquivo(string nomeArquivo){
     if (myfile.is_open()) {
         while (myfile >> noskipws >> byteLido ) {
             ocorrencias = contarOcorrencias(ocorrencias, byteLido);
-
         }
         myfile.close();
     }else {
@@ -118,6 +117,39 @@ noHeap* buildHuffmanTree(Heap heap){
 };
 
 
+void codificarArquivo(string nomeArquivo, noHeap *res){
+
+    string saida = "";   
+
+    encodingMap codigos;
+
+    codigos = gerarCodigos(codigos, res, saida);
+
+    char byteLido;
+
+    ifstream myfile2;
+
+    myfile2.open(nomeArquivo, std::ios::binary);
+    
+    string codificacao = "";
+
+    if (myfile2.is_open()) {
+        while (myfile2 >> noskipws >> byteLido ) {
+
+            codificacao += codigos[byteLido];
+            codificacao += " ";
+             
+        }
+        myfile2.close();
+    }else {
+        cout << "Unable to open file";
+    }
+
+    cout << codificacao << endl;
+}
+
+
+
 void comprimir(string nomeArquivo, string arquivoSaida){
 
     Heap heap;
@@ -144,6 +176,8 @@ void comprimir(string nomeArquivo, string arquivoSaida){
     myfile.write((char *)&tamanho, sizeof(int));
 
     myfile.write(arvore.data(), tamanho);
+
+    codificarArquivo(nomeArquivo, res);
 
     myfile.close();
 }
@@ -202,30 +236,8 @@ int main() {
     }
     
 
-  /*  string saida = "";
-    int top = 0;
-
-    encodingMap codigos;
-*/
-    //codigos = gerarCodigos(codigos,res, saida);
-    /*
-
-    for(auto it = codigos.cbegin(); it != codigos.cend(); ++it){
-        cout << it->first << it->second << endl;
-    }
-*/
-
-    /*noHeap *arv;
-    int pos = 0;
-    arv = lerArvore(a, pos, heap, arv);
-
-    int *saida2 = new int[100];
-    exibirCodigos(arv, saida2, 0);*/
+ 
 
     return 0;
 }
 
-/*
- +A aaaa b ccccc b cbef
-bbeAAAAA
- */

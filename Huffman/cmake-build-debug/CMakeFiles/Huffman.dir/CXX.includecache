@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Huffman/Heap.h
+/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Huffman/Heap.h
 stdio.h
 -
 map
 -
 
-C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Huffman/main.cpp
+/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Huffman/main.cpp
 iostream
 -
 map
@@ -21,6 +21,10 @@ fstream
 -
 string
 -
+vector
+-
 Heap.h
-C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Huffman/Heap.h
+/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Huffman/Heap.h
+sstream
+-
 

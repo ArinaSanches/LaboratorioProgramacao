@@ -6,17 +6,18 @@ typedef map<char, string> encodingMap;
 
 #include <fstream>
 #include <string>
+#include <vector>
 #include "Heap.h"
 
+#include <sstream>
 
-dict contarOcorrencias(dict dicionario, string line){
 
-    for(int i = 0; line[i] != '\0';i++){
-        if(dicionario.find(line[i]) == dicionario.end()){
-            dicionario[line[i]] = 1;
-        }else{
-            dicionario[line[i]]++;
-        }
+dict contarOcorrencias(dict dicionario, char &line){
+
+    if(dicionario.find(line) == dicionario.end()){
+        dicionario[line] = 1;
+    }else{
+        dicionario[line]++;
     }
 
     return dicionario;
@@ -24,13 +25,14 @@ dict contarOcorrencias(dict dicionario, string line){
 
 dict lerArquivo(string nomeArquivo){
 
-    string line;
-    ifstream myfile (nomeArquivo);
+    ifstream myfile(nomeArquivo, std::ios::binary);
     dict ocorrencias;
 
+    char byteLido;
+
     if (myfile.is_open()) {
-        while (getline(myfile, line)) {
-            ocorrencias = contarOcorrencias(ocorrencias, line);
+        while (myfile >> noskipws >> byteLido ) {
+            ocorrencias = contarOcorrencias(ocorrencias, byteLido);
 
         }
         myfile.close();
@@ -79,20 +81,75 @@ encodingMap gerarCodigos(encodingMap codigos, noHeap* root, string codigo){
 }
 
 
-string escreverArvore(noHeap* raiz, string arvore /*, string codigo*/){
-    if(!(raiz->esq)&&!(raiz->dir)){
-       arvore = arvore + "$";
-       arvore = arvore + raiz->letra;
-       //arvore = arvore + codigo;
-    }else{
-        arvore = arvore + "#";
-        arvore = escreverArvore(raiz->esq, arvore /*, codigo + "0"*/);
-        arvore = escreverArvore(raiz->dir, arvore/*, codigo + "1"*/);
+void escreverArvore(noHeap* raiz, vector<char> &arvore){
+
+    if(!raiz){
+        arvore.push_back('%')     ;
+    }else {
+        if (!(raiz->esq) && !(raiz->dir)) {
+            arvore.push_back('$');
+            arvore.push_back(raiz->letra);
+        } else {
+            arvore.push_back('#');
+            escreverArvore(raiz->esq, arvore);
+            escreverArvore(raiz->dir, arvore);
+        }
     }
-    return arvore;
 }
 
 
+noHeap* buildHuffmanTree(Heap heap){
+    noHeap *left, *right, *top;
+
+    while(heap.heapSize != 1 ){
+
+        left = heap.extractMinimum();
+        right = heap.extractMinimum();
+
+        top = heap.novoNo('$', left->freq + right->freq);
+
+        top->esq = left;
+        top->dir = right;
+
+        heap.insert(top);
+    }
+
+    return heap.extractMinimum();
+};
+
+
+void comprimir(string nomeArquivo, string arquivoSaida){
+
+    Heap heap;
+
+    dict ocorrencias = lerArquivo(nomeArquivo);
+
+    heap.construir(ocorrencias, ocorrencias.size());
+
+    noHeap *res = buildHuffmanTree(heap);
+
+    int *saida3 = new int[100];
+
+    exibirCodigos(res, saida3, 0);
+
+    vector<char> arvore;
+    escreverArvore(res, arvore);
+
+    ofstream myfile;
+
+    myfile.open(arquivoSaida, std::ios::binary);
+
+    int tamanho = arvore.size();
+
+    myfile.write((char *)&tamanho, sizeof(int));
+
+    myfile.write(arvore.data(), tamanho);
+
+    myfile.close();
+}
+
+
+//ajeitar
 noHeap* lerArvore(string arvore, int &pos, Heap heap, noHeap* no){
     if(arvore[pos] == '$'){
         pos ++;
@@ -117,59 +174,36 @@ noHeap* lerArvore(string arvore, int &pos, Heap heap, noHeap* no){
 }
 
 
-noHeap* buildHuffmanTree(Heap heap){
-    noHeap *left, *right, *top;
-
-    while(heap.heapSize != 1 ){
-
-        left = heap.extractMinimum();
-        right = heap.extractMinimum();
-
-        top = heap.novoNo('$', left->freq + right->freq);
-
-        top->esq = left;
-        top->dir = right;
-
-        heap.insert(top);
-    }
-
-    return heap.extractMinimum();
-};
-
 int main() {
 
-    dict ocorrencias = lerArquivo("example.txt");
 
 
-    Heap heap;
+    comprimir("example.txt", "saida.txt");
 
-    heap.construir(ocorrencias, ocorrencias.size());
+    ifstream myfile("saida.txt", std::ios::binary);
+    
 
-    noHeap *res = buildHuffmanTree(heap);
 
-    int *saida3 = new int[100];
-    exibirCodigos(res, saida3, 0);
 
-    string saida = "";
+  /*  string saida = "";
     int top = 0;
 
     encodingMap codigos;
-
-    codigos = gerarCodigos(codigos,res, saida);
+*/
+    //codigos = gerarCodigos(codigos,res, saida);
+    /*
 
     for(auto it = codigos.cbegin(); it != codigos.cend(); ++it){
         cout << it->first << it->second << endl;
     }
+*/
 
-    string a = escreverArvore(res, "");
-    cout << a << endl;
-
-    noHeap *arv;
+    /*noHeap *arv;
     int pos = 0;
     arv = lerArvore(a, pos, heap, arv);
 
     int *saida2 = new int[100];
-    exibirCodigos(arv, saida2, 0);
+    exibirCodigos(arv, saida2, 0);*/
 
     return 0;
 }

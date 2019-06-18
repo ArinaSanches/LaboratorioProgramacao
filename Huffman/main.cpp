@@ -4,6 +4,9 @@ using namespace std;
 typedef map<char, int> dict;
 typedef map<char, string> encodingMap;
 
+#define BYTE 8 //To make the code more clear, define a name to represent the size of a byte
+
+
 #include <fstream>
 #include <string>
 #include <vector>
@@ -117,7 +120,7 @@ noHeap* buildHuffmanTree(Heap heap){
 };
 
 
-void codificarArquivo(string nomeArquivo, noHeap *res){
+void codificarArquivo(string nomeArquivo, noHeap *res, ofstream &myfile){
 
     string saida = "";   
 
@@ -130,27 +133,66 @@ void codificarArquivo(string nomeArquivo, noHeap *res){
     ifstream myfile2;
 
     myfile2.open(nomeArquivo, std::ios::binary);
-    
+
     string codificacao = "";
+
+    long posQtdUltBits = myfile.tellp();
+
+    int qtdUltBits = 0;
+
+    myfile.write((char *)&qtdUltBits, sizeof(int));
+
+    int numBitsCorrente = 0;
+    char bit_buffer = 0;
+
 
     if (myfile2.is_open()) {
         while (myfile2 >> noskipws >> byteLido ) {
+            codificacao = codigos[byteLido];
+            int posCodigo = 0;
 
-            codificacao += codigos[byteLido];
-            codificacao += " ";
-             
+            while(posCodigo < codificacao.length()){
+
+                bit_buffer = bit_buffer << 1;
+
+                if(codificacao[posCodigo] == '1') {
+                   bit_buffer = bit_buffer | (char) 1;
+                }
+
+                numBitsCorrente ++;
+                posCodigo ++;
+
+                if(numBitsCorrente == 8){
+                    myfile.write(&bit_buffer, sizeof(char));
+                    numBitsCorrente = 0;
+                    bit_buffer = 0;
+                }
+            }
         }
+
+        int qtdBits = numBitsCorrente;
+
+        while(numBitsCorrente != 8){
+            bit_buffer = bit_buffer << 1;
+            numBitsCorrente ++;
+        }
+
+        myfile.write(&bit_buffer, sizeof(char));
+
+        myfile.seekp(posQtdUltBits);
+
+        myfile.write((char *)&qtdBits, sizeof(int));
+
         myfile2.close();
     }else {
         cout << "Unable to open file";
     }
 
-    cout << codificacao << endl;
 }
 
 
 
-void comprimir(string nomeArquivo, string arquivoSaida){
+noHeap * comprimir(string nomeArquivo, string arquivoSaida){
 
     Heap heap;
 
@@ -177,9 +219,12 @@ void comprimir(string nomeArquivo, string arquivoSaida){
 
     myfile.write(arvore.data(), tamanho);
 
-    codificarArquivo(nomeArquivo, res);
+    codificarArquivo(nomeArquivo, res, myfile);
 
     myfile.close();
+
+    return res;
+
 }
 
 
@@ -212,31 +257,8 @@ int main() {
 
 
 
-    comprimir("example.txt", "saida.txt");
+    noHeap *res = comprimir("example.txt", "saida.txt");
 
-    ifstream myfile("saida.txt", std::ios::binary);
-
-    int tamanho = 0;
-
-    myfile.read((char *)&tamanho, sizeof(int));
-
-    cout << tamanho << endl;
-
-
-    char byteLido;
-
-    if (myfile.is_open()) {
-        while (myfile >> noskipws >> byteLido ) {
-            cout << byteLido << endl;
-
-        }
-        myfile.close();
-    }else {
-        cout << "Unable to open file";
-    }
-    
-
- 
 
     return 0;
 }

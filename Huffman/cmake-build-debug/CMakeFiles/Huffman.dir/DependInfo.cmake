@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Huffman/Heap.cpp" "/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Huffman/cmake-build-debug/CMakeFiles/Huffman.dir/Heap.cpp.o"
-  "/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Huffman/main.cpp" "/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Huffman/cmake-build-debug/CMakeFiles/Huffman.dir/main.cpp.o"
+  "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Huffman/Heap.cpp" "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Huffman/cmake-build-debug/CMakeFiles/Huffman.dir/Heap.cpp.obj"
+  "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Huffman/main.cpp" "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Huffman/cmake-build-debug/CMakeFiles/Huffman.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

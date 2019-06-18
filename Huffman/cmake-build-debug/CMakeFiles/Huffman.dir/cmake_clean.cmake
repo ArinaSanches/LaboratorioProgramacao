@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Huffman.dir/main.cpp.o"
-  "CMakeFiles/Huffman.dir/Heap.cpp.o"
+  "CMakeFiles/Huffman.dir/main.cpp.obj"
+  "CMakeFiles/Huffman.dir/Heap.cpp.obj"
   "Huffman.pdb"
-  "Huffman"
+  "Huffman.exe"
+  "Huffman.exe.manifest"
+  "libHuffman.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

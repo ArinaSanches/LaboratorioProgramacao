@@ -82,23 +82,21 @@ encodingMap gerarCodigos(encodingMap codigos, noHeap* root, string codigo){
     return codigos;
 }
 
-
 void escreverArvore(noHeap* raiz, vector<char> &arvore){
 
     if(!raiz){
         arvore.push_back('%')     ;
     }else {
         if (!(raiz->esq) && !(raiz->dir)) {
-            arvore.push_back('$');
+            arvore.push_back('#');
             arvore.push_back(raiz->letra);
         } else {
-            arvore.push_back('#');
+            arvore.push_back('$');
             escreverArvore(raiz->esq, arvore);
             escreverArvore(raiz->dir, arvore);
         }
     }
 }
-
 
 noHeap* buildHuffmanTree(Heap heap){
     noHeap *left, *right, *top;
@@ -118,7 +116,6 @@ noHeap* buildHuffmanTree(Heap heap){
 
     return heap.extractMinimum();
 };
-
 
 void codificarArquivo(string nomeArquivo, noHeap *res, ofstream &myfile){
 
@@ -190,13 +187,12 @@ void codificarArquivo(string nomeArquivo, noHeap *res, ofstream &myfile){
 
 }
 
-
-
-noHeap * comprimir(string nomeArquivo, string arquivoSaida){
+void comprimir(string nomeArquivo, string arquivoSaida){
 
     Heap heap;
 
     dict ocorrencias = lerArquivo(nomeArquivo);
+
 
     heap.construir(ocorrencias, ocorrencias.size());
 
@@ -215,7 +211,7 @@ noHeap * comprimir(string nomeArquivo, string arquivoSaida){
 
     int tamanho = arvore.size();
 
-    myfile.write((char *)&tamanho, sizeof(int));
+    myfile.write((char *) &tamanho, sizeof(int));
 
     myfile.write(arvore.data(), tamanho);
 
@@ -223,14 +219,12 @@ noHeap * comprimir(string nomeArquivo, string arquivoSaida){
 
     myfile.close();
 
-    return res;
 
 }
 
-
 //ajeitar
 noHeap* lerArvore(string arvore, int &pos, Heap heap, noHeap* no){
-    if(arvore[pos] == '$'){
+    if(arvore[pos] == '#'){
         pos ++;
         char letra = arvore[pos];
         pos ++;
@@ -245,6 +239,10 @@ noHeap* lerArvore(string arvore, int &pos, Heap heap, noHeap* no){
         return no;
     }
 
+    if(arvore[pos] == '%'){
+        return no;
+    }
+
     no = heap.novoNo('$', 0);
     pos ++;
     no->esq = lerArvore(arvore, pos, heap, no);
@@ -253,11 +251,90 @@ noHeap* lerArvore(string arvore, int &pos, Heap heap, noHeap* no){
 }
 
 
+void descomprimir(string nomeArquivo, string arquivoSaida){
+    //passos:
+    //primeiro, ler tamnanho da arvore OK
+    //depois ler a arvore OK
+    //reconstruir a arvore OK
+    //refazer o texto
+
+    ifstream myfile(nomeArquivo, std::ios::binary);
+
+    ofstream arqSaida(arquivoSaida, std::ios::binary);
+
+
+    int tamanho = 0;
+
+    myfile.read((char *)&tamanho, sizeof(int));
+
+    cout << tamanho << endl;
+
+    string arvore = "";
+
+    char byteLido;
+
+    int i = 0;
+
+    while (i < tamanho ) {
+        myfile.read(&byteLido, sizeof(char));
+        arvore += byteLido;
+        i++;
+    }
+
+    cout << arvore << endl;
+
+    noHeap* raiz;
+
+    Heap heap;
+
+    int pos = 0;
+
+    raiz = lerArvore(arvore, pos, heap, raiz);
+
+    int qtdUltBits = 0;
+
+    myfile.read((char *)&qtdUltBits, sizeof(int));
+
+    char bytecorrente;
+
+    int numBitLido = 0;
+
+    noHeap* no = raiz;
+
+    myfile.read(&bytecorrente, sizeof(char));
+
+    while(!myfile.eof()){
+
+        int bit = bytecorrente >> (7 - numBitLido) & (char)1;
+
+        if(bit == 1){
+            no = no->dir;
+        }else{
+            no = no->esq;
+        }
+
+        if(!(no->esq)&&!(no->dir)){
+            arqSaida.write(&no->letra, sizeof(char));
+            if(myfile.peek() == EOF && numBitLido == qtdUltBits){
+                break;
+            }
+            no = raiz;
+        }
+        numBitLido++;
+
+        if(numBitLido == 8){
+            myfile.read(&bytecorrente, sizeof(char));
+            numBitLido = 0;
+        }
+    }
+}
+
+
 int main() {
 
 
 
-    noHeap *res = comprimir("example.txt", "saida.txt");
+    descomprimir("saida.txt", "arqdescomp.txt");
 
 
     return 0;

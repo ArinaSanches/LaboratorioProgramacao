@@ -15,33 +15,34 @@ typedef map<char, string> encodingMap;
 #include <sstream>
 
 
-dict contarOcorrencias(dict dicionario, char &line){
+void contarOcorrencias(dict &dicionario, char &line){
 
-    if(dicionario.find(line) == dicionario.end()){
-        dicionario[line] = 1;
-    }else{
+    if(dicionario[line]){
         dicionario[line]++;
+    }else{
+        dicionario[line] = 1;
     }
-
-    return dicionario;
 }
 
-dict lerArquivo(string nomeArquivo){
+dict lerArquivo(const string nomeArquivo){
 
     ifstream myfile(nomeArquivo, std::ios::binary);
     dict ocorrencias;
 
-    char byteLido;
+    int i = 0;
+    if (myfile) {
+        char byteLido;
 
-    if (myfile.is_open()) {
         while (myfile >> noskipws >> byteLido ) {
-            ocorrencias = contarOcorrencias(ocorrencias, byteLido);
+            if(myfile.eof()){
+                break;
+            }
+            contarOcorrencias((ocorrencias), byteLido);
         }
         myfile.close();
     }else {
         cout << "Unable to open file";
     }
-
     return ocorrencias;
 
 }
@@ -192,11 +193,15 @@ void comprimir(string nomeArquivo, string arquivoSaida){
     Heap heap;
 
     dict ocorrencias = lerArquivo(nomeArquivo);
+    cout << "contruiu" << endl;
 
 
     heap.construir(ocorrencias, ocorrencias.size());
+    cout << "contruiu" << endl;
 
     noHeap *res = buildHuffmanTree(heap);
+
+    cout << "contruiu" << endl;
 
     int *saida3 = new int[100];
 
@@ -334,7 +339,7 @@ int main() {
 
 
 
-    descomprimir("saida.txt", "arqdescomp.txt");
+    descomprimir("saidaImg.bmp", "novaImg.bmp");
 
 
     return 0;

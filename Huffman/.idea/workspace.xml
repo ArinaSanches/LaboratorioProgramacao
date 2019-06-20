@@ -12,7 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9caa808c-e634-4372-a571-ac8c1a5d73b7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/main.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../QuickIndice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QuickIndice/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../QuicksotRand/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QuicksotRand/.idea/workspace.xml" afterDir="false" />
@@ -48,18 +48,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="318" column="53" selection-start-line="318" selection-start-column="53" selection-end-line="318" selection-end-column="53" />
+            <state relative-caret-position="180">
+              <caret line="341" column="46" selection-start-line="341" selection-start-column="46" selection-end-line="341" selection-end-column="46" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <element signature="e#220#425#0" />
-                <element signature="e#427#824#0" />
-                <element signature="e#826#1260#0" />
-                <element signature="e#1262#1589#0" />
-                <element signature="e#1592#1998#0" />
-                <element signature="e#2001#2361#0" />
-                <element signature="e#3997#4811#0" />
-                <element signature="e#3568#4172#0" />
+                <element signature="e#920#1354#0" />
+                <element signature="e#1356#1683#0" />
+                <element signature="e#1685#2091#0" />
+                <element signature="e#2093#2453#0" />
+                <element signature="e#2456#3995#0" />
+                <element signature="e#4620#5278#0" />
+                <element signature="e#5281#6766#0" />
               </folding>
             </state>
           </provider>
@@ -123,7 +122,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -140,6 +138,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -192,23 +191,25 @@
       <workItem from="1560705072243" duration="597000" />
       <workItem from="1560732074212" duration="602000" />
       <workItem from="1560815414361" duration="828000" />
-      <workItem from="1560816267743" duration="29778000" />
+      <workItem from="1560816267743" duration="30031000" />
+      <workItem from="1560906886749" duration="99000" />
+      <workItem from="1560985620764" duration="6019000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65896000" />
+    <option name="totallyTimeSpent" value="72267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07181208" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07315436" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33427763" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.7124646" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39235127" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -218,7 +219,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.3286119" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.73371106" />
+      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.388102" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -232,20 +233,37 @@
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Heap.h">
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="34">
+          <caret line="2" column="82" selection-start-line="2" selection-start-column="82" selection-end-line="2" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="341" column="46" selection-start-line="341" selection-start-column="46" selection-end-line="341" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#920#1354#0" />
+            <element signature="e#1356#1683#0" />
+            <element signature="e#1685#2091#0" />
+            <element signature="e#2093#2453#0" />
+            <element signature="e#2456#3995#0" />
+            <element signature="e#4620#5278#0" />
+            <element signature="e#5281#6766#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/example.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt">
+    <entry file="file://$PROJECT_DIR$/Heap.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="82" selection-start-line="2" selection-start-column="82" selection-end-line="2" selection-end-column="82" />
+        <state relative-caret-position="306">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -255,24 +273,6 @@
           <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
           <folding>
             <element signature="e#41#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="318" column="53" selection-start-line="318" selection-start-column="53" selection-end-line="318" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#220#425#0" />
-            <element signature="e#427#824#0" />
-            <element signature="e#826#1260#0" />
-            <element signature="e#1262#1589#0" />
-            <element signature="e#1592#1998#0" />
-            <element signature="e#2001#2361#0" />
-            <element signature="e#3997#4811#0" />
-            <element signature="e#3568#4172#0" />
           </folding>
         </state>
       </provider>

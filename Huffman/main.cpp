@@ -99,18 +99,18 @@ void escreverArvore(noHeap* raiz, vector<char> &arvore){
     }
 }
 
-noHeap* buildHuffmanTree(Heap heap){
-    noHeap *left, *right, *top;
+noHeap* construirArvoreHuffman(Heap heap){
+    noHeap *esq, *dir, *top;
 
     while(heap.heapSize != 1 ){
 
-        left = heap.extractMinimum();
-        right = heap.extractMinimum();
+        esq = heap.extractMinimum();
+        dir = heap.extractMinimum();
 
-        top = heap.novoNo('$', left->freq + right->freq);
+        top = heap.novoNo('$', esq->freq + dir->freq);
 
-        top->esq = left;
-        top->dir = right;
+        top->esq = esq;
+        top->dir = dir;
 
         heap.insert(top);
     }
@@ -118,35 +118,38 @@ noHeap* buildHuffmanTree(Heap heap){
     return heap.extractMinimum();
 };
 
-void codificarArquivo(string nomeArquivo, noHeap *res, ofstream &myfile){
+void codificarArquivo(string nomeArquivoEntrada, noHeap *arvoreHuffman, ofstream &arquivoSaida){
 
     string saida = "";   
 
     encodingMap codigos;
 
-    codigos = gerarCodigos(codigos, res, saida);
+    codigos = gerarCodigos(codigos, arvoreHuffman, saida);
 
-    char byteLido;
+    ifstream arquivoEntrada;
 
-    ifstream myfile2;
+    arquivoEntrada.open(nomeArquivoEntrada, std::ios::binary);
 
-    myfile2.open(nomeArquivo, std::ios::binary);
-
-    string codificacao = "";
-
-    long posQtdUltBits = myfile.tellp();
+    long posQtdUltBits = arquivoSaida.tellp();
 
     int qtdUltBits = 0;
 
-    myfile.write((char *)&qtdUltBits, sizeof(int));
+    arquivoSaida.write((char *)&qtdUltBits, sizeof(int));
 
-    int numBitsCorrente = 0;
+    int numBitsLidos = 0;
+
+    char byteLido;
+
     char bit_buffer = 0;
 
+    string codificacao = "";
 
-    if (myfile2.is_open()) {
-        while (myfile2 >> noskipws >> byteLido ) {
+
+    if (arquivoEntrada.is_open()) {
+        while (arquivoEntrada >> noskipws >> byteLido ) {
+
             codificacao = codigos[byteLido];
+
             int posCodigo = 0;
 
             while(posCodigo < codificacao.length()){
@@ -157,73 +160,65 @@ void codificarArquivo(string nomeArquivo, noHeap *res, ofstream &myfile){
                    bit_buffer = bit_buffer | (char) 1;
                 }
 
-                numBitsCorrente ++;
+                numBitsLidos ++;
                 posCodigo ++;
 
-                if(numBitsCorrente == 8){
-                    myfile.write(&bit_buffer, sizeof(char));
-                    numBitsCorrente = 0;
+                if(numBitsLidos == 8){
+                    arquivoSaida.write(&bit_buffer, sizeof(char));
+                    numBitsLidos = 0;
                     bit_buffer = 0;
                 }
             }
         }
 
-        int qtdBits = numBitsCorrente;
+        int qtdBits = numBitsLidos;
 
-        while(numBitsCorrente != 8){
+        while(numBitsLidos != 8){
             bit_buffer = bit_buffer << 1;
-            numBitsCorrente ++;
+            numBitsLidos ++;
         }
 
-        myfile.write(&bit_buffer, sizeof(char));
+        arquivoSaida.write(&bit_buffer, sizeof(char));
 
-        myfile.seekp(posQtdUltBits);
+        arquivoSaida.seekp(posQtdUltBits);
 
-        myfile.write((char *)&qtdBits, sizeof(int));
+        arquivoSaida.write((char *)&qtdBits, sizeof(int));
 
-        myfile2.close();
+        arquivoEntrada.close();
     }else {
         cout << "Unable to open file";
     }
 
 }
 
-void comprimir(string nomeArquivo, string arquivoSaida){
+void comprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
     Heap heap;
 
-    dict ocorrencias = lerArquivo(nomeArquivo);
-    cout << "contruiu" << endl;
-
+    dict ocorrencias = lerArquivo(nomeArquivoEntrada);
 
     heap.construir(ocorrencias, ocorrencias.size());
-    cout << "contruiu" << endl;
 
-    noHeap *res = buildHuffmanTree(heap);
-
-    cout << "contruiu" << endl;
-
-    int *saida3 = new int[100];
-
-    exibirCodigos(res, saida3, 0);
+    noHeap *arvoreHuffman = construirArvoreHuffman(heap);
 
     vector<char> arvore;
-    escreverArvore(res, arvore);
+    escreverArvore(arvoreHuffman, arvore);
 
-    ofstream myfile;
+    ofstream arquivoSaida;
 
-    myfile.open(arquivoSaida, std::ios::binary);
+    arquivoSaida.open(nomeArquivoSaida, std::ios::binary);
 
-    int tamanho = arvore.size();
+    int tamanhoArvore = arvore.size();
 
-    myfile.write((char *) &tamanho, sizeof(int));
+    arquivoSaida.write((char *) &tamanhoArvore, sizeof(int));
 
-    myfile.write(arvore.data(), tamanho);
+    arquivoSaida.write(arvore.data(), tamanhoArvore);
 
-    codificarArquivo(nomeArquivo, res, myfile);
+    codificarArquivo(nomeArquivoEntrada, arvoreHuffman, arquivoSaida);
 
-    myfile.close();
+    arquivoSaida.close();
 
+    cout << "Compressao realizada com sucesso!";
 
 }
 
@@ -233,11 +228,6 @@ noHeap* lerArvore(string arvore, int &pos, Heap heap, noHeap* no){
         pos ++;
         char letra = arvore[pos];
         pos ++;
-        /*string codigo = "";
-        while(arvore[pos] != '#' && arvore[pos] != '$' ){
-            codigo = codigo + arvore[pos];
-            pos ++;
-        }*/
         no = heap.novoNo(letra, 0);
         no->esq = nullptr;
         no->dir = nullptr;
@@ -255,24 +245,20 @@ noHeap* lerArvore(string arvore, int &pos, Heap heap, noHeap* no){
     return no;
 }
 
-
-void descomprimir(string nomeArquivo, string arquivoSaida){
+void descomprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
     //passos:
     //primeiro, ler tamnanho da arvore OK
     //depois ler a arvore OK
     //reconstruir a arvore OK
     //refazer o texto
 
-    ifstream myfile(nomeArquivo, std::ios::binary);
+    ifstream arquivoEntrada(nomeArquivoEntrada, std::ios::binary);
 
-    ofstream arqSaida(arquivoSaida, std::ios::binary);
+    ofstream arquivoSaida(nomeArquivoSaida, std::ios::binary);
 
+    int tamanhoArvore = 0;
 
-    int tamanho = 0;
-
-    myfile.read((char *)&tamanho, sizeof(int));
-
-    cout << tamanho << endl;
+    arquivoEntrada.read((char *)&tamanhoArvore, sizeof(int));
 
     string arvore = "";
 
@@ -280,37 +266,35 @@ void descomprimir(string nomeArquivo, string arquivoSaida){
 
     int i = 0;
 
-    while (i < tamanho ) {
-        myfile.read(&byteLido, sizeof(char));
+    while (i < tamanhoArvore ) {
+        arquivoEntrada.read(&byteLido, sizeof(char));
         arvore += byteLido;
         i++;
     }
 
-    cout << arvore << endl;
-
-    noHeap* raiz;
+    noHeap* arvoreHuffman;
 
     Heap heap;
 
     int pos = 0;
 
-    raiz = lerArvore(arvore, pos, heap, raiz);
+    arvoreHuffman = lerArvore(arvore, pos, heap, arvoreHuffman);
 
     int qtdUltBits = 0;
 
-    myfile.read((char *)&qtdUltBits, sizeof(int));
+    arquivoEntrada.read((char *)&qtdUltBits, sizeof(int));
 
     char bytecorrente;
 
-    int numBitLido = 0;
+    int numBitLidos = 0;
 
-    noHeap* no = raiz;
+    noHeap* no = arvoreHuffman;
 
-    myfile.read(&bytecorrente, sizeof(char));
+    arquivoEntrada.read(&bytecorrente, sizeof(char));
 
-    while(!myfile.eof()){
+    while(!arquivoEntrada.eof()){
 
-        int bit = bytecorrente >> (7 - numBitLido) & (char)1;
+        int bit = bytecorrente >> (7 - numBitLidos) & (char)1;
 
         if(bit == 1){
             no = no->dir;
@@ -319,28 +303,27 @@ void descomprimir(string nomeArquivo, string arquivoSaida){
         }
 
         if(!(no->esq)&&!(no->dir)){
-            arqSaida.write(&no->letra, sizeof(char));
-            if(myfile.peek() == EOF && numBitLido == qtdUltBits){
+            arquivoSaida.write(&no->letra, sizeof(char));
+            if(arquivoEntrada.peek() == EOF && numBitLidos == qtdUltBits){
                 break;
             }
-            no = raiz;
+            no = arvoreHuffman;
         }
-        numBitLido++;
+        numBitLidos++;
 
-        if(numBitLido == 8){
-            myfile.read(&bytecorrente, sizeof(char));
-            numBitLido = 0;
+        if(numBitLidos == 8){
+            arquivoEntrada.read(&bytecorrente, sizeof(char));
+            numBitLidos = 0;
         }
     }
+
+    cout << "Descompressao realizada com sucesso!";
 }
 
 
 int main() {
 
-
-
-    comprimir("saidanovopdf.pdf", "ovopdf.pdf");
-
+    comprimir("inputs/empty_file.txt", "comprimidos/empty_fileComprimido.txt");
 
     return 0;
 }

@@ -339,7 +339,7 @@ int main() {
 
 
 
-    descomprimir("saidaImg.bmp", "novaImg.bmp");
+    comprimir("saidanovopdf.pdf", "ovopdf.pdf");
 
 
     return 0;

@@ -4,6 +4,10 @@ using namespace std;
 typedef map<char, int> dict;
 typedef map<char, string> encodingMap;
 
+#include <chrono>
+#include <time.h>
+
+
 #define BYTE 8 //To make the code more clear, define a name to represent the size of a byte
 
 
@@ -202,14 +206,12 @@ void comprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
     noHeap *arvoreHuffman;
 
-
     if(!ocorrencias.empty()){
 
         heap.construir(ocorrencias, ocorrencias.size());
 
         arvoreHuffman = construirArvoreHuffman(heap);
     }else{
-        cout << "entrou" << endl;
         arvoreHuffman = nullptr;
     }
 
@@ -338,21 +340,80 @@ void descomprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
 int main() {
 
-    comprimir("inputs/books.txt", "comprimidos/booksComprimido.txt");
-    descomprimir("comprimidos/booksComprimido.txt", "descomprimidos/booksDesComprimido.txt");
+    /*comprimir("inputs/books.txt", "comprimidos/booksComprimido.huf");
+    descomprimir("comprimidos/booksComprimido.huf", "descomprimidos/booksDesComprimido.txt");
 
-    comprimir("inputs/ch05-patterns.pdf", "comprimidos/ch05-patternsComprimido.pdf");
-    descomprimir("comprimidos/ch05-patternsComprimido.pdf", "descomprimidos/ch05-patternsDesComprimido.pdf");
+    comprimir("inputs/ch05-patterns.pdf", "comprimidos/ch05-patternsComprimido.huf");
+    descomprimir("comprimidos/ch05-patternsComprimido.huf", "descomprimidos/ch05-patternsDesComprimido.pdf");
 
-    comprimir("inputs/Stavechurch-heddal.bmp", "comprimidos/Stavechurch-heddalComprimido.bmp");
-    descomprimir("comprimidos/Stavechurch-heddalComprimido.bmp", "descomprimidos/Stavechurch-heddalDesComprimido.bmp");
+    comprimir("inputs/Stavechurch-heddal.bmp", "comprimidos/Stavechurch-heddalComprimido.huf");
+    descomprimir("comprimidos/Stavechurch-heddalComprimido.huf", "descomprimidos/Stavechurch-heddalDesComprimido.bmp");
 
-    comprimir("inputs/Huffman_coding_Wikipedia.tar", "comprimidos/Huffman_coding_WikipediaComprimido.tar");
-    descomprimir("comprimidos/Huffman_coding_WikipediaComprimido.tar", "descomprimidos/Huffman_coding_WikipediaDesComprimido.tar");
+    comprimir("inputs/Huffman_coding_Wikipedia.tar", "comprimidos/Huffman_coding_WikipediaComprimido.huf");
+    descomprimir("comprimidos/Huffman_coding_WikipediaComprimido.huf", "descomprimidos/Huffman_coding_WikipediaDesComprimido.tar");
 
-    comprimir("inputs/empty_file.txt", "comprimidos/empty_fileComprimido.txt");
-    descomprimir("comprimidos/empty_fileComprimido.txt", "descomprimidos/empty_fileDesComprimido.txt");
+    comprimir("inputs/empty_file.txt", "comprimidos/empty_fileComprimido.huf");
+    descomprimir("comprimidos/empty_fileComprimido.huf", "descomprimidos/empty_fileDesComprimido.txt");*/
 
+
+    int opc = -1;
+
+    string nomeArquivoEntrada, nomeArquivoSaida;
+
+    while(opc == -1){
+
+        cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
+
+        cout << "Digite 0 para comprimir e 1 para descomprimir." << endl;
+
+        cin >> opc;
+
+        if(opc == 0) {
+
+            cout << "Digite o nome do arquivo a ser comprimido." << endl;
+            cin >> nomeArquivoEntrada;
+            cout << "Digite o nome do arquivo de saida." << endl;
+            cin >> nomeArquivoSaida;
+
+            auto inicio = std::chrono::high_resolution_clock::now();
+
+            cout << endl;
+
+            comprimir("inputs/"+nomeArquivoEntrada, "comprimidos/"+nomeArquivoSaida);
+
+            auto fim = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double>duracao = std::chrono::duration_cast<std::chrono::microseconds>(fim - inicio);
+
+            cout << "Tempo de execcao: " << duracao.count() << " microsegundos." << endl;
+
+            opc = -1;
+
+        }else if(opc == 1){
+
+            cout << "Digite o nome do arquivo a ser descomprimido." << endl;
+            cin >> nomeArquivoEntrada;
+            cout << "Digite o nome do arquivo de saida." << endl;
+            cin >> nomeArquivoSaida;
+
+            auto inicio = std::chrono::high_resolution_clock::now();
+
+            cout << endl;
+
+            descomprimir("comprimidos/"+nomeArquivoEntrada, "descomprimidos/"+nomeArquivoSaida);
+
+            auto fim = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double>duracao = std::chrono::duration_cast<std::chrono::microseconds>(fim - inicio);
+
+            cout << "Tempo de execcao: " << duracao.count() << " microsegundos." << endl;
+
+            opc = -1;
+
+        }else{
+            cout << "Digite 0 para comprimir e 1 para descomprimir." << endl;
+            cin >> opc;
+        }
+
+    }
     return 0;
 }
 

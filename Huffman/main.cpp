@@ -71,6 +71,9 @@ void exibirCodigos(noHeap* root, int saida[], int top){
 
 encodingMap gerarCodigos(encodingMap codigos, noHeap* root, string codigo){
 
+    if(!root){
+       return codigos;
+    }
     if(!(root->esq)&&!(root->dir)) {
         codigos[root->letra] = codigo;
     }else {
@@ -86,7 +89,7 @@ encodingMap gerarCodigos(encodingMap codigos, noHeap* root, string codigo){
 void escreverArvore(noHeap* raiz, vector<char> &arvore){
 
     if(!raiz){
-        arvore.push_back('%')     ;
+        arvore.push_back('%');
     }else {
         if (!(raiz->esq) && !(raiz->dir)) {
             arvore.push_back('#');
@@ -186,7 +189,7 @@ void codificarArquivo(string nomeArquivoEntrada, noHeap *arvoreHuffman, ofstream
 
         arquivoEntrada.close();
     }else {
-        cout << "Unable to open file";
+        cout << "Unable to open file" << endl;
     }
 
 }
@@ -197,9 +200,18 @@ void comprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
     dict ocorrencias = lerArquivo(nomeArquivoEntrada);
 
-    heap.construir(ocorrencias, ocorrencias.size());
+    noHeap *arvoreHuffman;
 
-    noHeap *arvoreHuffman = construirArvoreHuffman(heap);
+
+    if(!ocorrencias.empty()){
+
+        heap.construir(ocorrencias, ocorrencias.size());
+
+        arvoreHuffman = construirArvoreHuffman(heap);
+    }else{
+        cout << "entrou" << endl;
+        arvoreHuffman = nullptr;
+    }
 
     vector<char> arvore;
     escreverArvore(arvoreHuffman, arvore);
@@ -218,7 +230,7 @@ void comprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
     arquivoSaida.close();
 
-    cout << "Compressao realizada com sucesso!";
+    cout << "Compressao realizada com sucesso!" << endl;
 
 }
 
@@ -292,38 +304,54 @@ void descomprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
     arquivoEntrada.read(&bytecorrente, sizeof(char));
 
-    while(!arquivoEntrada.eof()){
+    if(tamanhoArvore != 1 && arvore != "%"){
+        while (!arquivoEntrada.eof()) {
 
-        int bit = bytecorrente >> (7 - numBitLidos) & (char)1;
+            int bit = bytecorrente >> (7 - numBitLidos) & (char) 1;
 
-        if(bit == 1){
-            no = no->dir;
-        }else{
-            no = no->esq;
-        }
-
-        if(!(no->esq)&&!(no->dir)){
-            arquivoSaida.write(&no->letra, sizeof(char));
-            if(arquivoEntrada.peek() == EOF && numBitLidos == qtdUltBits){
-                break;
+            if (bit == 1) {
+                no = no->dir;
+            } else {
+                no = no->esq;
             }
-            no = arvoreHuffman;
-        }
-        numBitLidos++;
 
-        if(numBitLidos == 8){
-            arquivoEntrada.read(&bytecorrente, sizeof(char));
-            numBitLidos = 0;
+            if (!(no->esq) && !(no->dir)) {
+                arquivoSaida.write(&no->letra, sizeof(char));
+                if (arquivoEntrada.peek() == EOF && numBitLidos == qtdUltBits) {
+                    break;
+                }
+                no = arvoreHuffman;
+            }
+
+            numBitLidos++;
+
+            if (numBitLidos == 8) {
+                arquivoEntrada.read(&bytecorrente, sizeof(char));
+                numBitLidos = 0;
+            }
         }
     }
 
-    cout << "Descompressao realizada com sucesso!";
+    cout << "Descompressao realizada com sucesso!" << endl;
 }
 
 
 int main() {
 
+    comprimir("inputs/books.txt", "comprimidos/booksComprimido.txt");
+    descomprimir("comprimidos/booksComprimido.txt", "descomprimidos/booksDesComprimido.txt");
+
+    comprimir("inputs/ch05-patterns.pdf", "comprimidos/ch05-patternsComprimido.pdf");
+    descomprimir("comprimidos/ch05-patternsComprimido.pdf", "descomprimidos/ch05-patternsDesComprimido.pdf");
+
+    comprimir("inputs/Stavechurch-heddal.bmp", "comprimidos/Stavechurch-heddalComprimido.bmp");
+    descomprimir("comprimidos/Stavechurch-heddalComprimido.bmp", "descomprimidos/Stavechurch-heddalDesComprimido.bmp");
+
+    comprimir("inputs/Huffman_coding_Wikipedia.tar", "comprimidos/Huffman_coding_WikipediaComprimido.tar");
+    descomprimir("comprimidos/Huffman_coding_WikipediaComprimido.tar", "descomprimidos/Huffman_coding_WikipediaDesComprimido.tar");
+
     comprimir("inputs/empty_file.txt", "comprimidos/empty_fileComprimido.txt");
+    descomprimir("comprimidos/empty_fileComprimido.txt", "descomprimidos/empty_fileDesComprimido.txt");
 
     return 0;
 }

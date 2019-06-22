@@ -38,6 +38,7 @@ void Heap::construir(dict ocorrencias, int pSize){
     for(int index = (pSize-1) / 2; index >=0; index--){
         heapify(heap, index);
     }
+
 }
 
 void Heap::heapify(noHeap** pVector , int pIndex) {
@@ -45,17 +46,17 @@ void Heap::heapify(noHeap** pVector , int pIndex) {
     int right = getRight(pIndex);
     int largest;
 
-
     if (left < heapSize && pVector[left]->freq < pVector[pIndex]->freq) {
         largest = left;
-    }else{
+    } else {
         largest = pIndex;
     }
 
 
-    if(right < heapSize && pVector[right]->freq < pVector[largest]->freq) {
+    if (right < heapSize && pVector[right]->freq < pVector[largest]->freq) {
         largest = right;
     }
+
 
     if(largest != pIndex){
         Swap(pVector, pIndex, largest);

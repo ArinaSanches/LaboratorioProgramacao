@@ -13,29 +13,21 @@
   <component name="ChangeListManager">
     <list default="true" id="9caa808c-e634-4372-a571-ac8c1a5d73b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Heap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Heap.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/Heap.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/Heap.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Huffman" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Huffman.cbp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Huffman.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Huffman.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Stavechurch-heddal.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/arina.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/arqdescomp.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/arquivoDescomp.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/books.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ch05-patterns.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/empty_file.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/example.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/instancias_Trabalho_3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/novaImg.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/novopdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ovopdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/saida.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/saidaImg.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/saidanovopdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/Huffman_Comprimido.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/Stavechurch-heddalComprimido.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/booksComprimido.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/ch05-patternsComprimido.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/descomprimidos/Huffman_DesComprimido.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/descomprimidos/Stavechurch-heddalDesComprimido.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/descomprimidos/booksDesComprimido.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/descomprimidos/ch05-patternsDesComprimido.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saida.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../QuickIndice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QuickIndice/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../QuicksotRand/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QuicksotRand/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../QuicksotRand/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../QuicksotRand/main.cpp" afterDir="false" />
@@ -70,17 +62,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="325" column="82" selection-start-line="325" selection-start-column="82" selection-end-line="325" selection-end-column="82" />
+            <state relative-caret-position="73">
+              <caret line="340" column="5" selection-start-line="340" selection-start-column="5" selection-end-line="340" selection-end-column="5" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#314#471#0" />
+                <element signature="e#473#939#0" />
                 <element signature="e#941#1375#0" />
-                <element signature="e#1377#1704#0" />
-                <element signature="e#1706#2112#0" />
+                <element signature="e#1377#1734#0" />
                 <element signature="e#2114#2474#0" />
                 <element signature="e#2477#4016#0" />
                 <element signature="e#4738#5396#0" />
+                <element signature="e#5614#7453#0" />
               </folding>
             </state>
           </provider>
@@ -89,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Heap.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="272">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -98,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Heap.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+            <state relative-caret-position="98">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#41#60#0" expanded="true" />
               </folding>
@@ -121,9 +114,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" />
         <option value="$PROJECT_DIR$/Heap.h" />
         <option value="$PROJECT_DIR$/Heap.cpp" />
-        <option value="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" />
         <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
@@ -212,24 +205,24 @@
       <workItem from="1560816267743" duration="30031000" />
       <workItem from="1560906886749" duration="99000" />
       <workItem from="1560985620764" duration="7207000" />
-      <workItem from="1561150501687" duration="5589000" />
+      <workItem from="1561150501687" duration="12370000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79044000" />
+    <option name="totallyTimeSpent" value="85825000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0738255" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14563759" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39093485" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39235127" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29886687" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.07365439" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -262,23 +255,6 @@
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/example.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Heap.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Heap.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding>
-            <element signature="e#41#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/bits/basic_string.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
@@ -286,19 +262,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/bits/istream.tcc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="649" column="4" selection-start-line="649" selection-start-column="4" selection-end-line="649" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Heap.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#41#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Heap.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="325" column="82" selection-start-line="325" selection-start-column="82" selection-end-line="325" selection-end-column="82" />
+        <state relative-caret-position="73">
+          <caret line="340" column="5" selection-start-line="340" selection-start-column="5" selection-end-line="340" selection-end-column="5" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#314#471#0" />
+            <element signature="e#473#939#0" />
             <element signature="e#941#1375#0" />
-            <element signature="e#1377#1704#0" />
-            <element signature="e#1706#2112#0" />
+            <element signature="e#1377#1734#0" />
             <element signature="e#2114#2474#0" />
             <element signature="e#2477#4016#0" />
             <element signature="e#4738#5396#0" />
+            <element signature="e#5614#7453#0" />
           </folding>
         </state>
       </provider>

@@ -154,6 +154,15 @@ void codificarArquivo(string nomeArquivoEntrada, noHeap *arvoreHuffman, ofstream
 
             while(posCodigo < codificacao.length()){
 
+                if(numBitsLidos == 8){
+                    if(arquivoEntrada.eof()){
+                        break;
+                    }
+                    arquivoSaida.write(&bit_buffer, sizeof(char));
+                    numBitsLidos = 0;
+                    bit_buffer = 0;
+                }
+
                 bit_buffer = bit_buffer << 1;
 
                 if(codificacao[posCodigo] == '1') {
@@ -162,12 +171,6 @@ void codificarArquivo(string nomeArquivoEntrada, noHeap *arvoreHuffman, ofstream
 
                 numBitsLidos ++;
                 posCodigo ++;
-
-                if(numBitsLidos == 8){
-                    arquivoSaida.write(&bit_buffer, sizeof(char));
-                    numBitsLidos = 0;
-                    bit_buffer = 0;
-                }
             }
         }
 
@@ -323,15 +326,19 @@ void descomprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
                     no = no->esq;
                 }
 
+                numBitLidos++;
+
                 if (!(no->esq) && !(no->dir)) {
                     arquivoSaida.write(&no->letra, sizeof(char));
                     if (arquivoEntrada.peek() == EOF && numBitLidos == qtdUltBits) {
                         break;
                     }
+                    if(arquivoSaida.eof()){
+                        break;
+                    }
                     no = arvoreHuffman;
                 }
 
-                numBitLidos++;
 
                 if (numBitLidos == 8) {
                     arquivoEntrada.read(&bytecorrente, sizeof(char));

@@ -28,25 +28,19 @@ void contarOcorrencias(dict &dicionario, char &line){
     }
 }
 
-dict lerArquivo(const string nomeArquivo){
+dict lerArquivo(const string nomeArquivo, ifstream &myfile){
 
-    ifstream myfile(nomeArquivo, std::ios::binary);
     dict ocorrencias;
 
-    int i = 0;
-    if (myfile) {
-        char byteLido;
+    char byteLido;
 
-        while (myfile >> noskipws >> byteLido ) {
-            if(myfile.eof()){
-                break;
-            }
-            contarOcorrencias((ocorrencias), byteLido);
+    while (myfile >> noskipws >> byteLido ) {
+        if(myfile.eof()){
+            break;
         }
-        myfile.close();
-    }else {
-        cout << "Unable to open file";
+        contarOcorrencias((ocorrencias), byteLido);
     }
+    
     return ocorrencias;
 
 }
@@ -151,7 +145,6 @@ void codificarArquivo(string nomeArquivoEntrada, noHeap *arvoreHuffman, ofstream
 
     string codificacao = "";
 
-
     if (arquivoEntrada.is_open()) {
         while (arquivoEntrada >> noskipws >> byteLido ) {
 
@@ -193,7 +186,7 @@ void codificarArquivo(string nomeArquivoEntrada, noHeap *arvoreHuffman, ofstream
 
         arquivoEntrada.close();
     }else {
-        cout << "Unable to open file" << endl;
+        cout << "Nao foi possivel abrir o arquivo!" << endl;
     }
 
 }
@@ -202,37 +195,48 @@ void comprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
     Heap heap;
 
-    dict ocorrencias = lerArquivo(nomeArquivoEntrada);
+    ifstream arquivoEntrada(nomeArquivoEntrada, std::ios::binary);
 
-    noHeap *arvoreHuffman;
+    if (arquivoEntrada) {
 
-    if(!ocorrencias.empty()){
+        dict ocorrencias = lerArquivo(nomeArquivoEntrada, arquivoEntrada);
 
-        heap.construir(ocorrencias, ocorrencias.size());
+        arquivoEntrada.close();
 
-        arvoreHuffman = construirArvoreHuffman(heap);
-    }else{
-        arvoreHuffman = nullptr;
+        noHeap *arvoreHuffman;
+
+        if(!ocorrencias.empty()){
+
+            heap.construir(ocorrencias, ocorrencias.size());
+
+            arvoreHuffman = construirArvoreHuffman(heap);
+        }else{
+            arvoreHuffman = nullptr;
+        }
+
+        vector<char> arvore;
+        escreverArvore(arvoreHuffman, arvore);
+
+        ofstream arquivoSaida;
+
+        arquivoSaida.open(nomeArquivoSaida, std::ios::binary);
+
+        int tamanhoArvore = arvore.size();
+
+        arquivoSaida.write((char *) &tamanhoArvore, sizeof(int));
+
+        arquivoSaida.write(arvore.data(), tamanhoArvore);
+
+        codificarArquivo(nomeArquivoEntrada, arvoreHuffman, arquivoSaida);
+
+        arquivoSaida.close();
+
+        cout << "Compressao realizada com sucesso!" << endl;
+        
+
+    }else {
+        cout << "Nao foi possivel abrir o arquivo!" << endl;
     }
-
-    vector<char> arvore;
-    escreverArvore(arvoreHuffman, arvore);
-
-    ofstream arquivoSaida;
-
-    arquivoSaida.open(nomeArquivoSaida, std::ios::binary);
-
-    int tamanhoArvore = arvore.size();
-
-    arquivoSaida.write((char *) &tamanhoArvore, sizeof(int));
-
-    arquivoSaida.write(arvore.data(), tamanhoArvore);
-
-    codificarArquivo(nomeArquivoEntrada, arvoreHuffman, arquivoSaida);
-
-    arquivoSaida.close();
-
-    cout << "Compressao realizada com sucesso!" << endl;
 
 }
 
@@ -268,79 +272,85 @@ void descomprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
     ifstream arquivoEntrada(nomeArquivoEntrada, std::ios::binary);
 
-    ofstream arquivoSaida(nomeArquivoSaida, std::ios::binary);
+    if (arquivoEntrada) {
 
-    int tamanhoArvore = 0;
+        ofstream arquivoSaida(nomeArquivoSaida, std::ios::binary);
 
-    arquivoEntrada.read((char *)&tamanhoArvore, sizeof(int));
+        int tamanhoArvore = 0;
 
-    string arvore = "";
+        arquivoEntrada.read((char *)&tamanhoArvore, sizeof(int));
 
-    char byteLido;
+        string arvore = "";
 
-    int i = 0;
+        char byteLido;
 
-    while (i < tamanhoArvore ) {
-        arquivoEntrada.read(&byteLido, sizeof(char));
-        arvore += byteLido;
-        i++;
-    }
+        int i = 0;
 
-    noHeap* arvoreHuffman;
+        while (i < tamanhoArvore ) {
+            arquivoEntrada.read(&byteLido, sizeof(char));
+            arvore += byteLido;
+            i++;
+        }
 
-    Heap heap;
+        noHeap* arvoreHuffman;
 
-    int pos = 0;
+        Heap heap;
 
-    arvoreHuffman = lerArvore(arvore, pos, heap, arvoreHuffman);
+        int pos = 0;
 
-    int qtdUltBits = 0;
+        arvoreHuffman = lerArvore(arvore, pos, heap, arvoreHuffman);
 
-    arquivoEntrada.read((char *)&qtdUltBits, sizeof(int));
+        int qtdUltBits = 0;
 
-    char bytecorrente;
+        arquivoEntrada.read((char *)&qtdUltBits, sizeof(int));
 
-    int numBitLidos = 0;
+        char bytecorrente;
 
-    noHeap* no = arvoreHuffman;
+        int numBitLidos = 0;
 
-    arquivoEntrada.read(&bytecorrente, sizeof(char));
+        noHeap* no = arvoreHuffman;
 
-    if(tamanhoArvore != 1 && arvore != "%"){
-        while (!arquivoEntrada.eof()) {
+        arquivoEntrada.read(&bytecorrente, sizeof(char));
 
-            int bit = bytecorrente >> (7 - numBitLidos) & (char) 1;
+        if(tamanhoArvore != 1 && arvore != "%"){
+            while (!arquivoEntrada.eof()) {
 
-            if (bit == 1) {
-                no = no->dir;
-            } else {
-                no = no->esq;
-            }
+                int bit = bytecorrente >> (7 - numBitLidos) & (char) 1;
 
-            if (!(no->esq) && !(no->dir)) {
-                arquivoSaida.write(&no->letra, sizeof(char));
-                if (arquivoEntrada.peek() == EOF && numBitLidos == qtdUltBits) {
-                    break;
+                if (bit == 1) {
+                    no = no->dir;
+                } else {
+                    no = no->esq;
                 }
-                no = arvoreHuffman;
-            }
 
-            numBitLidos++;
+                if (!(no->esq) && !(no->dir)) {
+                    arquivoSaida.write(&no->letra, sizeof(char));
+                    if (arquivoEntrada.peek() == EOF && numBitLidos == qtdUltBits) {
+                        break;
+                    }
+                    no = arvoreHuffman;
+                }
 
-            if (numBitLidos == 8) {
-                arquivoEntrada.read(&bytecorrente, sizeof(char));
-                numBitLidos = 0;
+                numBitLidos++;
+
+                if (numBitLidos == 8) {
+                    arquivoEntrada.read(&bytecorrente, sizeof(char));
+                    numBitLidos = 0;
+                }
             }
         }
-    }
 
-    cout << "Descompressao realizada com sucesso!" << endl;
+        cout << "Descompressao realizada com sucesso!" << endl;
+
+    }else {
+        cout << "Nao foi possivel abrir o arquivo!" << endl;
+    }
 }
 
 
 int main() {
 
-    /*comprimir("inputs/books.txt", "comprimidos/booksComprimido.huf");
+    comprimir("inputs/books.txt", "comprimidos/booksComprimido.huf");
     descomprimir("comprimidos/booksComprimido.huf", "descomprimidos/booksDesComprimido.txt");
 
     comprimir("inputs/ch05-patterns.pdf", "comprimidos/ch05-patternsComprimido.huf");
@@ -353,67 +363,69 @@ int main() {
     descomprimir("comprimidos/Huffman_coding_WikipediaComprimido.huf", "descomprimidos/Huffman_coding_WikipediaDesComprimido.tar");
 
     comprimir("inputs/empty_file.txt", "comprimidos/empty_fileComprimido.huf");
-    descomprimir("comprimidos/empty_fileComprimido.huf", "descomprimidos/empty_fileDesComprimido.txt");*/
+    descomprimir("comprimidos/empty_fileComprimido.huf", "descomprimidos/empty_fileDesComprimido.txt");
 
 
-    int opc = -1;
+    // int opc = -1;
 
-    string nomeArquivoEntrada, nomeArquivoSaida;
+    // string nomeArquivoEntrada, nomeArquivoSaida;
 
-    while(opc == -1){
+    // cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
 
-        cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
+    // cout << "Digite 0 para comprimir e 1 para descomprimir." << endl;
 
-        cout << "Digite 0 para comprimir e 1 para descomprimir." << endl;
+    // cin >> opc;
 
-        cin >> opc;
+    // while(opc == 0 || opc ==1){
 
-        if(opc == 0) {
+    //     if(opc == 0) {
 
-            cout << "Digite o nome do arquivo a ser comprimido." << endl;
-            cin >> nomeArquivoEntrada;
-            cout << "Digite o nome do arquivo de saida." << endl;
-            cin >> nomeArquivoSaida;
+    //         cout << "Digite o nome do arquivo a ser comprimido." << endl;
+    //         cin >> nomeArquivoEntrada;
+    //         cout << "Digite o nome do arquivo de saida." << endl;
+    //         cin >> nomeArquivoSaida;
 
-            auto inicio = std::chrono::high_resolution_clock::now();
+    //         auto inicio = std::chrono::high_resolution_clock::now();
 
-            cout << endl;
+    //         cout << endl;
 
-            comprimir("inputs/"+nomeArquivoEntrada, "comprimidos/"+nomeArquivoSaida);
+    //         comprimir("inputs/"+nomeArquivoEntrada, "comprimidos/"+nomeArquivoSaida);
 
-            auto fim = std::chrono::high_resolution_clock::now();
-            std::chrono::duration<double>duracao = std::chrono::duration_cast<std::chrono::microseconds>(fim - inicio);
+    //         auto fim = std::chrono::high_resolution_clock::now();
+    //         std::chrono::duration<double>duracao = std::chrono::duration_cast<std::chrono::microseconds>(fim - inicio);
 
-            cout << "Tempo de execcao: " << duracao.count() << " microsegundos." << endl;
+    //         cout << "Tempo de execcao: " << duracao.count() << " microsegundos." << endl;
 
-            opc = -1;
+    //         opc = -1;
 
-        }else if(opc == 1){
+    //     }else if(opc == 1){
 
-            cout << "Digite o nome do arquivo a ser descomprimido." << endl;
-            cin >> nomeArquivoEntrada;
-            cout << "Digite o nome do arquivo de saida." << endl;
-            cin >> nomeArquivoSaida;
+    //         cout << "Digite o nome do arquivo a ser descomprimido." << endl;
+    //         cin >> nomeArquivoEntrada;
+    //         cout << "Digite o nome do arquivo de saida." << endl;
+    //         cin >> nomeArquivoSaida;
 
-            auto inicio = std::chrono::high_resolution_clock::now();
+    //         auto inicio = std::chrono::high_resolution_clock::now();
 
-            cout << endl;
+    //         cout << endl;
 
-            descomprimir("comprimidos/"+nomeArquivoEntrada, "descomprimidos/"+nomeArquivoSaida);
+    //         descomprimir("comprimidos/"+nomeArquivoEntrada, "descomprimidos/"+nomeArquivoSaida);
 
-            auto fim = std::chrono::high_resolution_clock::now();
-            std::chrono::duration<double>duracao = std::chrono::duration_cast<std::chrono::microseconds>(fim - inicio);
+    //         auto fim = std::chrono::high_resolution_clock::now();
+    //         std::chrono::duration<double>duracao = std::chrono::duration_cast<std::chrono::microseconds>(fim - inicio);
 
-            cout << "Tempo de execcao: " << duracao.count() << " microsegundos." << endl;
+    //         cout << "Tempo de execcao: " << duracao.count() << " microsegundos." << endl;
 
-            opc = -1;
+    //         opc = -1;
 
-        }else{
-            cout << "Digite 0 para comprimir e 1 para descomprimir." << endl;
-            cin >> opc;
-        }
+    //     }
 
-    }
+    //     cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl << endl;
+    //     cout << "Digite 0 para comprimir e 1 para descomprimir." << endl;
+    //     cin >> opc;
+        
+
+    // }
     return 0;
 }
 

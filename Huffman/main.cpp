@@ -192,8 +192,6 @@ void codificarArquivo(string nomeArquivoEntrada, noHeap *arvoreHuffman, ofstream
             qtdBytesEscritos ++;
         }
 
-        cout << qtdBytesEscritos << endl;
-
         arquivoSaida.seekp(posQtdUltBits);
 
         arquivoSaida.write((char *)&qtdBits, sizeof(int));
@@ -337,8 +335,6 @@ void descomprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
         int limite = 0;
 
-        cout << "qtd bytes" <<  qtdBytesEscritos << endl;
-
         if(tamanhoArvore != 1 && arvore != "%"){
             while (!arquivoEntrada.eof()) {
 
@@ -354,7 +350,6 @@ void descomprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
                 if (!(no->esq) && !(no->dir)) {
                     arquivoSaida.write(&no->letra, sizeof(char));
-                    //cout << limite << endl;
                     if (limite == (qtdBytesEscritos - 1) && numBitLidos == qtdUltBits) {
                        break;
                     }

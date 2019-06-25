@@ -13,35 +13,22 @@
   <component name="ChangeListManager">
     <list default="true" id="9caa808c-e634-4372-a571-ac8c1a5d73b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Huffman.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Huffman.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Huffman.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/Huffman_coding_WikipediaComprimido.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/Stavechurch-heddalComprimido.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/booksComprimido.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/ch05-patternsComprimido.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/empty_fileComprimido.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comprimidos/Huffman_coding_WikipediaComprimido.huf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comprimidos/Stavechurch-heddalComprimido.huf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comprimidos/booksComprimido.huf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comprimidos/ch05-patternsComprimido.huf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comprimidos/empty_fileComprimido.huf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/descomprimidos/Huffman_coding_WikipediaDesComprimido.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/descomprimidos/Stavechurch-heddalDesComprimido.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/descomprimidos/booksDesComprimido.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/descomprimidos/ch05-patternsDesComprimido.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/descomprimidos/empty_fileDesComprimido.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs/Huffman_coding_Wikipedia.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs/Stavechurch-heddal.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs/books.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs/ch05-patterns.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs/empty_file.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QuickIndice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QuickIndice/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QuicksotRand/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QuicksotRand/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QuicksotRand/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../QuicksotRand/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trab3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Trab3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trab4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Trab4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trab4/cmake-build-debug/CMakeFiles/Trab4.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../Trab4/cmake-build-debug/CMakeFiles/Trab4.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trab4/cmake-build-debug/CMakeFiles/Trab4.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Trab4/cmake-build-debug/CMakeFiles/Trab4.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trab4/cmake-build-debug/Trab4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Trab4/cmake-build-debug/Trab4.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trab4/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Trab4/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrabAula9/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TrabAula9/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrabAula9/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TrabAula9/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrabAula9/cmake-build-debug/CMakeFiles/TrabAula9.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../TrabAula9/cmake-build-debug/CMakeFiles/TrabAula9.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrabAula9/cmake-build-debug/CMakeFiles/TrabAula9.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../TrabAula9/cmake-build-debug/CMakeFiles/TrabAula9.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrabAula9/cmake-build-debug/TrabAula9.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../TrabAula9/cmake-build-debug/TrabAula9.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrabAula9/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../TrabAula9/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trabalho1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Trabalho1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/CMakeFiles/Trabalho1.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/Trabalho1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Trabalho1/cmake-build-debug/Trabalho1.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trabalho2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Trabalho2/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,21 +43,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-578">
-              <caret line="365" lean-forward="true" selection-start-line="365" selection-end-line="365" />
+            <state relative-caret-position="178">
+              <caret line="176" column="19" selection-start-line="176" selection-start-column="12" selection-end-line="176" selection-end-column="19" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#125#142#0" expanded="true" />
-                <element signature="e#314#471#0" />
-                <element signature="e#473#939#0" />
-                <element signature="e#941#1375#0" />
-                <element signature="e#1377#1748#0" />
-                <element signature="e#1750#2151#0" />
-                <element signature="e#2153#2507#0" />
-                <element signature="e#2510#4150#0" />
-                <element signature="e#4152#5023#0" />
-                <element signature="e#5025#5520#0" />
-                <element signature="e#5522#7318#0" />
+                <element signature="e#4131#5272#0" />
+                <element signature="e#5274#5769#0" />
+                <element signature="e#5771#7948#0" />
               </folding>
             </state>
           </provider>
@@ -122,7 +102,7 @@
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="950" />
-    <option name="width" value="979" />
+    <option name="width" value="980" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -205,21 +185,23 @@
       <workItem from="1560985620764" duration="7207000" />
       <workItem from="1561150501687" duration="13066000" />
       <workItem from="1561167372112" duration="3290000" />
+      <workItem from="1561425860933" duration="250000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89811000" />
+    <option name="totallyTimeSpent" value="90061000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.147651" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14966443" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5339943" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.52691215" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.07365439" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -267,21 +249,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-578">
-          <caret line="365" lean-forward="true" selection-start-line="365" selection-end-line="365" />
+        <state relative-caret-position="178">
+          <caret line="176" column="19" selection-start-line="176" selection-start-column="12" selection-end-line="176" selection-end-column="19" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#125#142#0" expanded="true" />
-            <element signature="e#314#471#0" />
-            <element signature="e#473#939#0" />
-            <element signature="e#941#1375#0" />
-            <element signature="e#1377#1748#0" />
-            <element signature="e#1750#2151#0" />
-            <element signature="e#2153#2507#0" />
-            <element signature="e#2510#4150#0" />
-            <element signature="e#4152#5023#0" />
-            <element signature="e#5025#5520#0" />
-            <element signature="e#5522#7318#0" />
+            <element signature="e#4131#5272#0" />
+            <element signature="e#5274#5769#0" />
+            <element signature="e#5771#7948#0" />
           </folding>
         </state>
       </provider>

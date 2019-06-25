@@ -180,8 +180,9 @@ void codificarArquivo(string nomeArquivoEntrada, noHeap *arvoreHuffman, ofstream
             bit_buffer = bit_buffer << 1;
             numBitsLidos ++;
         }
-
-        arquivoSaida.write(&bit_buffer, sizeof(char));
+        if(qtdBits != 8){
+            arquivoSaida.write(&bit_buffer, sizeof(char));
+        }
 
         arquivoSaida.seekp(posQtdUltBits);
 

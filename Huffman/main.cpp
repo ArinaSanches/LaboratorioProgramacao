@@ -137,6 +137,12 @@ void codificarArquivo(string nomeArquivoEntrada, noHeap *arvoreHuffman, ofstream
 
     arquivoSaida.write((char *)&qtdUltBits, sizeof(int));
 
+    long posqtdBytesEscritos = arquivoSaida.tellp();
+
+    int qtdBytesEscritos = 0;
+
+    arquivoSaida.write((char *)&qtdBytesEscritos, sizeof(int));
+
     int numBitsLidos = 0;
 
     char byteLido;
@@ -161,6 +167,7 @@ void codificarArquivo(string nomeArquivoEntrada, noHeap *arvoreHuffman, ofstream
                     arquivoSaida.write(&bit_buffer, sizeof(char));
                     numBitsLidos = 0;
                     bit_buffer = 0;
+                    qtdBytesEscritos ++;
                 }
 
                 bit_buffer = bit_buffer << 1;
@@ -182,11 +189,19 @@ void codificarArquivo(string nomeArquivoEntrada, noHeap *arvoreHuffman, ofstream
         }
         if(qtdBits != 8){
             arquivoSaida.write(&bit_buffer, sizeof(char));
+            qtdBytesEscritos ++;
         }
+
+        cout << qtdBytesEscritos << endl;
 
         arquivoSaida.seekp(posQtdUltBits);
 
         arquivoSaida.write((char *)&qtdBits, sizeof(int));
+
+        arquivoSaida.seekp(posqtdBytesEscritos);
+
+        arquivoSaida.write((char *)&qtdBytesEscritos, sizeof(int));
+
 
         arquivoEntrada.close();
     }else {
@@ -308,6 +323,10 @@ void descomprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
         arquivoEntrada.read((char *)&qtdUltBits, sizeof(int));
 
+        int qtdBytesEscritos = 0;
+
+        arquivoEntrada.read((char *)&qtdBytesEscritos, sizeof(int));
+
         char bytecorrente;
 
         int numBitLidos = 0;
@@ -315,6 +334,10 @@ void descomprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
         noHeap* no = arvoreHuffman;
 
         arquivoEntrada.read(&bytecorrente, sizeof(char));
+
+        int limite = 0;
+
+        cout << "qtd bytes" <<  qtdBytesEscritos << endl;
 
         if(tamanhoArvore != 1 && arvore != "%"){
             while (!arquivoEntrada.eof()) {
@@ -331,11 +354,9 @@ void descomprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
 
                 if (!(no->esq) && !(no->dir)) {
                     arquivoSaida.write(&no->letra, sizeof(char));
-                    if (arquivoEntrada.peek() == EOF && numBitLidos == qtdUltBits) {
-                        break;
-                    }
-                    if(arquivoSaida.eof()){
-                        break;
+                    //cout << limite << endl;
+                    if (limite == (qtdBytesEscritos - 1) && numBitLidos == qtdUltBits) {
+                       break;
                     }
                     no = arvoreHuffman;
                 }
@@ -344,6 +365,7 @@ void descomprimir(string nomeArquivoEntrada, string nomeArquivoSaida){
                 if (numBitLidos == 8) {
                     arquivoEntrada.read(&bytecorrente, sizeof(char));
                     numBitLidos = 0;
+                    limite ++;
                 }
             }
         }

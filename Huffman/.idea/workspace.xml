@@ -12,22 +12,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9caa808c-e634-4372-a571-ac8c1a5d73b7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comprimidos/Huffman_coding_WikipediaComprimido.huf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comprimidos/Stavechurch-heddalComprimido.huf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comprimidos/booksComprimido.huf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comprimidos/ch05-patternsComprimido.huf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comprimidos/empty_fileComprimido.huf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/descomprimidos/Huffman_coding_WikipediaDesComprimido.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/descomprimidos/Stavechurch-heddalDesComprimido.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/descomprimidos/booksDesComprimido.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/descomprimidos/ch05-patternsDesComprimido.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/descomprimidos/empty_fileDesComprimido.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputs/Huffman_coding_Wikipedia.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputs/Stavechurch-heddal.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputs/books.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputs/ch05-patterns.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputs/empty_file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/Huffman_coding_WikipediaComprimido.huf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/Stavechurch-heddalComprimido.huf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/booksComprimido.huf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/ch05-patternsComprimido.huf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/comprimidos/empty_fileComprimido.huf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/descomprimidos/Huffman_coding_WikipediaDesComprimido.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/descomprimidos/Stavechurch-heddalDesComprimido.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/descomprimidos/booksDesComprimido.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/descomprimidos/ch05-patternsDesComprimido.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/descomprimidos/empty_fileDesComprimido.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -43,14 +37,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="176" column="19" selection-start-line="176" selection-start-column="12" selection-end-line="176" selection-end-column="19" />
+            <state relative-caret-position="366">
+              <caret line="367" column="20" selection-start-line="367" selection-start-column="20" selection-end-line="367" selection-end-column="20" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#125#142#0" expanded="true" />
                 <element signature="e#4131#5272#0" />
                 <element signature="e#5274#5769#0" />
-                <element signature="e#5771#7948#0" />
               </folding>
             </state>
           </provider>
@@ -185,12 +178,12 @@
       <workItem from="1560985620764" duration="7207000" />
       <workItem from="1561150501687" duration="13066000" />
       <workItem from="1561167372112" duration="3290000" />
-      <workItem from="1561425860933" duration="250000" />
+      <workItem from="1561425860933" duration="4547000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90061000" />
+    <option name="totallyTimeSpent" value="94358000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -201,7 +194,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.52691215" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.61331445" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.07365439" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -211,7 +204,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.3286119" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.388102" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.74787533" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -249,14 +242,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="176" column="19" selection-start-line="176" selection-start-column="12" selection-end-line="176" selection-end-column="19" />
+        <state relative-caret-position="366">
+          <caret line="367" column="20" selection-start-line="367" selection-start-column="20" selection-end-line="367" selection-end-column="20" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#125#142#0" expanded="true" />
             <element signature="e#4131#5272#0" />
             <element signature="e#5274#5769#0" />
-            <element signature="e#5771#7948#0" />
           </folding>
         </state>
       </provider>

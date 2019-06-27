@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Trabalho4/avl.cpp
+avl.hpp
+/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Trabalho4/avl.hpp
+
+/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Trabalho4/avl.hpp
+
+/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Trabalho4/main.cpp
+iostream
+-
+avl.hpp
+/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Trabalho4/avl.hpp
+

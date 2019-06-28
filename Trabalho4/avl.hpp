@@ -13,7 +13,7 @@ struct DicAVL { Noh *raiz; }; // Nulo quando ´arvore vazia.
 
 void inicializar (DicAVL &D); // Inicializa D como uma ´arvore vazia.
 
-//NAO MUDAR ENDEREÇO DO NO DE UMA CHAVEo TC 
+//NAO MUDAR ENDEREÇO DO NO DE UMA CHAVEo TC
 Noh* inserir (DicAVL &D, TC c, TV v); // Retorna um ponteiro para o
 // n´o, ou nulo se erro de aloca¸c~ao
 
@@ -26,7 +26,7 @@ void remover (DicAVL &D, Noh *n); // ’n’ aponta para o n´o a ser removido
 
 void terminar (DicAVL &D); // Desaloca os n´os da ´arvore.
 
-
+void rotacaoEsq(Noh *raiz);
 
 #endif //TRABALHO4_AVL_HPP
 

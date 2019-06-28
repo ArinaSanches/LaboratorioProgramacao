@@ -1,4 +1,4 @@
-"/home/arinasanches/Área de Trabalho/CLion-2019.1.4/clion-2019.1.4/bin/cmake/linux/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Trabalho4"
+"C:\Program Files\JetBrains\CLion 2018.3.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Arina\CLionProjects\LaboratorioProgramacao\Trabalho4
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Trabalho4/cmake-build-debug
+-- Build files have been written to: C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho4/cmake-build-debug

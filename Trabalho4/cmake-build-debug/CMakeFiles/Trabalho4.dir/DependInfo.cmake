@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Trabalho4/avl.cpp" "/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Trabalho4/cmake-build-debug/CMakeFiles/Trabalho4.dir/avl.cpp.o"
-  "/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Trabalho4/main.cpp" "/home/arinasanches/Área de Trabalho/LaboratorioProgramacao/Trabalho4/cmake-build-debug/CMakeFiles/Trabalho4.dir/main.cpp.o"
+  "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho4/avl.cpp" "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho4/cmake-build-debug/CMakeFiles/Trabalho4.dir/avl.cpp.obj"
+  "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho4/main.cpp" "C:/Users/Arina/CLionProjects/LaboratorioProgramacao/Trabalho4/cmake-build-debug/CMakeFiles/Trabalho4.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

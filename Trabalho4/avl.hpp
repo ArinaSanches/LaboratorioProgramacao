@@ -26,7 +26,5 @@ void remover (DicAVL &D, Noh *n); // ’n’ aponta para o n´o a ser removido
 
 void terminar (DicAVL &D); // Desaloca os n´os da ´arvore.
 
-void rotacaoEsq(Noh *raiz);
-
 #endif //TRABALHO4_AVL_HPP
 

@@ -99,7 +99,6 @@ int calcularDesbanciamento(Noh *no){
     return altura(no->esq) - altura(no->dir);
 }
 
-
 Noh* inserir(DicAVL &D, TC c, TV v){
 
     if(!D.raiz){
@@ -154,7 +153,7 @@ Noh* inserir(DicAVL &D, TC c, TV v){
             }else{
                 paiNo->esq = no;
             }
-            return no;
+            return noInserido;
         }else if(balanceamaento < -1 && no->chave < c){
             cout << "subarvore direita maior, rot esq, " << no->chave << endl;
             Noh *paiNo = no->pai;
@@ -164,15 +163,41 @@ Noh* inserir(DicAVL &D, TC c, TV v){
             }else{
                 paiNo->dir = no;
             }
-            return no;
+            return noInserido;
         }
         if(!no->pai){
-            return no;
+            return noInserido;
         }else{
             no = no->pai;
         }
     }
 }
+
+Noh* procurar (DicAVL &D, TC c){
+
+    bool inserir = false;
+
+    Noh *no = D.raiz;
+
+    while(!inserir){
+        if(no->chave > c){
+            if(!no->esq){
+                return nullptr;
+            }else {
+                no = no->esq;
+            }
+        }else if(no->chave < c){
+            if(!no->dir){
+                return nullptr;
+            }else {
+                no = no->dir;
+            }
+        }else{
+            return no;
+        }
+    }
+}
+
 
 /*
  Noh *raiz = D.raiz;

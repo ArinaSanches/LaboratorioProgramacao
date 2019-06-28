@@ -80,6 +80,31 @@ int main() {
 
     exibirArvore(raiz.raiz);
 
+    cout << endl;
+
+    cout << "inserindo 0" << endl;
+
+    no = inserir(raiz, 0, 0);
+
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    cout << "inserindo -1" << endl;
+
+    no = inserir(raiz, -1, -1);
+
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    cout << "inserindo -1" << endl;
+
+    no = inserir(raiz, -2, -2);
+
+    exibirArvore(raiz.raiz);
+
+
 
     return 0;
 }

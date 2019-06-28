@@ -146,7 +146,7 @@ Noh* inserir(DicAVL &D, TC c, TV v){
         int balanceamaento = calcularDesbanciamento(no);
 
         if(balanceamaento > 1 && no->chave > c){
-            cout << "subarvore esquerda maior, rot dir" << endl;
+            cout << "subarvore esquerda maior, rot dir " << no->chave <<endl;
             Noh *paiNo = no->pai;
             no = rotacaoDir(no);
             if(!no->pai){

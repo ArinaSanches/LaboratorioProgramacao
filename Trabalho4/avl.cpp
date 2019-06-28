@@ -35,23 +35,28 @@ int calcularAltura(Noh *raiz){
 Noh * Esq(Noh *raiz){
 
     Noh* novaRaiz = raiz->dir;
+    Noh* paiRaiz = raiz->pai;
 
     raiz->dir = novaRaiz->esq;
+
     novaRaiz->esq = raiz;
 
     raiz->h = calcularAltura(raiz);
 
+    raiz->pai = novaRaiz;
+
     novaRaiz->h = calcularAltura(novaRaiz);
 
-    return novaRaiz;
+    novaRaiz->pai = paiRaiz;
 
+    return novaRaiz;
 }
 
 Noh * rotacaoDir(Noh *raiz){
 
     Noh* subDir = raiz->esq->dir;
-
     Noh* novaRaiz = raiz->esq;
+    Noh* paiRaiz = raiz->pai;
 
     raiz->esq = subDir;
 
@@ -59,15 +64,20 @@ Noh * rotacaoDir(Noh *raiz){
 
     raiz->h = calcularAltura(raiz);
 
-    novaRaiz->esq->h = calcularAltura(novaRaiz);
+    raiz->pai = novaRaiz;
+
+    novaRaiz->h = calcularAltura(novaRaiz);
+
+    novaRaiz->pai = paiRaiz;
 
     return novaRaiz;
 }
 
-Noh* novoNoh(TC c, TV v){
+Noh* novoNoh(TC c, TV v, Noh *pai){
     Noh *no = new Noh;
     no->esq = nullptr;
     no->dir = nullptr;
+    no->pai = pai;
     no->chave = c;
     no->valor = v;
     no->h = 1;
@@ -89,34 +99,34 @@ int calcularDesbanciamento(Noh *no){
     return altura(no->esq) - altura(no->dir);
 }
 
+
 Noh* inserir(DicAVL &D, TC c, TV v){
 
     if(!D.raiz){
-        D.raiz = novoNoh(c, v);
+        D.raiz = novoNoh(c, v, nullptr);
         return D.raiz;
     }
 
     bool inserir = false;
     Noh *no = D.raiz;
-    Noh *anterior = new Noh;
+
+    Noh *noInserido;
 
     while(!inserir){
         if(no->chave > c){
             if(!no->esq){
-                Noh *noInserido = novoNoh(c, v);
+                noInserido = novoNoh(c, v, no);
                 no->esq = noInserido;
                 inserir = true;
             }else {
-                anterior = no;
                 no = no->esq;
             }
         }else if(no->chave < c){
             if(!no->dir){
-                Noh *noInserido = novoNoh(c, v);
+                noInserido = novoNoh(c, v, no);
                 no->dir = noInserido;
                 inserir = true;
             }else {
-                anterior = no;
                 no = no->dir;
             }
         }else{
@@ -124,10 +134,48 @@ Noh* inserir(DicAVL &D, TC c, TV v){
         }
     }
 
-    no->h = calcularAltura(no);
-    anterior->h = calcularAltura(anterior);
 
-    Noh *raiz = D.raiz;
+    /*no->h = calcularAltura(no);
+    if(no->pai) {
+        no->pai->h = calcularAltura(no->pai);
+    }*/
+
+    bool balancea = false;
+    while(!balancea){
+        no->h = calcularAltura(no);
+        int balanceamaento = calcularDesbanciamento(no);
+
+        if(balanceamaento > 1 && no->chave > c){
+            cout << "subarvore esquerda maior, rot dir" << endl;
+            Noh *paiNo = no->pai;
+            no = rotacaoDir(no);
+            if(!no->pai){
+                D.raiz = no;
+            }else{
+                paiNo->esq = no;
+            }
+            return no;
+        }else if(balanceamaento < -1 && no->chave < c){
+            cout << "subarvore direita maior, rot esq, " << no->chave << endl;
+            Noh *paiNo = no->pai;
+            no = Esq(no);
+            if(!no->pai){
+                D.raiz = no;
+            }else{
+                paiNo->dir = no;
+            }
+            return no;
+        }
+        if(!no->pai){
+            return no;
+        }else{
+            no = no->pai;
+        }
+    }
+}
+
+/*
+ Noh *raiz = D.raiz;
     bool balancea = false, ehraiz = true;
     while(!balancea){
         int balanceamaento = calcularDesbanciamento(raiz);
@@ -155,4 +203,4 @@ Noh* inserir(DicAVL &D, TC c, TV v){
             balancea = true;
         }
     }
-}
+ */

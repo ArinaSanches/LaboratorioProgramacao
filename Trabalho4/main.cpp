@@ -17,23 +17,15 @@ int main() {
 
     inicializar(raiz);
 
-    cout << "inserindo 2" << endl;
-    Noh *no = inserir(raiz, 2, 2);
-
-    exibirArvore(raiz.raiz);
-
-    cout << endl;
     cout << "inserindo 1" << endl;
-
-    no = inserir(raiz, 1, 1);
+    Noh *no = inserir(raiz, 1, 1);
 
     exibirArvore(raiz.raiz);
 
     cout << endl;
+    cout << "inserindo 2" << endl;
 
-    cout << "inserindo 4" << endl;
-
-    no = inserir(raiz, 4, 4);
+    no = inserir(raiz, 2, 2);
 
     exibirArvore(raiz.raiz);
 
@@ -42,6 +34,14 @@ int main() {
     cout << "inserindo 3" << endl;
 
     no = inserir(raiz, 3, 3);
+
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    cout << "inserindo 4" << endl;
+
+    no = inserir(raiz, 4, 4);
 
     exibirArvore(raiz.raiz);
 
@@ -59,6 +59,24 @@ int main() {
     cout << "inserindo 6" << endl;
 
     no = inserir(raiz, 6, 6);
+
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+
+    cout << "inserindo 7" << endl;
+
+    no = inserir(raiz, 7, 7);
+
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+
+    cout << "inserindo 8" << endl;
+
+    no = inserir(raiz, 8, 8);
 
     exibirArvore(raiz.raiz);
 

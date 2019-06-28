@@ -144,7 +144,7 @@ Noh* inserir(DicAVL &D, TC c, TV v){
         no->h = calcularAltura(no);
         int balanceamaento = calcularDesbanciamento(no);
 
-        if(balanceamaento > 1 && no->chave > c){
+        if(balanceamaento > 1 && no->esq->chave > c){
             cout << "subarvore esquerda maior, rot dir " << no->chave <<endl;
             Noh *paiNo = no->pai;
             no = rotacaoDir(no);
@@ -154,7 +154,7 @@ Noh* inserir(DicAVL &D, TC c, TV v){
                 paiNo->esq = no;
             }
             return noInserido;
-        }else if(balanceamaento < -1 && no->chave < c){
+        }else if(balanceamaento < -1 && no->dir->chave < c){
             cout << "subarvore direita maior, rot esq, " << no->chave << endl;
             Noh *paiNo = no->pai;
             no = Esq(no);
@@ -164,6 +164,41 @@ Noh* inserir(DicAVL &D, TC c, TV v){
                 paiNo->dir = no;
             }
             return noInserido;
+        }else if(balanceamaento > 1 && no->esq->chave < c){
+            Noh *paiNo = no;
+            no->esq = Esq(no->esq);
+
+            if(!no->esq->pai){
+                D.raiz = no->esq;
+            }else{
+                paiNo->esq = no->esq;
+            }
+
+            paiNo = no->pai;
+            no = rotacaoDir(no);
+            if(!no->pai){
+                D.raiz = no;
+            }else{
+                paiNo->esq = no;
+            }
+            return noInserido;
+        }else if(balanceamaento < -1 && no->dir->chave > c){
+            Noh *paiNo = no;
+            no->dir = rotacaoDir(no->dir);
+
+            if(!no->dir->pai){
+                D.raiz = no->dir;
+            }else{
+                paiNo->dir = no->dir;
+            }
+
+            paiNo = no->pai;
+            no = Esq(no);
+            if(!no->pai){
+                D.raiz = no;
+            }else{
+                paiNo->dir = no;
+            }
         }
         if(!no->pai){
             return noInserido;

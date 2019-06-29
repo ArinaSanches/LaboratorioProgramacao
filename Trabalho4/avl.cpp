@@ -41,7 +41,6 @@ Noh * Esq(Noh *raiz){
 
     if(novaRaiz->esq) {
         novaRaiz->esq->pai = raiz;
-        cout << "AQUI  " << novaRaiz->esq->pai->chave << endl;
     }
 
     novaRaiz->esq = raiz;
@@ -242,21 +241,25 @@ Noh* procurar (DicAVL &D, TC c){
     }
 }
 
+Noh* minimoDireito(Noh *no){
+    Noh *minimo = no;
+    while(minimo->esq){
+        minimo = minimo->esq;
+    }
+    return minimo;
+}
+
 void remover(DicAVL &D, Noh *no){
 
     bool inserir = false;
 
     Noh *raiz = D.raiz;
 
-
-    int pai = 0;
-
     while(!inserir){
+
         if(raiz->chave > no->chave){
-            pai = 0;
             raiz = raiz->esq;
         }else if(raiz->chave < no->chave){
-            pai = 1;
             raiz = raiz->dir;
         }else{
             inserir = true;
@@ -265,25 +268,64 @@ void remover(DicAVL &D, Noh *no){
 
     if(!raiz->esq || !raiz->dir){
 
+
         if(raiz->esq){
-            if(raiz->pai->esq == raiz){
-                raiz->pai->esq = raiz->esq;
+            if(raiz->pai) {
+                if (raiz->pai->esq == raiz) {
+                    raiz->pai->esq = raiz->esq;
+                } else {
+                    raiz->pai->dir = raiz->esq;
+                }
+                raiz->esq->pai = raiz->pai;
             }else{
-                raiz->pai->dir = raiz->esq;
+                raiz->esq->pai = nullptr;
+                D.raiz = raiz->esq;
             }
         }else if(raiz->dir){
-            if(raiz->pai->dir == raiz){
-                raiz->pai->dir = raiz->dir;
+            if(raiz->pai) {
+                if (raiz->pai->dir == raiz) {
+                    raiz->pai->dir = raiz->dir;
+                } else {
+                    raiz->pai->esq = raiz->dir;
+                }
+                raiz->dir->pai = raiz->pai;
             }else{
-                raiz->pai->esq = raiz->dir;
+                raiz->dir->pai = nullptr;
+                D.raiz = raiz->dir;
             }
         }else{
-            if(raiz->pai->dir == raiz){
-                raiz->pai->dir = nullptr;
+            if(raiz->pai) {
+                if (raiz->pai->dir == raiz) {
+                    raiz->pai->dir = nullptr;
+                } else {
+                    raiz->pai->esq = nullptr;
+                }
             }else{
-                raiz->pai->esq = nullptr;
+                D.raiz = nullptr;
             }
         }
+        raiz = nullptr;
+        free(raiz);
+    }else{
+        Noh *minimoDir = minimoDireito(raiz->dir);
+        if(raiz->pai) {
+            if (raiz->pai->dir == raiz) {
+                raiz->pai->dir = minimoDir;
+            } else {
+                raiz->pai->esq = minimoDir;
+            }
+            minimoDir->pai->esq = nullptr;
+            minimoDir->pai = raiz->pai;
+
+        }else{
+            minimoDir->pai->esq = nullptr;
+            minimoDir->pai = nullptr;
+            D.raiz = minimoDir;
+        }
+        raiz->esq->pai = minimoDir;
+        raiz->dir->pai = minimoDir;
+        minimoDir->esq = raiz->esq;
+        minimoDir->dir = raiz->dir;
         raiz = nullptr;
         free(raiz);
     }

@@ -39,6 +39,11 @@ Noh * Esq(Noh *raiz){
 
     raiz->dir = novaRaiz->esq;
 
+    if(novaRaiz->esq) {
+        novaRaiz->esq->pai = raiz;
+        cout << "AQUI  " << novaRaiz->esq->pai->chave << endl;
+    }
+
     novaRaiz->esq = raiz;
 
     raiz->h = calcularAltura(raiz);
@@ -59,6 +64,10 @@ Noh * rotacaoDir(Noh *raiz){
     Noh* paiRaiz = raiz->pai;
 
     raiz->esq = subDir;
+
+    if(subDir){
+        subDir->pai = raiz;
+    }
 
     novaRaiz->dir = raiz;
 
@@ -232,6 +241,62 @@ Noh* procurar (DicAVL &D, TC c){
         }
     }
 }
+
+void remover(DicAVL &D, Noh *no){
+
+    bool inserir = false;
+
+    Noh *raiz = D.raiz;
+
+
+    int pai = 0;
+
+    while(!inserir){
+        if(raiz->chave > no->chave){
+            pai = 0;
+            raiz = raiz->esq;
+        }else if(raiz->chave < no->chave){
+            pai = 1;
+            raiz = raiz->dir;
+        }else{
+            inserir = true;
+        }
+    }
+
+    if(!raiz->esq || !raiz->dir){
+
+        if(raiz->esq){
+            if(raiz->pai->esq == raiz){
+                raiz->pai->esq = raiz->esq;
+            }else{
+                raiz->pai->dir = raiz->esq;
+            }
+        }else if(raiz->dir){
+            if(raiz->pai->dir == raiz){
+                raiz->pai->dir = raiz->dir;
+            }else{
+                raiz->pai->esq = raiz->dir;
+            }
+        }else{
+            if(raiz->pai->dir == raiz){
+                raiz->pai->dir = nullptr;
+            }else{
+                raiz->pai->esq = nullptr;
+            }
+        }
+        raiz = nullptr;
+        free(raiz);
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 /*

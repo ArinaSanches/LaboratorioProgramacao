@@ -266,9 +266,10 @@ void remover(DicAVL &D, Noh *no){
         }
     }
 
+    Noh *noDel;
     if(!raiz->esq || !raiz->dir){
 
-
+        //caso tenha apenas filho esquerdo
         if(raiz->esq){
             if(raiz->pai) {
                 if (raiz->pai->esq == raiz) {
@@ -276,9 +277,11 @@ void remover(DicAVL &D, Noh *no){
                 } else {
                     raiz->pai->dir = raiz->esq;
                 }
+                noDel = raiz->pai;
                 raiz->esq->pai = raiz->pai;
             }else{
                 raiz->esq->pai = nullptr;
+                noDel = raiz->esq;
                 D.raiz = raiz->esq;
             }
         }else if(raiz->dir){
@@ -288,9 +291,11 @@ void remover(DicAVL &D, Noh *no){
                 } else {
                     raiz->pai->esq = raiz->dir;
                 }
+                noDel = raiz->pai;
                 raiz->dir->pai = raiz->pai;
             }else{
                 raiz->dir->pai = nullptr;
+                noDel = raiz->dir;
                 D.raiz = raiz->dir;
             }
         }else{
@@ -300,7 +305,9 @@ void remover(DicAVL &D, Noh *no){
                 } else {
                     raiz->pai->esq = nullptr;
                 }
+                noDel= raiz->pai;
             }else{
+                noDel = nullptr;
                 D.raiz = nullptr;
             }
         }
@@ -322,12 +329,90 @@ void remover(DicAVL &D, Noh *no){
             minimoDir->pai = nullptr;
             D.raiz = minimoDir;
         }
+        if(minimoDir->pai != raiz){
+            noDel = minimoDir->pai;
+        }else{
+            noDel = minimoDir;
+        }
         raiz->esq->pai = minimoDir;
         raiz->dir->pai = minimoDir;
         minimoDir->esq = raiz->esq;
         minimoDir->dir = raiz->dir;
         raiz = nullptr;
         free(raiz);
+    }
+
+    bool balancea = false;
+
+    if(!noDel){
+       balancea = true;
+    }
+
+    while(!balancea){
+        noDel->h = calcularAltura(noDel);
+        int balanceamaento = calcularDesbanciamento(no);
+
+        if(balanceamaento > 1 && calcularDesbanciamento(no->esq) >= 0){
+            Noh *paiNo = noDel->pai;
+            noDel = rotacaoDir(noDel);
+            if(!no->pai){
+                D.raiz = noDel;
+            }else{
+                paiNo->esq = noDel;
+            }
+
+        }else if(balanceamaento > 1 && calcularDesbanciamento(no->esq) < 0){
+            Noh *paiNo = noDel;
+            noDel->esq = Esq(noDel->esq);
+
+            if(!noDel->esq->pai){
+                D.raiz = noDel->esq;
+            }else{
+                paiNo->esq = noDel->esq;
+            }
+
+            paiNo = noDel->pai;
+            noDel = rotacaoDir(noDel);
+            if(!no->pai){
+                D.raiz = noDel;
+            }else{
+                paiNo->esq = noDel;
+            }
+        }else if(balanceamaento < -1 && calcularDesbanciamento(no->dir) <= 0){
+
+            Noh *paiNo = noDel->pai;
+            noDel = Esq(noDel);
+            if(!noDel->pai){
+                D.raiz = noDel;
+            }else{
+                paiNo->dir = noDel;
+            }
+
+        }else if(balanceamaento < -1 && calcularDesbanciamento(no->dir) > 0){
+
+            Noh *paiNo = noDel;
+            noDel->dir = rotacaoDir(noDel->dir);
+
+            if(!noDel->dir->pai){
+                D.raiz = noDel->dir;
+            }else{
+                paiNo->dir = noDel->dir;
+            }
+
+            paiNo = noDel->pai;
+            noDel = Esq(noDel);
+            if(!no->pai){
+                D.raiz = noDel;
+            }else{
+                paiNo->dir = noDel;
+            }
+
+        }
+        if(!noDel->pai){
+            balancea = true;
+        }else{
+            noDel = noDel->pai;
+        }
     }
 }
 

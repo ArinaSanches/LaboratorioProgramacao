@@ -32,7 +32,7 @@ int calcularAltura(Noh *raiz){
     }
 }
 
-Noh * Esq(Noh *raiz){
+Noh * Esq(DicAVL &D,Noh *raiz){
 
     Noh* novaRaiz = raiz->dir;
     Noh* paiRaiz = raiz->pai;
@@ -53,10 +53,19 @@ Noh * Esq(Noh *raiz){
 
     novaRaiz->pai = paiRaiz;
 
+    if(!paiRaiz){
+        D.raiz = novaRaiz;
+    }else{
+        if(paiRaiz->esq == raiz)
+            paiRaiz->esq = novaRaiz;
+        else
+            paiRaiz->dir = novaRaiz;
+    }
+
     return novaRaiz;
 }
 
-Noh * rotacaoDir(Noh *raiz){
+Noh * rotacaoDir(DicAVL &D, Noh *raiz){
 
     Noh* subDir = raiz->esq->dir;
     Noh* novaRaiz = raiz->esq;
@@ -77,6 +86,15 @@ Noh * rotacaoDir(Noh *raiz){
     novaRaiz->h = calcularAltura(novaRaiz);
 
     novaRaiz->pai = paiRaiz;
+
+    if(!paiRaiz){
+        D.raiz = novaRaiz;
+    }else{
+        if(paiRaiz->esq == raiz)
+            paiRaiz->esq = novaRaiz;
+        else
+            paiRaiz->dir = novaRaiz;
+    }
 
     return novaRaiz;
 }
@@ -154,61 +172,21 @@ Noh* inserir(DicAVL &D, TC c, TV v){
 
         if(balanceamaento > 1 && no->esq->chave > c){
             cout << "subarvore esquerda maior, rot dir, caso 1 " << no->chave <<endl;
-            Noh *paiNo = no->pai;
-            no = rotacaoDir(no);
-            if(!no->pai){
-                D.raiz = no;
-            }else{
-                paiNo->esq = no;
-            }
+            no = rotacaoDir(D, no);
             //return noInserido;
         }else if(balanceamaento < -1 && no->dir->chave < c){
             cout << "subarvore direita maior, rot esq, caso 2 " << no->chave << endl;
-            Noh *paiNo = no->pai;
-            no = Esq(no);
-            if(!no->pai){
-                D.raiz = no;
-            }else{
-                paiNo->dir = no;
-            }
+            no = Esq(D, no);
             //return noInserido;
         }else if(balanceamaento > 1 && no->esq->chave < c){
-            Noh *paiNo = no;
             cout << "subarvore esquerda maior, rot esq, caso 3 " << no->chave << endl;
-            no->esq = Esq(no->esq);
-
-            if(!no->esq->pai){
-                D.raiz = no->esq;
-            }else{
-                paiNo->esq = no->esq;
-            }
-
-            paiNo = no->pai;
-            no = rotacaoDir(no);
-            if(!no->pai){
-                D.raiz = no;
-            }else{
-                paiNo->esq = no;
-            }
+            no->esq = Esq(D, no->esq);
+            no = rotacaoDir(D, no);
             //return noInserido;
         }else if(balanceamaento < -1 && no->dir->chave > c){
             cout << "subarvore direita maior, rot esq, caso 4 " << no->chave << endl;
-            Noh *paiNo = no;
-            no->dir = rotacaoDir(no->dir);
-
-            if(!no->dir->pai){
-                D.raiz = no->dir;
-            }else{
-                paiNo->dir = no->dir;
-            }
-
-            paiNo = no->pai;
-            no = Esq(no);
-            if(!no->pai){
-                D.raiz = no;
-            }else{
-                paiNo->dir = no;
-            }
+            no->dir = rotacaoDir(D, no->dir);
+            no = Esq(D, no);
             //return noInserido;
         }
         if(!no->pai){
@@ -370,76 +348,25 @@ void remover(DicAVL &D, Noh *no){
         int balanceamaento = calcularDesbanciamento(noDel);
 
         if(balanceamaento > 1 && calcularDesbanciamento(noDel->esq) >= 0){
+
             cout << "subarvore direita maior, rot esq, caso 1 " << noDel->chave << endl;
-            Noh *paiNo = noDel->pai;
-            noDel = rotacaoDir(noDel);
-            if(!noDel->pai){
-                D.raiz = noDel;
-            }else{
-                if(paiNo->esq == noDel)
-                    paiNo->esq = noDel;
-                else
-                    paiNo->dir = noDel;
-            }
+            noDel = rotacaoDir(D, noDel);
 
         }else if(balanceamaento > 1 && calcularDesbanciamento(noDel->esq) < 0){
+
             cout << "subarvore esquerda maior, rot esq, caso 2 " << noDel->chave << endl;
-            Noh *paiNo = noDel->pai;
-            noDel->esq = Esq(noDel->esq);
+            noDel->esq = Esq(D, noDel->esq);
+            noDel = rotacaoDir(D, noDel);
 
-            if(!noDel->esq->pai){
-                D.raiz = noDel->esq;
-            }else{
-                if(paiNo->esq == noDel)
-                    paiNo->esq = noDel;
-                else
-                    paiNo->dir = noDel;
-            }
-
-            paiNo = noDel->pai;
-            noDel = rotacaoDir(noDel);
-            if(!noDel->pai){
-                D.raiz = noDel;
-            }else{
-                if(paiNo->esq == noDel)
-                    paiNo->esq = noDel;
-                else
-                    paiNo->dir = noDel;
-            }
         }else if(balanceamaento < -1 && calcularDesbanciamento(noDel->dir) <= 0){
+
             cout << "subarvore direita maior, rot esq, caso 3 " << noDel->chave << endl;
-            Noh *paiNo = noDel->pai;
-            noDel = Esq(noDel);
-            if(!noDel->pai){
-                D.raiz = noDel;
-            }else{
-                if(paiNo->esq == noDel)
-                    paiNo->esq = noDel;
-                else
-                    paiNo->dir = noDel;
-            }
+            noDel = Esq(D, noDel);
 
         }else if(balanceamaento < -1 && calcularDesbanciamento(noDel->dir) > 0){
-            cout << "subarvore direita maior, rot esq, caso 4 " << noDel->chave << endl;
-            Noh *paiNo = noDel->pai;
-            noDel->dir = rotacaoDir(noDel->dir);
 
-            if(!noDel->dir->pai){
-                D.raiz = noDel->dir;
-            }else{
-                paiNo->dir = noDel->dir;
-            }
-
-            paiNo = noDel->pai;
-            noDel = Esq(noDel);
-            if(!noDel->pai){
-                D.raiz = noDel;
-            }else{
-                if(paiNo->esq == noDel)
-                    paiNo->esq = noDel;
-                else
-                    paiNo->dir = noDel;
-            }
+            noDel->dir = rotacaoDir(D, noDel->dir);
+            noDel = Esq(D, noDel);
 
         }
         if(!noDel->pai){

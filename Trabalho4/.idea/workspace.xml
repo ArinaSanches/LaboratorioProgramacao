@@ -15,6 +15,11 @@
       <change beforePath="$PROJECT_DIR$/../Huffman/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Huffman/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/avl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/avl.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho4.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho4.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho4.dir/avl.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho4.dir/avl.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho4.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho4.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho4.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Trabalho4.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Trabalho4.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Trabalho4.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -35,20 +40,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/avl.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-614">
-              <caret line="388" lean-forward="true" selection-start-line="388" selection-end-line="388" />
+            <state relative-caret-position="34">
+              <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
               <folding>
                 <element signature="e#46#65#0" expanded="true" />
                 <element signature="e#109#161#0" />
                 <element signature="e#163#574#0" />
-                <element signature="e#576#947#0" />
-                <element signature="e#949#1339#0" />
                 <element signature="e#1341#1534#0" />
                 <element signature="e#1536#1613#0" />
                 <element signature="e#1615#1737#0" />
-                <element signature="e#1739#4492#0" />
                 <element signature="e#4494#4958#0" />
                 <element signature="e#4960#5091#0" />
+                <element signature="e#5719#9833#0" />
               </folding>
             </state>
           </provider>
@@ -66,8 +69,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8">
-              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+            <state relative-caret-position="3">
+              <caret line="167" column="28" selection-start-line="167" selection-start-column="28" selection-end-line="167" selection-end-column="28" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -157,12 +160,12 @@
       <updated>1561723147490</updated>
       <workItem from="1561723150348" duration="47950000" />
       <workItem from="1561844234446" duration="6298000" />
-      <workItem from="1561903046810" duration="13571000" />
+      <workItem from="1561903046810" duration="15656000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67819000" />
+    <option name="totallyTimeSpent" value="69904000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -175,10 +178,10 @@
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
-      <window_info anchor="bottom" id="Messages" order="4" weight="0.6983003" />
+      <window_info anchor="bottom" id="Messages" order="4" weight="0.7422096" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.89518416" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.9164306" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.49858356" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="CMake" order="10" />
@@ -213,28 +216,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/avl.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-614">
-          <caret line="388" lean-forward="true" selection-start-line="388" selection-end-line="388" />
+        <state relative-caret-position="34">
+          <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
           <folding>
             <element signature="e#46#65#0" expanded="true" />
             <element signature="e#109#161#0" />
             <element signature="e#163#574#0" />
-            <element signature="e#576#947#0" />
-            <element signature="e#949#1339#0" />
             <element signature="e#1341#1534#0" />
             <element signature="e#1536#1613#0" />
             <element signature="e#1615#1737#0" />
-            <element signature="e#1739#4492#0" />
             <element signature="e#4494#4958#0" />
             <element signature="e#4960#5091#0" />
+            <element signature="e#5719#9833#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
-          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+        <state relative-caret-position="3">
+          <caret line="167" column="28" selection-start-line="167" selection-start-column="28" selection-end-line="167" selection-end-column="28" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

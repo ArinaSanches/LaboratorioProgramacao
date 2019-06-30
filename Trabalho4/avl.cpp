@@ -153,7 +153,7 @@ Noh* inserir(DicAVL &D, TC c, TV v){
         int balanceamaento = calcularDesbanciamento(no);
 
         if(balanceamaento > 1 && no->esq->chave > c){
-            cout << "subarvore esquerda maior, rot dir " << no->chave <<endl;
+            cout << "subarvore esquerda maior, rot dir, caso 1 " << no->chave <<endl;
             Noh *paiNo = no->pai;
             no = rotacaoDir(no);
             if(!no->pai){
@@ -161,9 +161,9 @@ Noh* inserir(DicAVL &D, TC c, TV v){
             }else{
                 paiNo->esq = no;
             }
-            return noInserido;
+            //return noInserido;
         }else if(balanceamaento < -1 && no->dir->chave < c){
-            cout << "subarvore direita maior, rot esq, " << no->chave << endl;
+            cout << "subarvore direita maior, rot esq, caso 2 " << no->chave << endl;
             Noh *paiNo = no->pai;
             no = Esq(no);
             if(!no->pai){
@@ -171,9 +171,10 @@ Noh* inserir(DicAVL &D, TC c, TV v){
             }else{
                 paiNo->dir = no;
             }
-            return noInserido;
+            //return noInserido;
         }else if(balanceamaento > 1 && no->esq->chave < c){
             Noh *paiNo = no;
+            cout << "subarvore esquerda maior, rot esq, caso 3 " << no->chave << endl;
             no->esq = Esq(no->esq);
 
             if(!no->esq->pai){
@@ -189,8 +190,9 @@ Noh* inserir(DicAVL &D, TC c, TV v){
             }else{
                 paiNo->esq = no;
             }
-            return noInserido;
+            //return noInserido;
         }else if(balanceamaento < -1 && no->dir->chave > c){
+            cout << "subarvore direita maior, rot esq, caso 4 " << no->chave << endl;
             Noh *paiNo = no;
             no->dir = rotacaoDir(no->dir);
 
@@ -207,6 +209,7 @@ Noh* inserir(DicAVL &D, TC c, TV v){
             }else{
                 paiNo->dir = no;
             }
+            //return noInserido;
         }
         if(!no->pai){
             return noInserido;
@@ -268,7 +271,6 @@ void remover(DicAVL &D, Noh *no){
 
     Noh *noDel;
     if(!raiz->esq || !raiz->dir){
-
         //caso tenha apenas filho esquerdo
         if(raiz->esq){
             if(raiz->pai) {
@@ -307,90 +309,119 @@ void remover(DicAVL &D, Noh *no){
                 }
                 noDel= raiz->pai;
             }else{
-                noDel = nullptr;
-                D.raiz = nullptr;
+                if(!noDel->esq && !noDel->dir) {
+                    noDel = nullptr;
+                    D.raiz = nullptr;
+                }else{
+                    noDel = raiz;
+                }
             }
         }
         raiz = nullptr;
         free(raiz);
     }else{
         Noh *minimoDir = minimoDireito(raiz->dir);
+
+        if(minimoDir->pai && minimoDir->pai != raiz) {
+            noDel = minimoDir->pai;
+        }else{
+            noDel = minimoDir;
+        }
         if(raiz->pai) {
             if (raiz->pai->dir == raiz) {
                 raiz->pai->dir = minimoDir;
             } else {
                 raiz->pai->esq = minimoDir;
             }
-            minimoDir->pai->esq = nullptr;
+            if(minimoDir != raiz->dir) {
+                minimoDir->pai->esq = nullptr;
+            }
             minimoDir->pai = raiz->pai;
 
         }else{
-            minimoDir->pai->esq = nullptr;
+            if(minimoDir!= raiz->dir) {
+                minimoDir->pai->esq = nullptr;
+            }
             minimoDir->pai = nullptr;
             D.raiz = minimoDir;
         }
-        if(minimoDir->pai != raiz){
-            noDel = minimoDir->pai;
-        }else{
-            noDel = minimoDir;
+
+        if(raiz->dir != minimoDir) {
+            raiz->dir->pai = minimoDir;
+            minimoDir->dir = raiz->dir;
         }
         raiz->esq->pai = minimoDir;
-        raiz->dir->pai = minimoDir;
         minimoDir->esq = raiz->esq;
-        minimoDir->dir = raiz->dir;
         raiz = nullptr;
         free(raiz);
     }
 
     bool balancea = false;
 
+
     if(!noDel){
-       balancea = true;
+        balancea = true;
     }
 
     while(!balancea){
-        noDel->h = calcularAltura(noDel);
-        int balanceamaento = calcularDesbanciamento(no);
 
-        if(balanceamaento > 1 && calcularDesbanciamento(no->esq) >= 0){
+        noDel->h = calcularAltura(noDel);
+
+        int balanceamaento = calcularDesbanciamento(noDel);
+
+        if(balanceamaento > 1 && calcularDesbanciamento(noDel->esq) >= 0){
+            cout << "subarvore direita maior, rot esq, caso 1 " << noDel->chave << endl;
             Noh *paiNo = noDel->pai;
             noDel = rotacaoDir(noDel);
-            if(!no->pai){
+            if(!noDel->pai){
                 D.raiz = noDel;
             }else{
-                paiNo->esq = noDel;
+                if(paiNo->esq == noDel)
+                    paiNo->esq = noDel;
+                else
+                    paiNo->dir = noDel;
             }
 
-        }else if(balanceamaento > 1 && calcularDesbanciamento(no->esq) < 0){
-            Noh *paiNo = noDel;
+        }else if(balanceamaento > 1 && calcularDesbanciamento(noDel->esq) < 0){
+            cout << "subarvore esquerda maior, rot esq, caso 2 " << noDel->chave << endl;
+            Noh *paiNo = noDel->pai;
             noDel->esq = Esq(noDel->esq);
 
             if(!noDel->esq->pai){
                 D.raiz = noDel->esq;
             }else{
-                paiNo->esq = noDel->esq;
+                if(paiNo->esq == noDel)
+                    paiNo->esq = noDel;
+                else
+                    paiNo->dir = noDel;
             }
 
             paiNo = noDel->pai;
             noDel = rotacaoDir(noDel);
-            if(!no->pai){
+            if(!noDel->pai){
                 D.raiz = noDel;
             }else{
-                paiNo->esq = noDel;
+                if(paiNo->esq == noDel)
+                    paiNo->esq = noDel;
+                else
+                    paiNo->dir = noDel;
             }
-        }else if(balanceamaento < -1 && calcularDesbanciamento(no->dir) <= 0){
-
+        }else if(balanceamaento < -1 && calcularDesbanciamento(noDel->dir) <= 0){
+            cout << "subarvore direita maior, rot esq, caso 3 " << noDel->chave << endl;
             Noh *paiNo = noDel->pai;
             noDel = Esq(noDel);
             if(!noDel->pai){
                 D.raiz = noDel;
             }else{
-                paiNo->dir = noDel;
+                if(paiNo->esq == noDel)
+                    paiNo->esq = noDel;
+                else
+                    paiNo->dir = noDel;
             }
 
-        }else if(balanceamaento < -1 && calcularDesbanciamento(no->dir) > 0){
-
-            Noh *paiNo = noDel;
+        }else if(balanceamaento < -1 && calcularDesbanciamento(noDel->dir) > 0){
+            cout << "subarvore direita maior, rot esq, caso 4 " << noDel->chave << endl;
+            Noh *paiNo = noDel->pai;
             noDel->dir = rotacaoDir(noDel->dir);
 
             if(!noDel->dir->pai){
@@ -401,14 +432,19 @@ void remover(DicAVL &D, Noh *no){
 
             paiNo = noDel->pai;
             noDel = Esq(noDel);
-            if(!no->pai){
+            if(!noDel->pai){
                 D.raiz = noDel;
             }else{
-                paiNo->dir = noDel;
+                if(paiNo->esq == noDel)
+                    paiNo->esq = noDel;
+                else
+                    paiNo->dir = noDel;
             }
 
         }
         if(!noDel->pai){
+            noDel->h = calcularAltura(noDel);
+            D.raiz = noDel;
             balancea = true;
         }else{
             noDel = noDel->pai;
@@ -417,42 +453,3 @@ void remover(DicAVL &D, Noh *no){
 }
 
 
-
-
-
-
-
-
-
-
-
-/*
- Noh *raiz = D.raiz;
-    bool balancea = false, ehraiz = true;
-    while(!balancea){
-        int balanceamaento = calcularDesbanciamento(raiz);
-
-        if(balanceamaento > 1 && raiz->chave > c){
-            cout << "subarvore esquerda maior, rot dir" << endl;
-            raiz = rotacaoDir(raiz);
-            if(ehraiz){
-                D.raiz = raiz;
-            }
-            return raiz;
-        }else if(balanceamaento < -1 && raiz->chave < c){
-            cout << "subarvore direita maior, rot esq, " << raiz->chave << endl;
-            raiz = Esq(raiz);
-            if(ehraiz){
-                D.raiz = raiz;
-            }
-            return raiz;
-        }
-        if(raiz->chave > c){
-            raiz = raiz->esq;
-        }else if(raiz->chave < c){
-            raiz = raiz->dir;
-        }else{
-            balancea = true;
-        }
-    }
- */

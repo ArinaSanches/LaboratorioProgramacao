@@ -171,20 +171,20 @@ Noh* inserir(DicAVL &D, TC c, TV v){
         int balanceamaento = calcularDesbanciamento(no);
 
         if(balanceamaento > 1 && no->esq->chave > c){
-            cout << "subarvore esquerda maior, rot dir, caso 1 " << no->chave <<endl;
+            //cout << "subarvore esquerda maior, rot dir, caso 1 " << no->chave <<endl;
             no = rotacaoDir(D, no);
             //return noInserido;
         }else if(balanceamaento < -1 && no->dir->chave < c){
-            cout << "subarvore direita maior, rot esq, caso 2 " << no->chave << endl;
+            //cout << "subarvore direita maior, rot esq, caso 2 " << no->chave << endl;
             no = Esq(D, no);
             //return noInserido;
         }else if(balanceamaento > 1 && no->esq->chave < c){
-            cout << "subarvore esquerda maior, rot esq, caso 3 " << no->chave << endl;
+            //cout << "subarvore esquerda maior, rot esq, caso 3 " << no->chave << endl;
             no->esq = Esq(D, no->esq);
             no = rotacaoDir(D, no);
             //return noInserido;
         }else if(balanceamaento < -1 && no->dir->chave > c){
-            cout << "subarvore direita maior, rot esq, caso 4 " << no->chave << endl;
+            //cout << "subarvore direita maior, rot esq, caso 4 " << no->chave << endl;
             no->dir = rotacaoDir(D, no->dir);
             no = Esq(D, no);
             //return noInserido;
@@ -233,6 +233,7 @@ Noh* minimoDireito(Noh *no){
 void remover(DicAVL &D, Noh *no){
 
     bool inserir = false;
+    bool encontrou = false;
 
     Noh *raiz = D.raiz;
 
@@ -242,140 +243,164 @@ void remover(DicAVL &D, Noh *no){
             raiz = raiz->esq;
         }else if(raiz->chave < no->chave){
             raiz = raiz->dir;
+        }else if(raiz->chave == no->chave){
+            encontrou = true;
+            inserir = true;
         }else{
             inserir = true;
         }
     }
-
-    Noh *noDel;
-    if(!raiz->esq || !raiz->dir){
-        //caso tenha apenas filho esquerdo
-        if(raiz->esq){
-            if(raiz->pai) {
-                if (raiz->pai->esq == raiz) {
-                    raiz->pai->esq = raiz->esq;
+    if(encontrou) {
+        Noh *noDel;
+        if (!raiz->esq || !raiz->dir) {
+            //caso tenha apenas filho esquerdo
+            if (raiz->esq) {
+                if (raiz->pai) {
+                    if (raiz->pai->esq == raiz) {
+                        raiz->pai->esq = raiz->esq;
+                    } else {
+                        raiz->pai->dir = raiz->esq;
+                    }
+                    noDel = raiz->pai;
+                    raiz->esq->pai = raiz->pai;
                 } else {
-                    raiz->pai->dir = raiz->esq;
+                    raiz->esq->pai = nullptr;
+                    noDel = raiz->esq;
+                    D.raiz = raiz->esq;
                 }
-                noDel = raiz->pai;
-                raiz->esq->pai = raiz->pai;
-            }else{
-                raiz->esq->pai = nullptr;
-                noDel = raiz->esq;
-                D.raiz = raiz->esq;
-            }
-        }else if(raiz->dir){
-            if(raiz->pai) {
-                if (raiz->pai->dir == raiz) {
-                    raiz->pai->dir = raiz->dir;
+            } else if (raiz->dir) {
+                if (raiz->pai) {
+                    if (raiz->pai->dir == raiz) {
+                        raiz->pai->dir = raiz->dir;
+                    } else {
+                        raiz->pai->esq = raiz->dir;
+                    }
+                    noDel = raiz->pai;
+                    raiz->dir->pai = raiz->pai;
                 } else {
-                    raiz->pai->esq = raiz->dir;
+                    raiz->dir->pai = nullptr;
+                    noDel = raiz->dir;
+                    D.raiz = raiz->dir;
                 }
-                noDel = raiz->pai;
-                raiz->dir->pai = raiz->pai;
-            }else{
-                raiz->dir->pai = nullptr;
-                noDel = raiz->dir;
-                D.raiz = raiz->dir;
-            }
-        }else{
-            if(raiz->pai) {
-                if (raiz->pai->dir == raiz) {
-                    raiz->pai->dir = nullptr;
-                } else {
-                    raiz->pai->esq = nullptr;
-                }
-                noDel= raiz->pai;
-            }else{
-                if(!noDel->esq && !noDel->dir) {
-                    noDel = nullptr;
-                    D.raiz = nullptr;
-                }else{
-                    noDel = raiz;
-                }
-            }
-        }
-        raiz = nullptr;
-        free(raiz);
-    }else{
-        Noh *minimoDir = minimoDireito(raiz->dir);
-
-        if(minimoDir->pai && minimoDir->pai != raiz) {
-            noDel = minimoDir->pai;
-        }else{
-            noDel = minimoDir;
-        }
-        if(raiz->pai) {
-            if (raiz->pai->dir == raiz) {
-                raiz->pai->dir = minimoDir;
             } else {
-                raiz->pai->esq = minimoDir;
+                if (raiz->pai) {
+                    if (raiz->pai->dir == raiz) {
+                        raiz->pai->dir = nullptr;
+                    } else {
+                        raiz->pai->esq = nullptr;
+                    }
+                    noDel = raiz->pai;
+                } else {
+                    if (!noDel->esq && !noDel->dir) {
+                        noDel = nullptr;
+                        D.raiz = nullptr;
+                    } else {
+                        noDel = raiz;
+                    }
+                }
             }
-            if(minimoDir != raiz->dir) {
-                minimoDir->pai->esq = nullptr;
-            }
-            minimoDir->pai = raiz->pai;
+            free(raiz);
+        } else {
+            Noh *minimoDir = minimoDireito(raiz->dir);
 
-        }else{
-            if(minimoDir!= raiz->dir) {
-                minimoDir->pai->esq = nullptr;
+            if (minimoDir->pai && minimoDir->pai != raiz) {
+                noDel = minimoDir->pai;
+            } else {
+                noDel = minimoDir;
             }
-            minimoDir->pai = nullptr;
-            D.raiz = minimoDir;
+            if (raiz->pai) {
+                if (raiz->pai->dir == raiz) {
+                    raiz->pai->dir = minimoDir;
+                } else {
+                    raiz->pai->esq = minimoDir;
+                }
+                if (minimoDir != raiz->dir) {
+                    minimoDir->pai->esq = nullptr;
+                }
+                minimoDir->pai = raiz->pai;
+
+            } else {
+                if (minimoDir != raiz->dir) {
+                    minimoDir->pai->esq = nullptr;
+                }
+                minimoDir->pai = nullptr;
+                D.raiz = minimoDir;
+            }
+
+            if (raiz->dir != minimoDir) {
+                raiz->dir->pai = minimoDir;
+                minimoDir->dir = raiz->dir;
+            }
+            raiz->esq->pai = minimoDir;
+            minimoDir->esq = raiz->esq;
+            free(raiz);
         }
 
-        if(raiz->dir != minimoDir) {
-            raiz->dir->pai = minimoDir;
-            minimoDir->dir = raiz->dir;
-        }
-        raiz->esq->pai = minimoDir;
-        minimoDir->esq = raiz->esq;
-        raiz = nullptr;
-        free(raiz);
-    }
-
-    bool balancea = false;
+        bool balancea = false;
 
 
-    if(!noDel){
-        balancea = true;
-    }
-
-    while(!balancea){
-
-        noDel->h = calcularAltura(noDel);
-
-        int balanceamaento = calcularDesbanciamento(noDel);
-
-        if(balanceamaento > 1 && calcularDesbanciamento(noDel->esq) >= 0){
-
-            cout << "subarvore direita maior, rot esq, caso 1 " << noDel->chave << endl;
-            noDel = rotacaoDir(D, noDel);
-
-        }else if(balanceamaento > 1 && calcularDesbanciamento(noDel->esq) < 0){
-
-            cout << "subarvore esquerda maior, rot esq, caso 2 " << noDel->chave << endl;
-            noDel->esq = Esq(D, noDel->esq);
-            noDel = rotacaoDir(D, noDel);
-
-        }else if(balanceamaento < -1 && calcularDesbanciamento(noDel->dir) <= 0){
-
-            cout << "subarvore direita maior, rot esq, caso 3 " << noDel->chave << endl;
-            noDel = Esq(D, noDel);
-
-        }else if(balanceamaento < -1 && calcularDesbanciamento(noDel->dir) > 0){
-
-            noDel->dir = rotacaoDir(D, noDel->dir);
-            noDel = Esq(D, noDel);
-
-        }
-        if(!noDel->pai){
-            noDel->h = calcularAltura(noDel);
-            D.raiz = noDel;
+        if (!noDel) {
             balancea = true;
-        }else{
-            noDel = noDel->pai;
         }
+
+        while (!balancea) {
+
+            noDel->h = calcularAltura(noDel);
+
+            int balanceamaento = calcularDesbanciamento(noDel);
+
+            if (balanceamaento > 1 && calcularDesbanciamento(noDel->esq) >= 0) {
+
+                //cout << "subarvore direita maior, rot esq, caso 1 " << noDel->chave << endl;
+                noDel = rotacaoDir(D, noDel);
+
+            } else if (balanceamaento > 1 && calcularDesbanciamento(noDel->esq) < 0) {
+
+                //cout << "subarvore esquerda maior, rot esq, caso 2 " << noDel->chave << endl;
+                noDel->esq = Esq(D, noDel->esq);
+                noDel = rotacaoDir(D, noDel);
+
+            } else if (balanceamaento < -1 && calcularDesbanciamento(noDel->dir) <= 0) {
+
+                //cout << "subarvore direita maior, rot esq, caso 3 " << noDel->chave << endl;
+                noDel = Esq(D, noDel);
+
+            } else if (balanceamaento < -1 && calcularDesbanciamento(noDel->dir) > 0) {
+
+                noDel->dir = rotacaoDir(D, noDel->dir);
+                noDel = Esq(D, noDel);
+
+            }
+            if (!noDel->pai) {
+                noDel->h = calcularAltura(noDel);
+                D.raiz = noDel;
+                balancea = true;
+            } else {
+                noDel = noDel->pai;
+            }
+        }
+    }
+}
+
+void terminar (DicAVL &D){
+    if(!D.raiz->esq && !D.raiz->dir){
+        free(D.raiz);
+    }else{
+        Noh *no;
+        if(D.raiz->esq){
+            no = D.raiz;
+            D.raiz = D.raiz->esq;
+            terminar(D);
+            D.raiz = no;
+            no->esq = nullptr;
+        }if(D.raiz->dir){
+            no = D.raiz;
+            D.raiz = D.raiz->dir;
+            terminar(D);
+            D.raiz = no;
+            no->dir = nullptr;
+        }
+        free(D.raiz);
     }
 }
 

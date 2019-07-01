@@ -24,101 +24,20 @@ int main() {
 
     inicializar(raiz);
 
-    cout << "inserindo 1" << endl;
     Noh *no = inserir(raiz, 1, 1);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-
-    cout << endl;
-    cout << endl;
-    cout << "inserindo 2" << endl;
-
     no = inserir(raiz, 2, 2);
-
-    cout << endl;
-    cout << endl;
-    exibirArvore(raiz.raiz);
-    cout << endl;
-    cout << endl;
-    cout << "inserindo 3" << endl;
-
     no = inserir(raiz, 3, 3);
-
-    cout << endl;
-    cout << endl;
-    exibirArvore(raiz.raiz);
-    cout << endl;
-    cout << endl;
-    cout << "inserindo 4" << endl;
-
     no = inserir(raiz, 4, 4);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-    cout << endl;
-    cout << endl;
-    cout << "inserindo 5" << endl;
-
-    Noh *noRemovido3 = inserir(raiz, 5, 5);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-    cout << endl;
-    cout << endl;
-    cout << endl;
-    cout << "inserindo 6" << endl;
-
-    Noh *noRemovido5 = inserir(raiz, 6, 6);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-
-    cout << endl;
-    cout << endl;
-    cout << "inserindo 7" << endl;
-
-    Noh *noRemovido4 = inserir(raiz, 7, 7);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-
-    cout << endl;
-    cout << "inserindo 8" << endl;
-
+    Noh *noRemovido4 = inserir(raiz, 5, 5);
+    no = inserir(raiz, 6, 6);
+    no = inserir(raiz, 7, 7);
     no = inserir(raiz, 8, 8);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-    cout << endl;
-    cout << endl;
-    cout << "inserindo 0" << endl;
-
     no = inserir(raiz, 0, 0);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-    cout << endl;
-    cout << endl;
     no = inserir(raiz, -1, -1);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-
-    cout << endl;
     no = inserir(raiz, -2, -2);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-    cout << endl;
-    cout << endl;
-    no  = inserir(raiz, 9, 9);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-
-    cout << endl;
+    Noh *noRemovido5  = inserir(raiz, 9, 9);
     Noh *noRemovido2 = inserir(raiz, 10, 10);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-
-    cout << endl;
-    no = inserir(raiz, 8.1, 8.1);
-    cout << endl;
-    exibirArvore(raiz.raiz);
-
-    cout << endl;
-
+    Noh *noRemovido3 = inserir(raiz, 8.1, 8.1);
     Noh *noRemovido1 = inserir(raiz, 11, 11);
     cout << endl;
     exibirArvore(raiz.raiz);
@@ -126,46 +45,25 @@ int main() {
     cout << endl;
     cout << endl;
 
+    cout << no->chave << endl;
+    cout << noRemovido1->chave << endl;
+    cout << noRemovido2->chave << endl;
+    cout << noRemovido3->chave << endl;
+    cout << noRemovido4->chave << endl;
+    cout << noRemovido5->chave << endl;
 
-    cout << endl;
-    cout << endl;
+    cout << endl << endl << endl;
 
-    cout << endl << "Removendo " << noRemovido1->chave << endl;
+    terminar(raiz);
 
-    remover(raiz, noRemovido1);
-    exibirArvore(raiz.raiz);
+    cout << endl << endl << endl;
+    cout << no->chave << endl;
+    cout << noRemovido1->chave << endl;
+    cout << noRemovido2->chave << endl;
+    cout << noRemovido3->chave << endl;
+    cout << noRemovido4->chave << endl;
+    cout << noRemovido5->chave << endl;
 
-    cout << endl;
-    cout << endl;
-
-    cout << endl << "Removendo " <<  noRemovido2->chave << endl;
-
-    remover(raiz, noRemovido2);
-    exibirArvore(raiz.raiz);
-
-    cout << endl;
-    cout << endl;
-
-    cout << endl << "Removendo " <<  noRemovido3->chave << endl;
-
-    remover(raiz, noRemovido3);
-    exibirArvore(raiz.raiz);
-
-    cout << endl;
-    cout << endl;
-
-    cout << endl << "Removendo " <<  noRemovido4->chave << endl;
-
-    remover(raiz, noRemovido4);
-    exibirArvore(raiz.raiz);
-
-    cout << endl;
-    cout << endl;
-
-    cout << endl << "Removendo " <<  noRemovido5->chave << endl;
-
-    remover(raiz, noRemovido5);
-    exibirArvore(raiz.raiz);
 
     return 0;
 }
@@ -640,7 +538,7 @@ int main() {
 
 //caso 2
 /*
- *    DicAVL raiz;
+ *  DicAVL raiz;
 
     inicializar(raiz);
 

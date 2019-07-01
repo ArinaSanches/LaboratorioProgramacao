@@ -203,22 +203,26 @@ Noh* procurar (DicAVL &D, TC c){
 
     Noh *no = D.raiz;
 
-    while(!inserir){
-        if(no->chave > c){
-            if(!no->esq){
-                return nullptr;
-            }else {
-                no = no->esq;
+    if(no) {
+        while (!inserir) {
+            if (no->chave > c) {
+                if (!no->esq) {
+                    return nullptr;
+                } else {
+                    no = no->esq;
+                }
+            } else if (no->chave < c) {
+                if (!no->dir) {
+                    return nullptr;
+                } else {
+                    no = no->dir;
+                }
+            } else {
+                return no;
             }
-        }else if(no->chave < c){
-            if(!no->dir){
-                return nullptr;
-            }else {
-                no = no->dir;
-            }
-        }else{
-            return no;
         }
+    }else{
+        return nullptr;
     }
 }
 

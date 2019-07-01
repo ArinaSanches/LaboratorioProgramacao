@@ -24,46 +24,147 @@ int main() {
 
     inicializar(raiz);
 
-    Noh *no = inserir(raiz, 1, 1);
-    no = inserir(raiz, 2, 2);
-    no = inserir(raiz, 3, 3);
-    no = inserir(raiz, 4, 4);
-    Noh *noRemovido4 = inserir(raiz, 5, 5);
-    no = inserir(raiz, 6, 6);
-    no = inserir(raiz, 7, 7);
-    no = inserir(raiz, 8, 8);
-    no = inserir(raiz, 0, 0);
-    no = inserir(raiz, -1, -1);
-    no = inserir(raiz, -2, -2);
-    Noh *noRemovido5  = inserir(raiz, 9, 9);
-    Noh *noRemovido2 = inserir(raiz, 10, 10);
-    Noh *noRemovido3 = inserir(raiz, 8.1, 8.1);
-    Noh *noRemovido1 = inserir(raiz, 11, 11);
+    Noh *no;
+    Noh *noR5 = inserir(raiz, 204, -21);
+
+//    cout << endl;
+//    exibirArvore(raiz.raiz);
+//
+//    cout << endl;
+
+    Noh *noR9 = inserir(raiz, 169.75, 59.5);
+
+//    cout << endl;
+//    exibirArvore(raiz.raiz);
+//
+//    cout << endl;
+
+    Noh *noR0 = inserir(raiz, 246.75, -60);
+
+//    cout << endl;
+//    exibirArvore(raiz.raiz);
+//
+//    cout << endl;
+
+    Noh *noR8 = inserir(raiz, -98.75, 53.5);
+
+//    cout << endl;
+//    exibirArvore(raiz.raiz);
+//
+//    cout << endl;
+
+    Noh *noR7 = inserir(raiz, -133.25, 10.5);
+
+//    cout << endl;
+//    exibirArvore(raiz.raiz);
+//
+//    cout << endl;
+
+    Noh *noR6 = inserir(raiz, -13.5, 25.5);
+
+//    cout << endl;
+//    exibirArvore(raiz.raiz);
+//
+//    cout << endl;
+
+    Noh *noR2 = inserir(raiz, -81, 2.5);
+
+//    cout << endl;
+//    exibirArvore(raiz.raiz);
+//
+//    cout << endl;
+
+    Noh *noR1 = inserir(raiz, 271.25, 83);
+
+//    cout << endl;
+//    exibirArvore(raiz.raiz);
+//
+//    cout << endl;
+
+    remover(raiz, noR0);
+
+    Noh *noP = procurar(raiz, 246.75);
+
+    if(!noP){
+        cout << endl << "ok" << endl;
+    }
+
+    remover(raiz, noR1);
+
+
+    noP = procurar(raiz, 271.25);
+
+    if(!noP){
+        cout << endl << "ok" << endl;
+    }
+
+    remover(raiz, noR2);
+
+
+    noP = procurar(raiz, -81);
+
+    if(!noP){
+        cout << endl << "ok" << endl;
+    }
+
+    cout << endl;
+
+    Noh *noR4 = inserir(raiz, 182.5, -68.5);
+
+//    cout << endl;
+//    exibirArvore(raiz.raiz);
+//
+//    cout << endl;
+
+    Noh *noR10 = inserir(raiz, -59.25, -74);
+
+//    cout << endl;
+//    exibirArvore(raiz.raiz);
+//
+//    cout << endl;
+
+    Noh *noR3 = inserir(raiz, -234.5, 99.5);
+
+//    cout << endl;
+//    exibirArvore(raiz.raiz);
+//
+//    cout << endl;
+
+    cout << endl;
+
+    remover(raiz, noR3);
+
+    remover(raiz, noR4);
+
+    remover(raiz, noR5);
+
+    remover(raiz, noR6);
+
+    remover(raiz, noR7);
+
+    remover(raiz, noR8);
+
+    remover(raiz, noR9);
+
     cout << endl;
     exibirArvore(raiz.raiz);
 
     cout << endl;
+
+    remover(raiz, noR10);
+
+    cout << "saiu" << endl;
+
+    Noh *p = procurar(raiz, -59.25);
+
+    if(!p){
+        cout << endl << "ok" << endl;
+    }
+
     cout << endl;
+    exibirArvore(raiz.raiz);
 
-    cout << no->chave << endl;
-    cout << noRemovido1->chave << endl;
-    cout << noRemovido2->chave << endl;
-    cout << noRemovido3->chave << endl;
-    cout << noRemovido4->chave << endl;
-    cout << noRemovido5->chave << endl;
-
-    cout << endl << endl << endl;
-
-    terminar(raiz);
-
-    cout << endl << endl << endl;
-    cout << no->chave << endl;
-    cout << noRemovido1->chave << endl;
-    cout << noRemovido2->chave << endl;
-    cout << noRemovido3->chave << endl;
-    cout << noRemovido4->chave << endl;
-    cout << noRemovido5->chave << endl;
-
+    exibirArvore(raiz.raiz);
 
     return 0;
 }
@@ -665,4 +766,168 @@ int main() {
 
     remover(raiz, noRemovido5);
     exibirArvore(raiz.raiz);
+ */
+
+
+/* DicAVL raiz;
+
+    inicializar(raiz);
+
+    Noh *no;
+    Noh *noR5 = inserir(raiz, 204, -21);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    Noh *noR9 = inserir(raiz, 169.75, 59.5);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    Noh *noR0 = inserir(raiz, 246.75, -60);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    Noh *noR8 = inserir(raiz, -98.75, 53.5);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    Noh *noR7 = inserir(raiz, -133.25, 10.5);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    Noh *noR6 = inserir(raiz, -13.5, 25.5);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    Noh *noR2 = inserir(raiz, -81, 2.5);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    Noh *noR1 = inserir(raiz, 271.25, 83);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    remover(raiz, noR0);
+
+    Noh *noP = procurar(raiz, 246.75);
+
+    if(!noP){
+        cout << endl << "ok" << endl;
+    }
+
+    remover(raiz, noR1);
+
+
+    noP = procurar(raiz, 271.25);
+
+    if(!noP){
+        cout << endl << "ok" << endl;
+    }
+
+    remover(raiz, noR2);
+
+
+    noP = procurar(raiz, -81);
+
+    if(!noP){
+        cout << endl << "ok" << endl;
+    }
+
+    cout << endl;
+
+    Noh *noR4 = inserir(raiz, 182.5, -68.5);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    no = inserir(raiz, -59.25, -74);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    Noh *noR3 = inserir(raiz, -234.5, 99.5);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;
+
+    cout << endl;
+
+
+    remover(raiz, noR4);
+
+    remover(raiz, noR5);
+
+    remover(raiz, noR6);
+
+    remover(raiz, noR7);
+
+    remover(raiz, noR8);
+
+    remover(raiz, noR9);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    cout << endl;*/
+
+
+/*
+ *  DicAVL raiz;
+
+    inicializar(raiz);
+
+    Noh *no;
+    Noh *noR5 = inserir(raiz, 160.75, -44);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    Noh *noP = procurar(raiz, 160.75);
+
+    if(noP){
+        cout <<endl << noP->valor << endl;
+    }
+    cout << endl;
+
+
+    Noh *noR9 = inserir(raiz, 32.25, -4.5);
+
+    cout << endl;
+    exibirArvore(raiz.raiz);
+
+    noP = procurar(raiz, 32.25);
+
+    if(noP){
+        cout <<endl << noP->valor << endl;
+    }
+    cout << endl;
  */

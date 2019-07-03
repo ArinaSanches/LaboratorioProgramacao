@@ -165,8 +165,8 @@ Noh* inserir(DicAVL &D, TC c, TV v){
         no->pai->h = calcularAltura(no->pai);
     }*/
 
-    bool balancea = false;
-    while(!balancea){
+    //bool balancea = false;
+    for(;;){
         no->h = calcularAltura(no);
         int balanceamaento = calcularDesbanciamento(no);
 
@@ -199,12 +199,12 @@ Noh* inserir(DicAVL &D, TC c, TV v){
 
 Noh* procurar (DicAVL &D, TC c){
 
-    bool inserir = false;
+    //bool inserir = false;
 
     Noh *no = D.raiz;
 
     if(no) {
-        while (!inserir) {
+        for (;;) {
             if (no->chave > c) {
                 if (!no->esq) {
                     return nullptr;
@@ -255,9 +255,10 @@ void remover(DicAVL &D, Noh *no){
         }
     }
     if(encontrou) {
-        Noh *noDel;
+        Noh *noDel = nullptr;
         if (!raiz->esq || !raiz->dir) {
             //caso tenha apenas filho esquerdo
+
             if (raiz->esq) {
                 if (raiz->pai) {
                     if (raiz->pai->esq == raiz) {
@@ -273,6 +274,7 @@ void remover(DicAVL &D, Noh *no){
                     D.raiz = raiz->esq;
                 }
             } else if (raiz->dir) {
+
                 if (raiz->pai) {
                     if (raiz->pai->dir == raiz) {
                         raiz->pai->dir = raiz->dir;
@@ -287,7 +289,9 @@ void remover(DicAVL &D, Noh *no){
                     D.raiz = raiz->dir;
                 }
             } else {
+
                 if (raiz->pai) {
+
                     if (raiz->pai->dir == raiz) {
                         raiz->pai->dir = nullptr;
                     } else {
@@ -295,7 +299,8 @@ void remover(DicAVL &D, Noh *no){
                     }
                     noDel = raiz->pai;
                 } else {
-                    if (!noDel->esq && !noDel->dir) {
+
+                    if (!raiz->esq && !raiz->dir) {
                         noDel = nullptr;
                         D.raiz = nullptr;
                     } else {
@@ -303,7 +308,7 @@ void remover(DicAVL &D, Noh *no){
                     }
                 }
             }
-            free(raiz);
+            delete(raiz);
         } else {
             Noh *minimoDir = minimoDireito(raiz->dir);
 
@@ -337,7 +342,7 @@ void remover(DicAVL &D, Noh *no){
             }
             raiz->esq->pai = minimoDir;
             minimoDir->esq = raiz->esq;
-            free(raiz);
+            delete(raiz);
         }
 
         bool balancea = false;
@@ -388,7 +393,7 @@ void remover(DicAVL &D, Noh *no){
 
 void terminar (DicAVL &D){
     if(!D.raiz->esq && !D.raiz->dir){
-        free(D.raiz);
+        delete(D.raiz);
     }else{
         Noh *no;
         if(D.raiz->esq){
@@ -404,7 +409,7 @@ void terminar (DicAVL &D){
             D.raiz = no;
             no->dir = nullptr;
         }
-        free(D.raiz);
+        delete(D.raiz);
     }
 }
 
